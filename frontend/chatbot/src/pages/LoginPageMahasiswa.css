@@ -1,0 +1,112 @@
+/*frontend/chatbot/src/pages/LoginpageMahasiswa.css*/
+.login-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .login-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .login-title {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+  }
+  
+  .login-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 24px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  .form-group input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    color: #111827;
+    background: #ffffff;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+  
+  .error-message {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+  }
+  
+  .login-button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .login-button:hover {
+    background: #4338ca;
+  }
+  
+  .login-button:disabled {
+    background: #a5b4fc;
+    cursor: not-allowed;
+  }
+  
+  .login-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .link-button {
+    background: none;
+    border: none;
+    color: #4f46e5;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+  

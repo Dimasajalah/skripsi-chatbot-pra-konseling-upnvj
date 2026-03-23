@@ -1,0 +1,183 @@
+/*frontend/chatbot/src/pages/PsikologDashboard.css*/
+select,
+textarea,
+input {
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
+
+.psikolog-page {
+  padding: 12px;
+}
+
+.session-select {
+  width: 100%;
+  padding: 8px;
+  margin: 12px 0;
+}
+
+.psikolog-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.side-panel section {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* 🔥 MOBILE */
+@media (max-width: 768px) {
+  .psikolog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-container {
+    max-height: 60vh;
+  }
+
+  .side-panel section {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .chat-page {
+    max-width: 90%;
+    padding: 16px;
+  }
+  .dashboard-grid {
+    justify-content: space-between;
+  }
+}
+
+
+/* GRID UTAMA */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 12px;
+  margin-top: 8px;
+  align-items: start;
+}
+
+/* KOLOM */
+.dashboard-column {
+  min-width: 0;
+  max-width: none;
+}
+
+/* Constrain page width to avoid wide whitespace on large screens */
+.chat-page {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 8px 12px;
+}
+
+/* Make tables responsive on small screens */
+.chat-page table {
+  width: 100%;
+  table-layout: auto;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.12);
+}
+
+/* SCHEDULE INPUT */
+.schedule-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.schedule-row input {
+  flex: 1;
+}
+
+.dashboard-column p,
+.dashboard-column li,
+.dashboard-column small {
+  color: #334155;
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+
+/* compact headings */
+.chat-page h2 {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+}
+
+.chat-header {
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.chat-logo {
+  width: 40px;
+  height: 40px;
+}
+
+/* compact table cells */
+.chat-page table th,
+.chat-page table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eef2f7;
+  font-size: 0.95rem;
+}
+
+.chat-page table tbody tr:hover td {
+  background: #f8fafc;
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    flex-direction: column;
+  }
+
+  .chat-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .chat-logo {
+    width: 60px;
+    margin-bottom: 8px;
+  }
+
+  .schedule-row {
+    flex-direction: column;
+  }
+}
+
+.dashboard-column h3,
+.dashboard-column h4 {
+  color: #0f172a; /* slate-900 */
+}

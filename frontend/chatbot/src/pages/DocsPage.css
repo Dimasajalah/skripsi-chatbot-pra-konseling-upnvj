@@ -1,0 +1,26 @@
+/*frontend/chatbot/src/pages/DocsPage.css */
+.docs-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .docs-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .docs-page h2 {
+    margin-top: 20px;
+    color: #0d6efd;
+  }
+  
+  .docs-page p, .docs-page li {
+    line-height: 1.6;
+  }
+  
+  .docs-page ol, .docs-page ul {
+    margin-left: 20px;
+  }
+  

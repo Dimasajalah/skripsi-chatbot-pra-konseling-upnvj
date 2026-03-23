@@ -1,0 +1,2889 @@
+SKRIPSI
+
+
+
+
+
+PENGEMBANGAN APLIKASI CHATBOT DETEKSI EMOSI BERBASIS NATURAL LANGUAGE PROCESSING UNTUK MENDUKUNG LAYANAN PRA-KONSELING MAHASISWA UPN VETERAN JAKARTA
+
+
+
+
+DIMAS ANGGORO SAKTI
+NIM. 2110511115
+
+
+
+
+FAKULTAS ILMU KOMPUTER
+UNIVERSITAS PEMBANGUNAN NASIONAL �VETERAN� JAKARTA
+JANUARI 2026
+
+SKRIPSI
+
+
+
+
+
+PENGEMBANGAN APLIKASI CHATBOT DETEKSI EMOSI BERBASIS NATURAL LANGUAGE PROCESSING UNTUK MENDUKUNG LAYANAN PRA-KONSELING MAHASISWA UPN VETERAN JAKARTA
+
+
+
+
+DIMAS ANGGORO SAKTI
+NIM. 2110511115
+
+
+
+
+FAKULTAS ILMU KOMPUTER
+UNIVERSITAS PEMBANGUNAN NASIONAL �VETERAN� JAKARTA
+JANUARI 2026
+
+
+
+ABSTRAK
+Proses pra-konseling mahasiswa merupakan tahap awal yang penting dalam mendukung layanan konseling di perguruan tinggi. Namun, proses ini masih menghadapi kendala seperti keterbatasan waktu, belum tersedianya metode skrining emosional yang cepat, serta adanya hambatan psikologis yang membuat mahasiswa enggan menyampaikan kondisi emosional secara langsung. Penelitian ini bertujuan untuk mengembangkan aplikasi chatbot deteksi emosi berbasis Natural Language Processing (NLP) yang dapat digunakan sebagai sarana pra-konseling non-klinis bagi mahasiswa Universitas Pembangunan Nasional �Veteran� Jakarta. Sistem yang dikembangkan mengimplementasikan tahapan pipeline NLP yang meliputi prapemrosesan teks seperti pembersihan teks, normalisasi, dan tokenisasi, serta proses klasifikasi teks untuk mendeteksi kategori emosi utama, yaitu senang, sedih, marah, dan cemas. Hasil implementasi menunjukkan bahwa chatbot mampu mengidentifikasi emosi mahasiswa berdasarkan teks percakapan dan memberikan saran awal yang sesuai dengan kondisi emosional pengguna. Aplikasi ini memberikan kontribusi positif dalam mendukung efisiensi proses asesmen awal serta meningkatkan aksesibilitas layanan pra-konseling bagi mahasiswa.
+Kata Kunci: Chatbot, Deteksi Emosi, Natural Language Processing, Pra-Konseling, Mahasiswa
+
+
+
+
+
+
+
+
+
+
+
+
+ABSTRACT
+The pre-counseling process is an important initial stage in supporting student counseling services in higher education. However, this process still faces several challenges, such as limited counselor availability, the absence of fast emotional screening methods, and psychological barriers that make students reluctant to express their emotional conditions directly. This study aims to develop an emotion detection chatbot application based on Natural Language Processing (NLP) to support non-clinical pre-counseling services for students at Universitas Pembangunan Nasional �Veteran� Jakarta. The developed system implements an NLP pipeline that includes text preprocessing stages such as text cleaning, normalization, and tokenization, followed by text classification to identify primary emotion categories, namely happiness, sadness, anger, and anxiety. The implementation results indicate that the chatbot is able to detect students� emotional states based on textual conversations and provide appropriate initial recommendations according to the detected emotions. This application contributes positively to improving the efficiency of initial emotional assessment and enhancing the accessibility of pre-counseling services for students.
+Keywords: Chatbot, Emotion Detection, Natural Language Processing, Pre-Counseling, Students
+
+
+
+
+
+
+
+
+
+
+
+
+         LEMBAR PERSETUJUAN
+
+
+
+
+KATA PENGANTAR
+Segala puji dan syukur penulis panjatkan ke hadirat Tuhan Yang Maha Esa. Berkat rahmat, karunia, dan kehendak-Nya, penulis dapat menyelesaikan proposal skripsi yang berjudul �Pengembangan Aplikasi Chatbot Deteksi Emosi Berbasis Natural Language Processing untuk Mendukung Layanan Pra-Konseling Mahasiswa UPN Veteran Jakarta� dengan baik.
+Penyusunan proposal skripsi ini bertujuan untuk memenuhi salah satu syarat kelulusan program Sarjana (S1) pada Program Studi Informatika, Fakultas Ilmu Komputer, Universitas Pembangunan Veteran Jakarta. Penulis berharap proposal ini dapat menjadi langkah awal yang bermanfaat dalam pengembangan aplikasi yang mampu mendukung layanan pra-konseling bagi mahasiswa.
+Dalam penyusunan proposal skripsi ini, penulis memperoleh banyak bantuan serta dukungan secara moral ataupun materil. Oleh karena itu, penulis ingin mengungkapkan rasa terima kasih yang sebesar-besarnya kepada:
+1. Ibu saya yang selalu memberikan bantuan, semangat, dan doa. Terima kasih atas nasihat dan saran yang membantu untuk membuat proposal ini.
+2. Ayah saya yang telah memberikan dukungan kepada penulis melalui semangat, motivasi, dan nasehat.
+3. Bapak Dr. Tjahjanto, S.Kom., M.M., selaku dosen pembimbing I yang telah memberikan Sumber referensi untuk penelitian proposal ini, serta arahan selama proses penulisan proposal ini.
+4. Bapak I Wayan Rangga Pinastawa, M.Kom. selaku dosen pembimbing II yang juga telah memberikan kritik, saran, arahan, ide, serta dukungan dalam penyelesaian proposal skripsi ini.
+5. Pihak-pihak yang terlibat baik sceara langsung maupun tidak langsung, yang tidak dapat penulis sebutkan satu per satu tanpa mengurangi rasa hormat. Penulis mengucapkan terima kasih atas segala bantuan yang berkaitan dengan penelitian proposal ini, sehingga proposal skripsi ini dapat diselesaikan dengan baik.
+
+
+Jakarta, 7 September 2025
+
+     Dimas Anggoro Sakti
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DAFTAR ISI
+
+SKRIPSI	i
+ABSTRAK	iii
+ABSTRACT	iv
+LEMBAR PERSETUJUAN	v
+KATA PENGANTAR	vi
+DAFTAR ISI	viii
+DAFTAR GAMBAR	xii
+DAFTAR TABEL	xiii
+DAFTAR LAMPIRAN	xiv
+BAB 1	1
+PENDAHULUAN	1
+1.1	Latar Belakang	1
+1.2	Rumusan Masalah	4
+1.3 Batasan Masalah	4
+1.3	Tujuan dan Manfaat Penelitian	5
+1.4.1 Tujuan Penelitian	5
+1.4.2 Manfaat Penelitian	5
+1.4.2.1 Manfaat Teoritis	5
+1.4.2.2 Manfaat Praktis	5
+1.5 Sistematika Penulisan	6
+BAB I PENDAHULUAN	6
+BAB II LANDASAN TEORI	6
+BAB III METODOLOGI PENELITIAN	6
+BAB IV HASIL DAN PEMBAHASAN	6
+BAB V KESIMPULAN DAN SARAN	7
+BAB II	8
+TINJAUAN PUSTAKA	8
+2.1 Teori	8
+2.1.1 Artificial Intelligence (AI)	8
+2.1.2 Machine Learning (ML)	8
+2.1.3 Chatbot	9
+2.1.4 Natural Language Processing (NLP)	9
+2.1.4.1 Preprocessing Teks	10
+2.1.4.2 Feature Extraction	11
+2.1.4.3 Text Classification & Emotion Detection	11
+2.1.4.4 Intent Recognition & Response Generation	12
+2.1.5  JavaScript	12
+2.1.6 MongoDB	13
+2.1.7 Python	13
+2.1.8 WebSocket	13
+2.1.9 JSON Web Token	14
+2.1.10 Rapid Application Development (RAD)	14
+2.1.11 Unified Modelling Language (UML)	16
+2.1.11.1 Use Case Diagram	17
+2.1.11.2 Activity Diagram	19
+2.1.12 UI/UX Design	23
+2.1.12.1 User Interface (UI) Design	23
+2.1.12.2 User Experience (UX) Design	24
+2.1.12.3 Entity Relationship Diagram (ERD)	25
+2.1.13	Black Box Testing	26
+2.1.14	Evaluasi Model	27
+2.1.14.1 Confusion Matrix	27
+2.1.14.2 User Acceptance Test (UAT)	31
+2.2 Penelitian Terdahulu	32
+BAB III	37
+METODE PENELITIAN	37
+3.1 Metode Penelitian	37
+3.1.1 Identifikasi Masalah	37
+3.1.2 Analisis Kebutuhan	38
+3.1.3 Pengumpulan Data	38
+3.1.3.1 Wawancara	38
+3.1.3.2 Observasi	38
+3.1.3.3 Studi Literatur	39
+3.1.4 Perancangan Sistem	39
+3.1.4.1 Desain Entity Relationship Diagram (ERD)	39
+3.1.4.2 Desain Use Case Diagram	41
+3.1.4.3 Desain Activity Diagram	45
+3.1.4.4 Desain UI/UX	49
+3.1.5 Pelaksanaan	49
+3.1.6 Testing (Pengujian)	50
+3.1.6.1 Black Box Testing	50
+3.1.6.2 User Acceptance Testing	50
+3.1.6.3 Confusion Matrix	51
+3.1.7 Perbaikan	53
+3.1.8 Dokumentasi Laporan	53
+3.2    Arsitektur Sistem	53
+3.2.1	Frontend (Website)	54
+3.2.2	Backend (Server & NLP Model)	55
+3.2.3	Database (MongoDB)	55
+3.3    Arsitektur Natural Language Processing (NLP)	55
+3.3.1	Dataset	58
+3.3.2	Text Input	59
+3.3.3 Preprocessing Text	59
+3.3.4	Feature Extraction	62
+3.3.5	Text Classification & Emotion Detection	64
+3.3.6	Intent Recognition & Response Generation	66
+3.3.7	Output Layer	69
+3.4	Perangkat Penelitian	70
+3.4.1 Perangkat Keras (Hardware)	70
+3.4.2 Perangkat Lunak (Software)	70
+3.5 Jadwal Penelitian	70
+BAB IV	72
+HASIL DAN PEMBAHASAN	72
+4.1 Profil Perusahaan	72
+4.2	Deskripsi Objek Penelitian	72
+4.3	Analisis Deskripsi	73
+4.4	Analisis Penelitian	74
+4.4.1	Inisialisasi Aplikasi Backend Chatbot	75
+4.4.2	Implementasi Endpoint Chatbot Pra-Konseling	75
+4.4.3	Implementasi Komunikasi Real-Time Menggunakan WebSocket	77
+4.4.4	Pipeline Natural Language Processing	78
+4.4.5	Preprocessing Teks Percakapan Pengguna	79
+4.4.6	Preprocessing Teks untuk Model MiniLM	80
+4.4.7	Klasifikasi Emosi Menggunakan MiniLM	81
+4.4.8	Identifikasi Intent	82
+4.4.9	Respons Chatbot Pra-Konseling	83
+4.4.10	Penyimpanan Data Percakapan dan Sesi Konseling	84
+4.5	Hasil dan Rekomendasi	84
+4.5.1	Hasil Identifikasi Masalah	85
+4.5.2	Hasil Analisis Kebutuhan	85
+4.5.3 Hasil Perancangan Sistem	85
+4.5.4	Hasil Rancangan Natural Language Processing (NLP)	85
+4.5.5 Hasil Pengujian	85
+4.5.6 Hasil Dokumentasi dan Penulisan Laporan	85
+4.5.7 Rekomendasi	85
+BAB V	86
+PENUTUP	86
+DAFTAR PUSTAKA	87
+LAMPIRAN	90
+Lampiran 1. Surat Riset	90
+Lampiran 2. Wawancara dengan Admin ULBK konseling UPNVJ	91
+Lampiran 3. Wawancara Dengan Psikolog UPNVJ	93
+Lampiran 4. Wawancara dengan Mahasiswa FIK Angkatan 2022	95
+Lampiran 5 Wawancara dengan Mahasiswa FIK Angkatan 2022	98
+Lampiran 6 Wawancara dengan Mahasiswa FIK Angkatan 2022	100
+Lampiran 7 Wawancara dengan Mahasiswa Fakultas Hukum Angkatan 2022	102
+Lampiran 8. Wawancara dengan Mahasiswa Fakultas Teknik Angkatan 2022	106
+
+
+
+
+
+
+
+DAFTAR GAMBAR
+Gambar 1.1 Data Kesehatan Mahasiswa	2
+Gambar 2.2 Tahap RAD	14
+Gambar 2.1 Proses NLP	9
+Gambar 2.2 Tahap RAD	14
+Gambar 2.3 Contoh Use Case Diagram didalam UML	15
+Gambar 2.4 Contoh UI Design	23
+Gambar 2.5 Black Box Testing	25
+Gambar 2.6 Contoh hasil dari Confusion Matrix	30
+Gambar 3.1 Contoh Proses NLP	39
+Gambar 3.2 Use Case Aplikasi Chatbot Pra-Konseling	43
+Gambar 3.3 Activity Diagram Autentikasi	44
+Gambar 3.4 Activity Diagram Chatbot Session	45
+Gambar 3.5 Activity Diagram Hasil Assesmen	46
+Gambar 3.6 Software Architecture perancangan chatbot pra konseling	52
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DAFTAR TABEL
+Tabel 2.1 Langkah Preprocessing	9
+Tabel 2. 2 Proses Text Representation	11
+Tabel 2.3 Daftar Klasifikasi Algoritma	11
+Tabel 2.4 Daftar aturan respons	12
+Tabel 2.5 Tahapan RAD	13
+Tabel 2.6 Komponen dari diagram usecase UML	16
+Tabel 2.7 Relasi Usecase diagram (Sundaramoorthy, 2022)	16
+Tabel 2.8 Relasi Activity Diagram	18
+Tabel 2. 9 Model Confusion Matrix Biner Classification	26
+Tabel 2.10 Keterangan dari rumus accuracy	27
+Tabel 2. 11 Keterangan rumus Precision	27
+Tabel 2.12 Keterangan Rumus Recall	27
+Tabel 2.13 Keterangan Rumus F1 Score	28
+Tabel 2. 14 Keterangan rumus micro average	29
+Tabel 2.15 Skala Likert	30
+Tabel 2.16 Skor Skala Likert	31
+Tabel 2.17 Penelitian Terdahulu	32
+Tabel 3.1 Contoh dataset untuk UAT	50
+Tabel 3.2 Label deteksi emosi pada Confusion Matrix	50
+Tabel 3.3 Proses NLP pada pengembangan aplikasi chatbot pra-konseling	54
+Tabel 3.4 Jenis dataset pada penelitian ini	56
+Tabel 3. 5 Jenis dataset pada penelitian ini	56
+Tabel 3.6 Masukan Text Input dari Mahasiswa/User	57
+Tabel 3.7 Tahapan Preprocessing Text pada sistem aplikasi chatbot pra-konseling	58
+Tabel 3.8 Proses Feature Extraction menggunakan MiniLM	60
+Tabel 3.9 Contoh Input, Embedding, dan Output Hasil Klasifikasi	62
+Tabel 3. 10 Hasil Prediksi Intent dan Emosi	62
+Tabel 3.11 Arsitektur Feed-Forward Neural Network (FFNN)	62
+Tabel 3.12 Implementasi Model Klasifikasi Intent dan Emosi	63
+Tabel 3.13 Langkah Intent Recognition & Response Generation	63
+Tabel 3.14 Komponen Intent Recognition & Response Generation	64
+Tabel 3.15 Komponen Output Layer	65
+
+
+
+
+
+	DAFTAR LAMPIRAN	
+Lampiran 1. Surat Riset	61
+Lampiran 2. Wawancara dengan Admin ULBK konseling UPNVJ	62
+Lampiran 3. Wawancara Dengan Psikolog UPNVJ	63
+Lampiran 4. Wawancara dengan Mahasiswa FIK Angkatan 2022	64
+Lampiran 5  Wawancara dengan Mahasiswa FIK Angkatan 2022	66
+Lampiran 6  Wawancara dengan Mahasiswa FIK Angkatan 2022	68
+Lampiran 7  Wawancara dengan Mahasiswa Fakultas Hukum Angkatan 2022	70
+Lampiran 8. Wawancara dengan Mahasiswa Fakultas Teknik Angkatan 2022	73
+
+BAB 1
+PENDAHULUAN
+1.1 Latar Belakang 
+     Pesatnya perkembangan teknologi informasi yang massif pada era digital telah menghadirkan berbagai inovasi dan transformasi di berbagai aspek kehidupan, termasuk dalam bidang pendidikan dan kesehatan. Teknologi dan informasi telah mempermudah kehidupan sehari-hari, seperti mengakses layanan publik hingga mempercepat alur pertukaran data, sehingga berperan penting dalam meningkatkan kualitas hidup. Salah satu perkembangan teknologi dan informasi yang berkembang secara pesat adalah kecerdasan buatan atau artificial intelligence (AI), yang kini diterapkan dalam berbagai sektor, seperti industri, pendidikan, hingga layanan publik. Kecerdasan buatan atau AI menghadirkan Solusi inovatif dalam menghadapi tantangan  kompleks di berbagai bidang, seperti pengembangan sistem rekomendasi, pengenalan pola, hingga pemrosesan bahasa alami (Natural Language Processing). Di bidang kesehatan, AI memiliki kontribusi dalam menyediakan layanan yang bersifat preventif maupun responsif, termasuk dalam penanganan isu-isu kesehatan mental yang kini menjadi isu penting seiring meningkatnya kesadaran masyarakat terhadap pentingnya kesehatan psikologis (Zaenuddin Imam, 2024).
+     Namun, di balik kemajuan teknologi, muncul  fenomena yang memprihatinkan, yaitu meningkatnya gangguan kesehatan mental di kalangan remaja dan mahasiswa. Berdasarkan penelitian dari (Setyanto, et al., 2023), di Universitas Sebelas Maret Surakarta, dalam periode 2016-2019 tercatat 115 kasus gangguan mental, dengan mayoritas dialami oleh mahasiswa usia 21-23 tahun, yakni pada tahap semester menengah hingga akhir. Gangguan kecemasan dan depresi menempati peringkat tertinggi, dengan 29% mahasiswa mengalami kecemasan dan 25% mengalami depresi dalam skala ringan hingga berat. Temuan ini diperkuat oleh hasil skrining pada 227 mahasiswa, yang menunjukkan 26,9% mengalami depresi ringan, 18,5% depresi sedang, dan 9,3% depresi berat, sementara 86,8% mahasiswa mengalami kecemasan dalam kategori tinggi.. Kondisi ini menunjukan bahwa ada masalah nyata yang dialami oleh mahasiswa dan kurangnya dukungan psikologis terhadap mahasiswa yang efektif. Kurangnya literasi terhadap Kesehatan mental, tekanan sosial, serta kurangnya layanan psikologis menjadi tantangan utama dalam penanganan isu ini secara menyeluruh.
+     
+
+Gambar 1.1 Persentase Mahasiswa dengan Gangguan Mental (2016-2019)
+
+Gambar 1.2 Distribusi Tingkat Depresi Mahasiswa (Hasil Skrining 227 Mahasiwa)
+     Hasil observasi dan wawancara yang dilakukan peneliti di Universitas Pembangunan Nasional Veteran Jakarta (UPNVJ) mendukung temuan tersebut. Admin Unit Layanan Bimbingan Konseling (ULBK) menyampaikan bahwa layanan konseling telah berjalan sejak 2023, tetapi sistem pendaftaran daring belum optimal sehingga mahasiswa harus mendaftar secara manual melalui WhatsApp. Proses asesmen memerlukan waktu yang cukup lama, bahkan bisa mencapai satu jam, dan belum tersedia metode skrining cepat untuk mengidentifikasi kondisi emosional mahasiswa awal mahasiswa secara non-klinis. Psikolog kampus juga mengakui perlunya alat bantu yang dapat mempercepat proses identifikasi emosi, serta menyatakan kesiapan memanfaatkan teknologi seperti chatbot selama aspek kerahasiaan data tetap terjaga. Dari sisi mahasiswa, wawancara menunjukkan bahwa mereka sering terkendala waktu, merasa malu, terhambat stigma sosial, dan khawatir data pribadi mereka tidak aman. Sebagian besar mahasiswa menyatakan akan lebih nyaman menggunakan platform digital yang dapat diakses secara anonim, cepat, dan mampu memberikan gambaran awal mengenai kondisi emosional mahasiswa sebagai bagian dari proses pra-konseling non-klinis.
+     Berdasarkan identifikasi masalah tersebut, penelitian ini mengusulkan pengembangan aplikasi chatbot sebagai solusi layanan pra konseling mahasiswa UPNVJ. Observasi menunjukkan bahwa mahasiswa sangat familiar dengan perangkat digital, baik untuk komunikasi, edukasi, maupun hiburan. Intensitas penggunaan perangkat digital ini membuat platform digital relevan untuk menjangkau mahasiswa secara efektif. Chatbot diharapkan menjadi sarana pra-konseling yang mudah diakses, cepat, dan mampu memberikan informasi awal mengenai kondisi emosional mahasiswa.
+     Berdasarkan kondisi tersebut, penelitian ini mengusulkan pengembangan aplikasi chatbot layanan pra konseling yang menggunakan pipeline NLP untuk pra-konseling. Menurut penelitian (Lafia et al., 2022) Pipeline NLP yang diterapkan mencakup beberapa tahapan: pertama, text input, di mana mahasiswa memasukkan keluhan atau kondisi emosional mereka; kedua, preprocessing text, meliputi pembersihan teks, normalisasi, dan tokenisasi untuk menyiapkan data agar dapat diproses; ketiga, feature extraction, di mana representasi teks diubah menjadi bentuk vektor yang dapat dianalisis; keempat, text classification dan emotion detection, untuk mengenali kategori emosi utama yang dirasakan mahasiswa; kelima, intent recognition, untuk memahami maksud utama dari teks yang dimasukkan; dan keenam, output layer, yang menampilkan hasil analisis dan rekomendasi awal kepada mahasiswa. Implementasi pipeline ini tidak hanya memberikan respons awal terhadap kondisi emosional mahasiswa, tetapi juga memberikan informasi penting bagi konselor untuk menyiapkan sesi tatap muka atau daring dengan lebih efektif.
+     Pengembangan aplikasi ini dirancang sebagai platform website agar mudah diakses oleh mahasiswa tanpa perlu menginstal aplikasi tambahan. Chatbot pra-konseling dibangun menggunakan JavaScript untuk sisi frontend, Python sebagai backend server, MongoDB untuk penyimpanan data, serta implementasi pipeline NLP. Penerapan Bahasa pemrograman seperti python memungkinkan pengelolaan server yang responsif dan mendukung real-time communication menggunakan WebSocket, sehingga mahasiswa dapat berinteraksi dengan chatbot secara langsung tanpa jeda. MongoDB menyediakan fleksibilitas untuk menyimpan data tidak terstruktur seperti hasil percakapan dan metadata emosi, Python mempermudah integrasi model NLP dan pemrosesan teks, sementara JavaScript membuat antarmuka website interaktif, responsif, dan kompatibel dengan berbagai perangkat. Kombinasi teknologi ini memungkinkan pembuatan prototipe chatbot yang fungsional, efisien, dan sesuai dengan tujuan penelitian, yaitu menyediakan layanan pra-konseling yang cepat, aman, dan mudah diakses oleh mahasiswa.
+1.2 Rumusan Masalah
+   Berdasarkan latar belakang yang telah dijabarkan, maka rumusan masalah yang dapat diidentifikasi adalah sebagai berikut:
+1. Bagaimana merancang pipeline NLP untuk mendeteksi emosi mahasiswa dalam teks percakapan chatbot? 
+2. Bagaimana mengembangkan chatbot pra-konseling yang mampu memberikan saran awal berdasarkan hasil deteksi emosi tanpa memberikan diagnosis klinis? 
+3. Bagaimana menilai efektivitas chatbot melalui pengujian performa model NLP dan User Acceptance Testing (UAT) pada mahasiswa UPN �Veteran� Jakarta?
+1.3 Batasan Masalah
+Batasan masalah yang terdapat pada penelitian ini adalah sebagai berikut:
+1. Ruang lingkup penelitian hanya mencakup deteksi emosi berbasis teks dari input mahasiswa, Sistem tidak mencakup analisis emosi berbasis suara, ekspresi wajah, ataupun data fisiologis. 
+2. Pipeline NLP yang diintegrasikan dalam tahap feature extraction dan text classification untuk mendeteksi kategori emosi (senang, sedih, marah, cemas) dan intent percakapan (curhat, meminta saran, mencari informasi).
+3. Hasil dari chatbot ini  hanya bersifat pra-konseling dan tidak memberikan diagnosis klinis
+4. Fitur chatbot hanya mendukung percakapan sederhana seperti memulai sesi chatbot, menampilkan deteksi emosi, menampilkan hasil assessment, memberikan saran awal, dan menampilkan jadwal konseling. Chatbot tidak menggantikan sesi konseling tatap muka.
+5. Sistem tidak terintegrasi dengan database kampus dan hanya menggunakan dataset internal.
+6. Lingkup pengujian terbatas pada mahasiswa UPN �Veteran� Jakarta sebagai responden untuk uji coba UAT dan evaluasi performa model.
+7. Sistem ini tidak dikembangkan untuk diagnosis klinis, penilaian psikologis, dan generasi respon bebas karena sistem ini tidak menggunakan generative AI, melainkan sistem respon terkontrol berbasis rule-based dan intent classification.
+1.3 Tujuan dan Manfaat Penelitian
+1.4.1 Tujuan Penelitian
+     Tujuan dari penelitian ini adalah:
+1. Merancang pipeline Natural Language Processing (NLP) untuk mendeteksi emosi mahasiswa dalam teks percakapan chatbot, mencakup tahap text preprocessing, feature extraction, dan text classification sehingga mampu mengenali kategori emosi (senang, sedih, marah, cemas) dan intent percakapan (curhat, meminta saran, mencari informasi).
+2. Mengembangkan chatbot pra-konseling berbasis NLP yang mampu memberikan saran awal secara empatik sesuai hasil deteksi emosi, mendukung layanan pra-konseling ULBK, dan memudahkan mahasiswa mendapatkan akses konseling tanpa harus langsung bertatap muka.
+3. Menguji performa model NLP dan mengukur UAT chatbot melalui uji coba terbatas pada mahasiswa UPN �Veteran� Jakarta, untuk memastikan sistem bekerja sesuai tujuan dan memberikan pengalaman pengguna yang baik.
+1.4.2 Manfaat Penelitian
+     Manfaat dari penelitian ini adalah sebagai berikut:
+1.4.2.1 Manfaat Teoritis
+1. Memberikan kontribusi pada pengembangan ilmu di bidang Natural Language Processing, untuk deteksi emosi berbasis teks dalam konteks pra-konseling.
+2. Mengisi kesenjangan penelitian terkait pemanfaatan chatbot berbasis AI dalam layanan pra konseling mahasiswa, sehingga dapat menjadi referensi penelitian lebih lanjut.
+3. Menyediakan contoh penerapan pipeline NLP yang dapat diadaptasi atau dikembangkan pada penelitian lain yang membutuhkan deteksi emosi secara real-time.
+1.4.2.2 Manfaat Praktis
+1. Bagi Mahasiswa � menyediakan sarana pra-konseling yang cepat, nyaman, dan memungkinkan berbagi masalah secara anonim sebelum memutuskan tatap muka dengan konselor.
+2. Bagi Admin & Konselor ULBK � memberikan gambaran awal mengenai kondisi emosional mahasiswa, sehingga mempercepat asesmen awal dan memungkinkan prioritisasi kasus yang mendesak.
+3. Bagi Kampus � mendukung transformasi digital layanan konseling, meningkatkan kualitas pelayanan psikososial, dan memperkuat peran kampus dalam mendukung kesehatan mental mahasiswa.
+4. Bagi Peneliti dan Praktisi IT � menjadi studi kasus implementasi chatbot berbasis NLP di bidang psikologi terapan yang dapat direplikasi pada domain lain seperti pendidikan, HR(Human Resources), atau layanan publik.
+1.5 Sistematika Penulisan
+     Proposal skripsi ini disusun berdasarkan sistematika penulisan yang dibagi menjadi beberapa bab sebagai berikut:
+BAB I PENDAHULUAN
+     Bab ini berisi Latar belakang, rumusan masalah, batasan masalah, tujuan dan manfaat penelitian, dan sistematika penulisan.
+BAB II LANDASAN TEORI
+     Bab ini menyajikan teori-teori yang menjadi landasan penelitian ini. Bab ini juga mencakup literature review dari penelitian terdahulu yang memiliki topik yang relevan dengan topik yang diangkat pada penelitian ini. Bagian ini berfungsi sebagai dasar ilmiah untuk mendukung pengembangan aplikasi.
+BAB III METODOLOGI PENELITIAN
+     Bab ini merincikan bagaimana proses penelitian dilakukan, termasuk teknik pengumpulan data (Studi Literatur, Kuisioner), analisis kebutuhan sistem, perancangan pipeline NLP, serta pengembangan dan implementasi aplikasi chatbot pra-konseling. Bab ini juga menjelaskan setiap langkah penelitian secara sistematis untuk mencapai tujuan penelitian dan menghasilkan luaran yang diharapkan, yaitu chatbot yang mampu mendeteksi emosi mahasiswa dan memberikan saran awal pra-konseling.
+BAB IV HASIL DAN PEMBAHASAN
+    Bab ini menyajikan hasil penelitian dan pembahasan dari pengembangan aplikasi chatbot. Pembahasan meliputi implementasi sistem (frontend, backend, integrasi NLP), fitur-fitur utama chatbot, desain UI/UX, stabilisasi aplikasi, hasil pengujian fungsional dan non-fungsional, serta interpretasi data dan temuan penelitian.
+BAB V KESIMPULAN DAN SARAN
+     Bab ini berisi kesimpulan dari seluruh penelitian yang telah dilakukan, menyoroti pencapaian tujuan, efektivitas chatbot dalam mendukung layanan pra-konseling, serta saran untuk pengembangan lebih lanjut atau penelitian serupa di masa depan.
+DAFTAR PUSTAKA
+     Daftar Pustaka berisi daftar referensi yang digunakan oleh penulis sebagai acuan penelitian dan juga selama proses penyusunan tugas akhir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BAB II
+TINJAUAN PUSTAKA
+2.1 Teori
+2.1.1 Artificial Intelligence (AI)
+     Artificial Intelligence atau Kecerdasan Buatan merupakan bidang kajian yang mempelajari  bagaimana cara membuat sistem yang bisa berperilaku cerdas. Menurut (Russell & Norvig, 2022), fokus kecerdasan buatan dibagikan ke dalam dua dimensi, seperti proses berpikir (Thought processes and reasoning), perilaku (Behavior), Kinerja yang mirip manusia (Human Performance), dan rasionalitas (Rationality). Sebuah sistem bisa dikatakan rasional apabila mampu melakukan tindakan yang tepat berdasarkan informasi yang dimilikinya. Pendekatan berbasis manusia umumnya bersifat empiris, sedangkan pendekatan rasional cenderung menggunakan landasan matematis dan rekayasa.
+     Dalam perkembangannya, Artificial Intelligence mencakup berbagai bidang seperti machine learning, natural language processing, computer vision, dll. Setiap bidang memiliki fokus dan metode tersendiri, namun secara umum bertujuan menciptakan sistem yang mampu belajar dari data, mengenali pola, memahami bahasa, memproses informasi visual, serta mengambil keputusan secara mandiri. Penerapan Kecerdasan buatan bisa memberikan inovasi baru yang sangat signifikan, meningkatkan efisiensi, akurasi, serta memperluas kemampuan teknologi di berbagai sektor, mulai dari industri manufaktur, kesehatan, transportasi, hingga aplikasi berbasis web dan perangkat bergerak.
+2.1.2 Machine Learning (ML) 
+     Machine Learning salah satu cabang kecerdasan buatan (AI) yang berperan untuk menyelesaikan berbagai macam permasalahan yang kompleks. Machine Learning berfokus pada pengembangan sistem yang mampu belajar dan beradaptasi secara mandiri tanpa bantuan manusia atau diprogram secara berulang. Secara teknis, Machine Learning adalah bidang ilmiah yang mempelajari algoritma dan model statistik yang memungkinkan computer untuk melakukan tugas-tugas tertentu dengan memanfaatkan pola-pola data dan kemampuan inferensi, menggantikan instruksi langsung dari manusia (Nurhaliza et al., 2024)
+2.1.3 Chatbot
+     Chatbot adalah sebuah program komputer berbasis kecerdasan buatan (Artificial Intelligence) yang dirancang untuk mensimulasikan percakapan manusia dan memberikan umpan balik dan jawaban sesuai dengan pertanyaan pengguna (Hafiz Aldwinarta, et al., 2024). Chatbot memanfaatkan pemrosesan bahasa alami (Natural Language Processing/NLP) untuk memahami dan menghasilkan tanggapan yang relevan terhadap input pengguna. Menurut (Huberta & Wijaya, 2023) Chatbot pra-konseling yang dirancang secara akurat dapat memberikan tanggapan yang relevan terhadap input pengguna dan menciptakan pengalaman percakapan yang lebih alami. Hal ini penting dalam konteks kesehatan mental, di mana interaksi yang natural dan empatik berperan dalam kenyamanan pengguna saat menyampaikan keluhan atau masalah pribadi. 
+2.1.4 Natural Language Processing (NLP)
+     Natural Language Processing adalah bidang Kecerdasan Buatan (Artificial Intelligence ) yang mempelajari komunikasi antara manusia dengan komputer melalui bahasa alami. Model komputasi seperti ini berguna untuk memudahkan komunikasi antara manusia dengan komputer dalam hal pencarian informasi, sehingga dapat terjadi suatu interaksi antara keduanya dengan menggunakan bahasa alami (Mulyatun, et al., 2021).  
+
+Gambar 2.1 Proses NLP
+     Proses Natural Language Processing dibagi menjadi beberapa tahap dan tahapnya adalah sebagai berikut:
+2.1.4.1 Preprocessing Teks
+     Preprocessing teks adalah tahap awal penting sebelum data teks dapat dianalisis menggunakan algoritma pembelajaran mesin. Tujuannya adalah membersihkan dan menyeragamkan data agar lebih terstruktur dan dapat diproses komputer. Tahap preprocessing manual tetap penting untuk menjaga konsistensi data dan menghilangkan noise. Langkah-langkah umum Preprocessing menurut (Nugroho, 2020) adalah sebagai berikut:
+Tabel 2.1 Langkah Preprocessing
+   No.
+Proses Preprocessing
+Penjelasan
+1.
+Noise Removal
+Menghapus karakter tidak relevan seperti tanda baca berlebihan, URL, angka yang tidak bermakna, dan simbol yang tidak diperlukan.
+2.
+Case Folding
+Case folding merupakan salah satu tahapan dalam pra-pemrosesan teks yang bertujuan untuk menyeragamkan bentuk huruf dengan mengonversi seluruh huruf menjadi huruf kecil. Pada tahap ini, karakter non-alfabet seperti angka dan simbol khusus (misalnya tanda seru (!), koma (,), garis miring (/), tanda lebih dari (>), dan tanda kurang dari (<)) umumnya dihapus karena tidak memberikan kontribusi signifikan terhadap proses klasifikasi teks. 
+3.
+Tokenizing
+Tokenizing merupakan salah satu tahap pra-pemrosesan teks yang berfungsi untuk memecah teks menjadi unit-unit terkecil, biasanya berupa kata atau token, dengan menggunakan spasi sebagai pemisah. Tujuan dari proses ini adalah untuk memastikan setiap kata dapat diperlakukan sebagai entitas yang berdiri sendiri dan tidak bergantung pada kata lain, sehingga mempermudah analisis lebih lanjut. 
+4.
+Stopword Removal
+Stopword Removal adalah proses penyaringan kata-kata umum yang tidak memberikan kontribusi signifikan terhadap makna teks, seperti kata penghubung atau kata umum .Penghapusan kata-kata ini bertujuan meningkatkan efisiensi dan akurasi dalam pemrosesan teks
+5.
+Stemming atau Lemmatization
+Stemming atau lemmatization merupakan proses normalisasi kata dengan menghilangkan afiks (seperti awalan in- atau akhiran -nya) guna memperoleh bentuk dasar kata. Proses ini bertujuan untuk mengurangi variasi kata sehingga mempermudah analisis teks
+
+2.1.4.2 Feature Extraction
+     Setelah teks melewati tahap preprocessing, data perlu diubah menjadi representasi numerik agar dapat diproses oleh algoritma pembelajaran mesin. Proses ini dikenal sebagai feature extraction. Representasi fitur penting karena model NLP hanya dapat memahami data dalam bentuk numerik, bukan teks mentah. Beberapa pendekatan Feature Extraction adalah sebagai berikut:
+Tabel 2. 2 Proses Text Representation
+No.
+Proses
+Penjelasan
+1.
+TF-IDF (Term Frequency � Inverse Document Frequency)
+Memberikan bobot pada kata berdasarkan frekuensi kemunculannya di dokumen dan keseluruhan korpus (Silalahi & Guidio, 2023).
+2.
+Word2Vec / GloVe
+Menghasilkan dense vector representation dari kata berdasarkan distribusi konteksnya dalam korpus.
+3.
+Transformer-based Embedding (MiniLM)
+Model MiniLM (Wang, et al., n.d.) adalah lightweight transformer yang mampu menghasilkan embedding kontekstual secara efisien. Embedding ini bersifat bidirectional, sehingga dapat menangkap nuansa emosi dari kalimat.
+
+2.1.4.3 Text Classification & Emotion Detection
+     Klasifikasi teks adalah proses memetakan teks ke dalam kategori tertentu, seperti sentimen positif/negatif, topik, atau label emosi (Allam et al., 2025). Pada deteksi emosi, tujuan klasifikasi adalah mengenali emosi yang diekspresikan dalam teks, seperti marah, sedih, bahagia, atau cemas. Pendekatan umum meliputi:
+Tabel 2.3 Daftar Klasifikasi Algoritma
+No.
+Klasifikasi algoritma
+Contoh modelnya
+1.
+Model statistikal
+Na�ve Bayes, Logistic Regression, SVM
+2.
+Deep Learning
+RNN, LSTM, Transformer-based models
+3.
+Evaluasi Model
+Akurasi, Precision, Recall, F1-Score
+
+2.1.4.4 Intent Recognition & Response Generation
+     Selain mendeteksi emosi, sistem NLP dapat mengenali intent (tujuan pengguna) untuk merespons secara tepat (Muslim et al., 2025). Proses intent recognition memungkinkan sistem memberikan rekomendasi atau jawaban yang relevan. Respons dapat dihasilkan secara:
+Tabel 2.4 Daftar aturan respons
+No.
+Aturan respons
+Hasil respons
+1.
+Rule-based
+Menggunakan aturan yang telah ditentukan
+2.
+Machine Learning-based
+Menggunakan model generatif atau retrieval-based
+
+2.1.5  JavaScript
+     JavaScript adalah bahasa pemrograman tingkat tinggi yang bersifat dinamis dan digunakan secara luas dalam pengembangan aplikasi web. Bahasa ini merupakan salah satu pilar utama teknologi web bersama dengan HTML dan CSS, di mana HTML digunakan untuk membuat struktur halaman, CSS untuk mengatur tampilan, dan JavaScript untuk menambahkan interaktivitas dan logika pada halaman web (Flanagan, 2023).
+     JavaScript mendukung paradigma event-driven programming, yang memungkinkan pengembang merespons aksi pengguna seperti klik tombol, input teks, atau pengiriman formulir. Bahasa ini juga memiliki dukungan untuk asynchronous programming melalui callback, Promise, dan async/await, yang memungkinkan eksekusi kode secara non-blok sehingga aplikasi dapat menangani proses secara real-time tanpa mengganggu pengalaman pengguna.
+     Selain digunakan secara native di browser, JavaScript dapat diperluas dengan berbagai library dan framework seperti ReactJS, Vue.js, atau Angular, yang mempermudah pembuatan antarmuka pengguna (UI) yang modular, interaktif, dan mudah dipelihara. Framework modern ini memungkinkan pengembangan Single Page Application (SPA) sehingga navigasi antar-halaman terasa lebih mulus.
+     JavaScript juga dapat digunakan di sisi server melalui Node.js, yang memungkinkan pengembang menulis kode backend dengan bahasa yang sama seperti di frontend. Kombinasi ini mempermudah integrasi antara tampilan antarmuka dan logika server, sekaligus mempercepat pengembangan aplikasi web secara keseluruhan.
+2.1.6 MongoDB
+     MongoDB merupakan salah satu basis data NoSQL yang dapat melakukan query pada berbagai bidang berbasis dokumen, MongoDB bersifat document-based yang tidak menggunakan kolom dan tabel namun menggunakan koleksi dan dokumen yang berupa dokumen JSON (JavaScript Object Notation) yang sering disebut sebagai BSON (Binary JSON). Karena menggunakan JSON maka setiap data yang disimpan dalam basis data MongoDB memiliki key and value (Yulius, Susetyo.. 2023)
+2.1.7 Python
+     Python adalah bahasa pemrograman yang populer dan mudah dipelajari. Python sering digunakan dalam pengembangan perangkat lunak, kecerdasan buatan, pengembangan web, machine learning, dan analisis data. Python menyediakan berbagai pustaka, seperti NumPy untuk komputasi numerik dan Pandas untuk analisis data, yang memudahkan pengguna (Angelina M. T. I. Sambi Ua et al., 2023)
+     Dengan Python, sebuah aplikasi bisa memiliki kemampuan untuk melakukan analisis data, menjalankan perhitungan data statistik yang kompleks atau memakan waktu, membuat visualisasi data, mengimplementasikan algoritma machine learning, dan juga dapat digunakan untuk manipulasi data serta menyelesaikan berbagai pemprosesan perangkat lunak lainnya (Surbakti et al., 2024).
+2.1.8 WebSocket
+     Websocket merupakan sebuah protokol komunikasi yang memungkinkan terjadinya interaksi dua arah antara client dan server. Awalnya protokol ini diperkenalkan melalui standar HTML5 untuk kebutuhan browser, namun kini penggunaannya telah meluas hingga perangkat mobile dengan dukungan bahasa pemrograman seperti Android dan Swift. Teknologi ini mampu menyajikan pembaruan data secara real-time, yang sebelumnya hanya dapat dicapai melalui teknik long polling. Kelebihan utama WebSocket terletak pada efisiensi penggunaan sumber daya, baik di sisi server maupun client. Berbeda dengan mekanisme HTTP tradisional yang mengakhiri komunikasi setelah satu respon diberikan, WebSocket menjaga koneksi tetap terbuka sehingga pertukaran pesan dapat berlangsung secara asynchronous selama koneksi aktif (Alviando, et al., 2023).
+2.1.9 JSON Web Token
+     JWT adalah token yang menyimpan informasi yang digunakan dalam proses autentikasi dan pertukaran data (Painem & Soetanto, 2020). Biasanya, JWT diterapkan dalam proses otorisasi karena token ini dapat digunakan untuk mengotentikasi dan mengotorisasi pengguna dengan aman. Hal ini disebabkan oleh kemampuan JWT dalam menyimpan klaim atau informasi pengguna di dalam payload-nya yang telah ditandatangani secara digital.
+     JWT terdiri dari tiga komponen utama: Header, Payload, dan Signature. Header berisi informasi tentang tipe token dan algoritma enkripsi yang digunakan. Payload menyimpan klaim atau data pengguna, seperti identitas dan masa berlaku token. Signature merupakan hasil dari proses enkripsi yang menggabungkan Header, Payload, dan secret key dengan algoritma tertentu untuk memastikan integritas dan keamanan data.
+     Salah satu elemen penting dalam arsitektur JWT adalah algoritma HMAC SHA-512, yang sering digunakan untuk mengenkripsi token selama proses autentikasi (Keputusan Dirjen Penguatan Riset dan Pengembangan Ristek Dikti et al., 2017). Namun, dalam penelitian ini, peneliti memilih untuk menggunakan HMAC HS256 sebagai algoritma enkripsi. Alasan pemilihan ini adalah karena HMAC HS256 menawarkan tingkat keamanan yang cukup untuk kebutuhan aplikasi web layanan pra-konseling mahasiswa, dengan overhead yang lebih rendah dibandingkan HMAC SHA-512. Ini menjadikannya pilihan yang lebih efisien dan cocok untuk aplikasi mobile yang mengutamakan kinerja dan kecepatan. Meskipun algoritma HS256 telah ditetapkan, penelitian ini tetap akan melakukan analisis terhadap performa mekanisme refresh token dalam konteks aplikasi mobile, untuk menilai efisiensi dan responsivitas sistem autentikasi yang diimplementasikan.
+2.1.10 Rapid Application Development (RAD)
+     Rapid Application Development (RAD) adalah Metode pengembangan sistem yang digunakan untuk pengembangan sistem yang membutuhkan tingkat kedinamisan yang tinggi, keterbatasan waktu, dan memperlukan pendekatan interkasi dekat sesuai dengan kerakteristik penggunanya (Informasi et al., 2024). RAD memiliki daur pengembangan hidup yang singkat dan RAD merupakan versi dari metode waterfall yang pengembangan lebih singkat dengan menggunakan kontruksi komponen. Metode RAD memiliki tahap yang terstruktur, pengembangan perangkat lunak dapat dilakukan dengan waktu cepat yang menekankan pada siklus yang cepat yang bisa diterapkan ke pengembangan perangkat lunak, tahapannya dibagi menjadi lima tahap, yaitu:
+Tabel 2.5 Tahapan RAD
+No.
+Nama Tahapan RAD
+Penjelasan
+1.
+Perencanaan Kebutuhan 
+
+Tahap ini bertujuan untuk mengidentifikasi layanan, batasan, dan obyektifitas dari sistem perangkat lunak dan pengumpulan data dari stakeholders.
+2.
+Analisis Pemodelan
+Tahap analisis pemodelan bertujuan untuk menganalisis kegiatan arsitektur sistem secara keseluruhan berdasarkan identifikasi dan deskripsi abstraksi sistem perangkat lunak yang mendasar dan hubungan-hubungannya.
+3.
+Desain Pemodelan
+Tahap ini merancang sistem berdasarkan analisis yang telah dilakukan sebelumnya. Tahap analisis dan desain dilakukan secara berulang hingga didapatkan rancangan sistem yang sesuai dengan kebutuhan pengguna.
+4.
+Pengembangan
+Tahap ini bertujuan untuk menunjukan platform, hardware, dan software yang digunakan, batasan implementasi, dan menguji performansi prototipe software yang dirancang sehingga dapat diketahui bahwa prototipe telah sesuai dengan spesifikasi analisis dan perancangan yang telah diidentifikasi sebelumnya.
+5.
+Implementasi
+Tahap ini merupakan tahapan implementasi desain pemodelan sistem yang telah dirancang pada tahapan sebelumnya. Sebelum sistem diterapkan, terlebih dahulu dilakukan proses pengujian untuk mendeteksi kesalahan pada sistem yang dikembangkan.
+     
+     
+Gambar 2.2 Tahap RAD
+2.1.11 Unified Modelling Language (UML)
+     Unified Modelling Language (UML) adalah sebuah bahasa pemodelan standar yang digunakan untuk mendeskripsikan dan mendokumentasikan berbagai aspek dari sistem perangkat lunak dalam satu kerangka kerja yang terpadu. UML memungkinkan representasi sistem perangkat lunak secara menyeluruh, seperti, persyaratan, struktur, data, aliran data, dan aliran informasi dalam satu framework menggunakan konsep object-oriented programming (Noran, 2023). UML merupakan hasil unifikasi dari tiga pendekatan Bahasa modelling terkemuka yang sebelumnya dikembangkan secara terpisah, yaitu metode Booch, OMT (Object Modeling Technique) oleh Rumbaugh, dan Use Case-driven approach oleh Jacobson (Rumbaugh et al., 2022). Ketiga pemodelan tersebut digabungkan  menjadi satu Bahasa terpadu yang kemudian distandarisasi oleh Object Management Group (OMG). Dan standar ini sudah digunakan di semua bidang IT. Didalam Penelitian ini, UML digunakan sebagai alat bantu untuk mengambarkan hasil analisis sistem yang akan dibangun. Diagram yang disusun akan merepresentasikan rancangan arsitektur sistem aplikasi chatbot secara terstruktur. Diagram ini bertujuan untuk menjelaskan fungsi sistem, interaksi antar komponen, serta alur logika yang akan digunakan dalam pengembangan aplikasi. 
+
+Gambar 2.3 Contoh Use Case Diagram didalam UML
+Berikut adalah jenis diagram UML yang akan dibuat di penelitian ini:
+2.1.11.1 Use Case Diagram
+     Use Case Diagram merupakan salah satu jenis diagram dalam Unified Modeling Language (UML) yang digunakan pada identifikasi kebutuhan fungsional dari suatu sistem serta menggambarkan interaksi antara aktor dan sistem yang sedang dirancang  (Suriya Sundaramoorthy, n.d.). Use case diagram menggambarkan tentang interaksi antara sistem dan pengguna atau sistem lain, sehingga sangat berguna untuk memetakan requirement atau kebutuhan dari suatu sistem. Use Case diagram bisa menjelaskan bentuk-bentuk interaksi antara si pengguna sistem dengan sistemnya, baik didalam konteks aktivitas pengguna maupun integrasi dengan sistem. (Sumirat et al., n.d.). Adapun komponen-komponen utama yang digunakan didalam use case diagram adalah sebagai berikut:
+Tabel 2.6 Komponen dari diagram usecase UML
+S.No
+Nama Komponen
+Notasi UML
+Fungsi
+1
+System Boundary
+
+Mewakili ruang lingkup sistem dan mencakup seluruh kumpulan fungsi yang ada dalam sistem.
+2
+Actor
+
+Pengguna yang berinteraksi dengan sistem dan seorang aktor bisa berupa individu, organisasi, atau sistem eksternal yang berinteraksi dengan aplikasi atau sistem.
+
+3
+Usecase
+
+Menjamin bahwa proses bisnis bersifat terpisah dan terdefinisi.
+ 
+
+
+Adapun relasi-relasi yang terdapat dalam use case diagram sebagai berikut:
+Tabel 2.7 Relasi Usecase diagram (Sundaramoorthy, 2022)
+S.No
+Usecase Relationship
+Notasi dan Kegunaan UML
+1.
+Association
+
+Merepresentasikan hubungan antara seorang aktor dan sebuah use case.
+2.
+Directed Association
+
+Merepresentasikan hubungan satu arah di mana seorang aktor bertanggung jawab memengaruhi sebuah use case.
+3.
+Include
+
+Merepresentasikan situasi di mana satu use case menyertakan fungsionalitas dari use case lainnya.
+4.
+Extend
+
+Menyiratkan hubungan bermakna antara dua use case, di mana use case yang diperluas menambahkan perilaku tambahan pada fungsionalitas use case dasar.
+6.
+Generalization
+
+hubungan antara use case induk dan satu atau lebih use case turunan.
+7.
+Dependency
+
+Mendefinisikan hubungan di mana keberadaan suatu use case tergantung pada keberadaan use case lainnya.
+     
+2.1.11.2 Activity Diagram
+     Activity Diagram adalah diagram dalam Unified Modeling Language (UML) yang digunakan untuk memodelkan alur kerja atau aktivitas, baik yang bersifat sekuensial maupun paralel, yang terkait dengan setiap kebutuhan fungsional dari suatu sistem. Diagram ini menyajikan serangkaian kegiatan, tindakan, dan keputusan yang terjadi sepanjang waktu. Menurut (Suriya Sundaramoorthy, n.d.) ,komponen yang digunakan dalam activity diagram adalah sebagai berikut:
+Tabel 2.8 Relasi Activity Diagram
+S.No
+Nama Komponen
+Notasi UML dan tujuan komponennya
+1.
+Initial state
+
+Merepresentasikan kondisi awal atau titik mulai dari sistem yang sedang dianalisis, yang menandai dimulainya alur aktivitas dalam proses tersebut.
+2.
+Final State
+
+Merepresentasikan kondisi akhir atau titik terminasi dari sistem yang sedang dianalisis, yang menandai berakhirnya seluruh alur aktivitas dalam proses tersebut.
+
+3.
+Swimlanes
+
+
+Swimlane pada activity diagram terdiri dari dua bagian utama, yaitu bagian atas yang merepresentasikan entitas seperti actor, use case, atau class, dan bagian bawah yang berfokus pada kumpulan aktivitas yang terlibat dalam proses tersebut.
+
+4.
+Action state
+
+Merepresentasikan suatu operasi, aktivitas bisnis, atau proses yang berlangsung dalam sistem.
+5.
+Object
+
+Merepresentasikan suatu entitas yang membawa atau memuat data di antara dua action state.
+6.
+Synchronization
+	
+Synchronization pada activity diagram merepresentasikan dua atau lebih aktivitas yang berlangsung secara bersamaan atau dengan laju yang sama. Terdapat dua jenis synchronization, yaitu:
+
+
+
+1. Fork: Membagi satu alur aktivitas menjadi dua atau lebih aktivitas yang berjalan secara paralel
+
+
+
+2. Join: Menggabungkan dua atau lebih aktivitas paralel menjadi satu alur aktivitas dengan memastikan keterurutan eksekusi yang sesuai.
+
+7.
+Decision
+
+
+
+merepresentasikan simpul pengambilan keputusan yang memiliki satu alur masuk (input) dan dua atau lebih alur keluar (output), tergantung pada kondisi atau kriteria yang telah ditentukan.
+
+8.
+Merge
+
+
+
+Untuk menggabungkan alur-alur masuk (input flows)
+9.
+Flow Final
+
+
+
+Merepresentasikan terminasi tidak normal dari suatu jalur (path) aktivitas yang tidak dianggap sebagai bagian dari sistem yang sedang dikembangkan.
+10.
+Transition
+
+
+
+Merepresentasikan perpindahan dari source activity state ke target activity state, yang dipicu oleh selesainya aktivitas pada source activity state tersebut dan digambarkan menggunakan panah.
+11.
+Self-Transition
+
+
+
+Merepresentasikan transisi internal yang terjadi pada suatu action state dan kembali ke action state itu sendiri.
+12.
+Signal Send State
+
+
+
+Merepresentasikan bagaimana suatu aktivitas dapat dipengaruhi secara eksternal melalui sinyal yang dikirim oleh sistem.
+
+2.1.12 UI/UX Design
+2.1.12.1 User Interface (UI) Design
+     User Interface (UI) merupakan salah satu proses pemecahan masalah yang berfungsi sebagai media menerima dan memberikan informasi kepada user dengan tujuan untuk membantu mengarahkan alur masalah sampai ditemukan suatu solusi yang diharapkan (A�yuni & Chusumastuti, 2021). UI dapat dipahami sebagai serangakaian keputusan iteratif yang menghasilkan implementasi efektif dari suatu alat interaktif. UI juga menjadi salah satu faktor terpenting dalam perancangan website. Tanpa persiapan dan perancangan yang matang, website tidak  bisa  berjalan  secara  maksimal, bahkan bisa mengakibatkan user berpindah ke website lain. Lebih lanjut,, UI sangat dipengaruhi  oleh  alat  serta  teknologi  yang  digunakan  dalam implementasinya, sementara kreativitas desainer juga memiliki peran signifikan dalam menentukan spesifikasi sistem pada tahap awal siklus pengembangan.
+     Pada pengembangan aplikasi chatbot layanan pra konseling, rancangan User Interface (UI) design berperan penting sebagai representasi visual awal sebelum proses implementasi ke dalam kode program. Pemisahan tahap perancangan desain antarmuka dari tahap perancangan kode memberikan acuan yang lebih jelas untuk pengembang sehingga setiap komponen visualnya dapat disesuaikan sebelum masuk ke tahap pengkodean. Dengan demikian, proses pengembangan tidak hanya lebih terarah, tetapi juga mampu memastikan keterpaduan antara konsep desain yang diinginkan dengan hasil akhir aplikasi, sehingga menghasilkan sistem yang lebih efisien dan konsisten.
+
+Gambar 2.4 Contoh UI Design
+2.1.12.2 User Experience (UX) Design
+     User Experience (UX) design merupakan suatu proses perancangan produk dan layanan digital yang diarahkan pada kebutuhan, preferensi, dan perilaku pengguna (user). Tujuan utama dari UX design yaitu untuk memberikan pengalaman interaksi yang lancar dan mudah dipelajari (Hamidli, 2023) .Tujuan utama dari desain UX adalah menghadirkan interaksi yang lancar dan mudah dipahami, sehingga mampu memenuhi kebutuhan serta ekspektasi pengguna. Proses ini mencakup pemahaman yang mendalam mengenai tujuan dan motivasi pengguna, identifikasi hambatan maupun titik permasalahan (pain points), serta perancangan solusi desain yang secara efektif dapat mengatasi kendala tersebut (Rifka Dwi Amalia et al., 2025).
+     Dalam pengembangan aplikasi chatbot layanan pra-konseling mahasiswa, penerapan User Experience (UX) design berperan penting dalam membantu pengembang merancang fitur-fitur yang relevan dan sesuai dengan kebutuhan pengguna. Prinsip UX memastikan bahwa aplikasi tidak hanya mudah digunakan, tetapi juga mampu memberikan pengalaman interaksi yang efektif, efisien, serta bernilai bagi mahasiswa sebagai pengguna utama maupun pihak pengelola layanan sebagai pemilik sistem. Dengan pendekatan berbasis UX, rancangan aplikasi dapat mengurangi hambatan penggunaan, meningkatkan kepuasan pengguna, serta mendukung tercapainya tujuan layanan pra-konseling secara optimal
+2.1.12.3 Entity Relationship Diagram (ERD)
+     Entity Relationship Diagram (ERD) adalah diagram yang berbentuk notasi grafis yang digunakan didalam pembuatan database untuk menggambarkan hubungan antara masing-masing data. Fungsi ERD adalah sebagai alat bantu dalam pembuatan database dan memberikan gambaran bagaimana kerja database yang akan dibuat. Di dalam ERD terdapat 3 elemen dasar, yaitu entitas, atribut, dan relasi (Pulungan et al., n.d.) .ERD adalah sebagai alat bantu dalam pembuatan database dan memberikan gambaran bagaimana kerja database yang akan dibuat. Di dalam ERD terdapat 3 elemen dasar, yaitu entitas, atribut, dan relasi.
+a. Entitas
+Entitas adalah objek yang menjadi fokus dalam sebuah database, yang bisa berupa orang, lokasi, benda, atau kondisi terkait data yang diperlukan. Entitas digambarkan dengan simbol persegi panjang.
+b. Atribut
+Atribut adalah informasi yang terkandung dalam entitas. Setiap entitas harus memiliki primary key sebagai identitas unik, serta atribut deskriptif. Atribut biasanya berada di dalam tabel entitas atau bisa juga berada di luar tabel. Simbol atribut digambarkan dengan bentuk elips.
+c. Relasi
+Relasi di dalam ERD merupkaan hubungan antara dua atau lebih entitas. Simbol dari relasi berbentuk belah ketupat.
+2.1.13 Black Box Testing
+     Black Box Testing adalah teknik pengujian perangkat lunak yang berfokus pada evaluasi fungsionalitas sistem atau aplikasi tanpa memiliki pengetahuan tentang struktur internal, detail implementasi, atau kode program. Dalam metode Black Box Testing, penguji memperlakukan sistem sebagai �kotak hitam� dan mengujinya berdasarkan masukan dan keluaran yang diharapkan, tanpa mempertimbangkan bagaimana sistem memproses atau menangani masukan tersebut (Mahardika et al., 2023) Tujuan utama dari Blackbox testing adalah untuk mengevaluasi perilaku eksternal sistem dan memastikannya memenuhi persyaratan yang ditentukan dan bekerja seperti yang diharapkan. Penguji biasanya bergantung pada dokumentasi persyaratan sistem, antarmuka pengguna, dan spesifikasi lainnya untuk merancang kasus uji (Mahardika et al., 2023).
+     Black Box Testing terdiri dari berbagai jenis, seperti Functional Testing, Non Functional Testing, dan Regression Testing. Untuk Functional Testing hanya memperhatikan persyaratan fungsional suatu sistem dan mencakup seberapa baik sistem menjalankan fungsinya. Untuk Non Functional Testing berkaitan dengan persyaratan non-fungsional dan dirancang khusus untuk mengevaluasi kesiapan sistem berdasarkan berbagai kriteria yang tidak tercakup oleh pengujian fungsional. Untuk Regression Testing, pengujiannya dilakukan setelah perbaikan kode, pemutakhiran, atau pemeliharaan sistem lainnya untuk memeriksa apakah perubahan baru tidak memengaruhi fungsionalitas yang ada. 
+
+Gambar 2.5 Black Box Testing
+2.1.14 Evaluasi Model
+   Evaluasi model merupakan proses untuk memastikan kualitas, keandalan, serta menilai kinerja dan kemampaun model dalam menghasilkan prediksi atau output yang akurat berdasarkan data yang telah dipelajari (Merdiansah & Ali Ridha, 2024). Evaluasi model ini bertujuan untuk membandingkan kinerja dari berbagai aspek program berdasarkan sejumlah
+
+kriteria tertentu dengan tujuan akhir untuk menghasilkan deskripsi dan penilaian mengenai kelebihan serta kekurangan program yang dievaluasi (Arofah, 2021).
+2.1.14.1 Confusion Matrix
+     Confusion matrix adalah alat untuk mengevaluasi performa model klasifikasi dengan mengukur kemampuannya. Ini digambarkan sebagai tabel dua dimensi yang menunjukkan kinerja model klasifikasi pada data uji, dengan membandingkan nilai prediksi dengan nilai aktual yang sudah diketahui (Nurhayati,. et al., 2024). Dapat digunakan dalam klasifikasi biner seperti pada tabel dibawah ini.
+Tabel 2. 9 Model Confusion Matrix Biner Classification
+Aktual
+Prediksi
+
++
+=
++
+True Positive
+False Negative
+-
+False Positive
+True Negative
+     
+     Penjelasan dari tabel 2.1 Model Confusion Matrix Biner Classification dan gambar  Confussion Matrix Adalah sebagai berikut
+1. True Positive (TP)
+Jumlah data yang diprediksi positif oleh model dan aktualnya juga positif.
+2. True Negative (TN) 
+Jumlah data yang diprediksi negatif oleh model dan aktualnya juga negatif.
+3. False Positive (FP)
+Jumlah data yang diprediksi positif oleh model tetapi aktualnya negatif.
+4. False Negative (FN)
+Jumlah data yang diprediksi negatif oleh model tetapi aktualnya positif.
+     Hasil evaluasi dari tabel 2.1 dapat digunakan untuk mencari nilai accuracy, precision, dan recall. Menurut (Davide Chicco, Niklas T�tsch, al., 2021). Penjelasan dan rumus untuk menilai evaluasi dari confusion matrix untuk klasifikasi biner dan klassifikasi class Adalah sebagai berikut:
+1. Accuracy
+Accuracy adalah metrik yang sering digunakan untuk mengevaluasi kinerja model klasifikasi karena kesederhanaan dan popularitasnya. Metrik ini menggambarkan seberapa efektif model dalam membuat prediksi yang benar dan akurat terhadap seluruh data. Meskipun umum digunakan, accuracy dapat menjadi metrik yang menyesatkan apabila dataset yang digunakan memiliki distribusi kelas yang tidak seimbang. Rumus untuk menghitung accuracy adalah sebagai berikut:
+     Accuracy = (TP+TN)/(TP+TN+FP+FN)
+Tabel 2.10 Keterangan dari rumus accuracy
+TP: True Positive
+TN: False Positive
+FP: False Positive
+FN: False Negative
+2. Precision
+     Precision atau Positive Predictive Value Adalah metrik yang mengukur proporsi prediksi positif yang benar-benar relevan, yaitu berapa banyak dari prediksi positif yang merupakan kasus positif sebenarnya. Precision penting dalam situasi di mana false positive membawa konsekuensi besar. Rumus untuk menghitung Precision adalah sebagai berikut:
+     Precision = TP/(TP+FP)
+Tabel 2. 11 Keterangan rumus Precision
+TP: True Positive
+FP: False Positive
+3. Recall
+   Recall atau True Positive Rate Adalah Adalah metrik yang menunjukkan kemampuan model dalam mengidentifikasi seluruh instance yang benar-benar positif. Recall sangat penting digunakan ketika false negative harus ditekan seminimal mungkin, seperti dalam deteksi dini penyakit atau pengawasan keamanan. Rumus untuk menghitung Recall adalah sebagai berikut:
+Recall = TP/(TP+FN)
+Tabel 2.12 Keterangan Rumus Recall
+TP: True Positive
+FN: False Negative
+
+4. F1-Score
+     F1-Score Adalah metrik evaluasi antara precision dan recall yang memberikan ukuran seimbang ketika kedua metrik tersebut sama-sama penting. Nilai ini sangat berguna saat data tidak seimbang atau ketika baik false positive maupun false negative harus diperhatikan secara bersamaan. Rumus untuk menghitung Recall adalah sebagai berikut:
+F1=2 X TP/(2TP+FP+FN)
+Tabel 2.13 Keterangan Rumus F1 Score
+TP = True Positive
+FP = False Positive
+FN = False Negative
+
+5. Micro Averaged, Macro Averaged dan Weighted Averaged
+     Dalam klasifikasi multikelas (Multi Class Classification), untuk menghitung nilai metrik evaluasi seperti nilai recall, precison dan f1-score perlu dilakukan untuk setiap kelas secara individu. Untuk memperoleh gambaran performa model secara keseluruhan, digunakan teknik agregasi rata-rata, yaitu micro average, macro average, dan weighted average. Ketiga metode ini digunakan untuk menyajikan nilai metrik agregat yang merepresentasikan kinerja model secara komprehensif. Berikut merupakan penjelasan dan rumus dari masing-masing metode.
+    
+a. Micro Average
+     Micro Average adalah pendekatan evaluasi yang menghitung metrik berdasarkan akumulasi total true positive (TP), false positive (FP), dan false negative (FN) dari seluruh kelas tanpa mempertimbangkan true negative (TN). Hal ini karena dalam klasifikasi multikelas, nilai TN untuk suatu kelas merupakan gabungan dari semua prediksi benar terhadap kelas lainnya, sehingga kurang relevan dalam pengukuran metrik individual. Metode ini memberikan bobot yang sama kepada setiap instance, sehingga cenderung merepresentasikan performa model secara keseluruhan, terutama jika distribusi data antar kelas seimbang.
+Micro Average Precision = (?_l^l??=1 TPi?)/(?_l^l??=1 (TPi+FPi)?)
+Micro Average Recall = (?_l^l??=1 TPi?)/(?_l^l??=1 (TPi+FNi)?)
+ Micro Average F1-Score = ((2*P)*R)/((P+R))
+Tabel 2. 14 Keterangan rumus micro average
+TP = True Positive
+FP = False Positive
+FN = False Negative
+P = Precision
+1= total kelas
+i = Urutan Kelas
+
+b. Macro Average
+     Macro average adalah metode perhitungan rata-rata nilai precision, recall, dan F1-score di setiap kelas yang dilakukan dengan cara menghitung rata-rata untuk setiap kelas
+    Macro Average Precision = (?_i^l??=1 Precision i?)/1
+    Macro Average Recall = (?_i^l??=1 Recall i?)/l
+    Macro Averaged F1-Score = (?_i^l??=1 F1-Score i?)/l
+    
+b. Weighted Average
+     Weighted Average Adalah Perhitungan nilai recall, precision dan f1-score untuk tiap kelas secara independent, kemudian menghitung rata-rata dengan menggunakan total jumlah data dari setiap kelas.
+Macro Average Precision = (?_i^l??=1 Precision i?)/1
+Macro Average Recall = (?_i^l??=1 PRecall i*N?)/(Total Data)
+Macro Averaged F1-Score = (?_i^l??=1 F1-Score i*N?)/(Total Data)
+
+Gambar 2.6 Contoh hasil dari Confusion Matrix
+2.1.14.2 User Acceptance Test (UAT)
+     User Acceptance Testing (UAT) merupakan salah satu metode pengujian yang dilakukan langsung oleh end-user, seperti staf atau karyawan perusahaan yang berinteraksi langsung dengan sistem. Tujuan UAT  adalah untuk memastikan bahwa setiap fungsi pada sistem telah berjalan sesuai dengan kebutuhan dan fungsinya. Setelah tahap Testing, UAT digunakan untuk menilai apakah sistem tersebut sudah memenuhi persyaratan yang ditetapkan. Meskipun pengguna terlibat secara aktif dalam proses pengujian, pengembang tetap memberikan bantuan  selama pelaksanaan UAT. Setelah itu, kriteria persetujuan sistem dirancang oleh tim penguji dan pengguna (Aliyah Aliyah et al., 2024)
+     Dalam Pelaksanaan UAT, akan dimasukkan skala Likert. Skala Likert adalah skala penilaian yang digunakan untuk mengukur pendapat, sikap, motivasi, dan aspek lainnya dari responden (Silmamora Bilson, 2022). Skala Likert  memiliki lima poin kategori penilaian, yaitu: (1) sangat tidak setuju, (2) tidak setuju, (3) netral, (4) setuju, dan (5) sangat setuju. Berikut adalah struktur skala yang digunakan:
+Tabel 2.15 Skala Likert
+Pilihan Jawaban
+Skor
+Sangat Tidak Setuju (STS)
+1
+Tidak Setuju (TS)
+2
+Netral (N)
+3
+Setuju (S)
+4
+Sangat Setuju (SS)
+5
+
+     Menurut (Wardhani, et al., 2025). Perhitungan skala Likert dilakukan dengan beberapa tahapan ini, berikut adalah rumus-rumus yang digunakan sebagai dasar alam menghitung hasil User Acceptance Test (UAT):
+1) Interpretasi skor perhitungan:
+Y = skor tertinggi likert * jumlah responden
+X = skor terendah likert * jumlah responden
+2) Rumus Interval:
+I =100/Jumlah skor 
+3) Menentukan kriteria interpretasi skor berdasarkan interval:
+Tabel 2.16 Skor Skala Likert
+Persentase Indeks
+Variabel Skor
+00% - 19.99%
+Sangat Kurang Baik
+20% - 39.99%
+Kurang Baik
+40% - 59.99%
+Cukup
+60% - 79.99%
+Baik
+80% - 100%
+Sangat Baik
+
+2.2 Penelitian Terdahulu
+     Bagian penelitian terdahulu membahas penelitian-penelitian yang telah dilakukan sebelumnya dan relevan dengan topik yang diangkat dalam penelitian ini. Berdasarkan kajian pustaka yang sistematis, penulis melakukan tinjauan literatur terhadap sejumlah studi terdahulu yang memiliki kesamaan fokus atau metodologi. Hasil dari studi literatur tersebut disajikan berikut ini untuk memberikan dasar konseptual dan konteks penelitian yang sedang dilakukan oleh penulis.
+Tabel 2.17 Penelitian Terdahulu
+No.
+:
+1
+Penulis
+:
+Abd Hadi
+Judul
+:
+Design  of  NLP-based  chatbot  media  as  a  mental  health  consultation media with Depression Anxiety Stress approach (Hadi, 2025)
+Metode
+:
+NLP.js, Firebase, React, integrasi DASS-42 (Depression Anxiety Stress Scales), arsitektur client�server dengan backend API
+Hasil
+:
+Chatbot berhasil mengidentifikasi gejala depresi, kecemasan, dan stres berdasarkan 42 pertanyaan DASS. Sistem dapat menghitung skor tiap kategori (Depresi, Kecemasan, Stres) dan menampilkannya dalam klasifikasi Normal, Mild, Moderate, Severe, hingga Very Severe. Pengujian menunjukkan chatbot berjalan interaktif, mampu memproses input pengguna secara real-time, serta memberikan hasil penilaian kondisi mental dengan antarmuka mobile-friendly yang terintegrasi dengan Firebase.
+Link
+:
+https://pubs.ascee.org/index.php/iota/article/view/888
+
+
+
+No.
+:
+2
+Penulis
+:
+Kay T Pham, Amir Nabizadeh, Salih Selek
+Judul
+:
+Artificial Intelligence and Chatbots in Psychiatry (Pham, 2022)
+Metode
+:
+Studi literature review mengenai pemanfaatan AI dan chatbot dalam psikiatri, mencakup diagnosis, pelacakan gejala, prediksi perjalanan penyakit, psychoeducation, hingga intervensi berbasis chatbot dan avatar therapy.
+Hasil
+:
+Penelitian ini menemukan bahwa AI, termasuk chatbot, semakin banyak digunakan dalam layanan kesehatan mental untuk meningkatkan akses pasien, terutama saat pandemi COVID-19 yang memperparah kekurangan tenaga psikiater. Chatbot dapat membantu pasien melalui dukungan emosional, mekanisme coping, terapi berbasis avatar, hingga robotik pendukung. Namun, peneliti menekankan perlunya kajian lebih lanjut terkait integrasi etis dan praktis ke dalam praktik klinis.
+Link
+:
+https://pubmed.ncbi.nlm.nih.gov/35212940/
+
+
+
+No.
+:
+3
+Penulis
+:
+Wanda Noviandhani, Soraya Ratnawulan Mita, Aini Ratnawati
+Judul
+:
+Efektivitas Layanan Kesehatan Menggunakan Chatbot dan Faktor-Faktor yang Memengaruhi Kepuasan Penggunanya: Tinjauan Literatur (Noviandhani, 2024).
+Metode
+:
+Kajian literatur naratif terhadap 10 artikel ilmiah terindeks Scopus (2020�2023) dengan fokus pada efektivitas chatbot kesehatan dan faktor yang memengaruhi kepuasan pengguna. Analisis dilakukan dengan kriteria inklusi literatur yang membahas chatbot dalam layanan kesehatan dan kepuasan pengguna.
+Hasil
+:
+Kajian menunjukkan bahwa chatbot dalam layanan kesehatan efektif meningkatkan aksesibilitas, efisiensi, dan kepuasan pengguna. Faktor yang memengaruhi kepuasan meliputi akurasi dan kualitas informasi, kemudahan penggunaan, aksesibilitas tinggi, serta pendekatan emosional yang membangun rasa dipahami dan hubungan layaknya manusia. Chatbot dinilai potensial sebagai pendukung layanan klinis, meskipun kepatuhan pengguna masih menjadi tantangan.
+Link
+:
+https://jurnal.unpad.ac.id/ijcp/article/view/57243
+
+
+
+No.
+:
+4
+Penulis
+:
+Deepak Dharrao, Shilpa Gite
+Judul
+:
+TherapyBot: a chatbot for mental well-being using transformers (Dharrao, 2024)
+Metode
+:
+Pengembangan chatbot berbasis transformer architecture menggunakan TensorFlow 2.0. Data pelatihan diambil dari dua sumber: dataset percakapan umum (Facebook dataset, 58.881 pasang percakapan) dan dataset percakapan terapis�klien (CounselChat, 2.130 Q&A terkait 31 topik kesehatan mental). Model dilatih dengan parameter encoder-decoder (2 layer, dmodel=256, 8 attention heads) selama 12 epoch dengan optimizer Adam dan sparse categorical cross entropy loss.
+Hasil
+:
+Chatbot yang dikembangkan mampu menghasilkan percakapan natural untuk mendukung kesehatan mental. Hasil evaluasi menunjukkan nilai loss sebesar 0,29 dan perplexity sebesar 1,34, keduanya terus menurun seiring proses pelatihan, menandakan peningkatan performa. Evaluasi manual menunjukkan chatbot efektif memulai percakapan sederhana dan memberikan rasa aman bagi pengguna untuk membahas masalah pribadi.
+Link
+:
+ https://ijaas.iaescore.com/index.php/IJAAS/article/view/20799
+
+
+
+No.
+:
+5
+Penulis
+:
+Fadilah Nuraini, Muhammad Najamuddin Dwi Miharja, Abdul Halim Anshor
+Judul
+:
+Mental Health Chatbot for Detecting Depression Symptoms Using Natural Language Processing and DASS-21 (Nuraini, 2025)
+Metode
+:
+Pengembangan chatbot berbasis Natural Language Processing (NLP) dengan integrasi Depression Anxiety Stress Scale-21 (DASS-21) untuk skrining kesehatan mental non-klinis. Sistem menggunakan pendekatan hybrid rule-based dan machine learning dengan dua model: Neural Network berbasis TF-IDF dan model BERT yang di-fine-tune.
+Hasil
+:
+Model TF-IDF memperoleh akurasi 91% dengan weighted F1-score 0.91, sedangkan model BERT lebih unggul dengan akurasi 94% dan weighted F1-score 0.94. BERT juga menunjukkan recall 98% dalam mendeteksi kasus depresi sedang, namun keduanya masih lemah dalam mengidentifikasi depresi ringan karena data imbalance. Chatbot terbukti usable, anonim, dan dapat meningkatkan kesadaran serta deteksi dini risiko kesehatan mental pada mahasiswa.
+Link
+:
+https://jurnal.umj.ac.id/index.php/jurtek/article/view/27196
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BAB III
+METODE PENELITIAN
+3.1 Metode Penelitian 
+     Dalam proses pengembangan aplikasi chatbot layanan pra konseling bagi mahasiswa. Peneliti menggunakan metode Rapid Application Development (RAD) sebagai pendekatan utama. Untuk memperjelas tahapan alur penelitian, maka akan disajikan flowchart berikut untuk menggambarkan keseluruhan proses kerja penelitian:
+
+Gambar 3.1 Alur Kerja Penelitian
+
+3.1.1 Identifikasi Masalah
+     Pada tahap ini, peneliti mengidentifikasi masalah penelitian secara spesifik yang akan diselesaikan melalui penelitian dan pengembangan aplikasi chatbot. Penelitian ini dilakukan dengan menganalisis kebutuhan melalui studi literatur yang relevan dengan topik penelitian ini serta melakukan wawancara terhadap mahasiswa dan staf unit layanan terpadu. Metode ini bertujuan untuk mengumpulkan data dan informasi yang bisa menjawab permasalahan yang ada serta memberikan gambaran yang komprehensif mengenai kebutuhan dan kondisi terdapat yang menjadi fokus penelitian ini.
+3.1.2 Analisis Kebutuhan
+     Analisis Kebutuhan bertujuan untuk mengidentifikasi data yang diperlukan untuk merancang sistem aplikasi ini. Analisis kebutuhan juga berperan dalam menentukan fitur-fitur penting yang perlu dirancang dan diwujudkan dalam sistem aplikasi guna memenuhi kebutuhan fungsional pengguna.. Selain itu, analisis kebutuhan bisa mengidentifikasi kebutuhan fitur-fitur utama yang akan dirancang dan diimplementasikan di sistem aplikasi ini. Seperti chatbot yang bisa memberikan output berupa balasan chat dan website yang bisa menampilkan fitur-fitur chatbot. Selain itu, peneliti akan melakukan wawancara dengan staf unit layanan terpadu dan mahasiswa UPNVJ supaya fitur sistem aplikasi sesuai dengan  kebutuhan yang diharapkan.
+3.1.3 Pengumpulan Data
+     Pengumpulan data bertujuan untuk memperoleh informasi yang dibutuhkan untuk merancang dan mengembangkan sistem aplikasi ini. Data yang dikumpulkan meliputi data teks percakapan, data emosi yang akan digunakan untuk pelatihan model deteksi emosi, serta kebutuhan pengguna terkait fitur chatbot dan layanan pra-konseling.
+3.1.3.1 Wawancara
+     Pada tahap wawancara, peneliti melaksanakan wawancara secara langsung dengan mahasiswa UPN �Veteran� Jakarta serta konselor dari Unit Layanan Terpadu (ULBK). Metode ini dipilih supaya peneliti bisa memperoleh informasi yang lebih mendalam mengenai pengalaman, kebutuhan, serta harapan baik untuk mahasiswa dan konselor terkait pra-konseling, Data yang diperoleh dari wawancara diharapkan dapat menjadi landasan dalam pengembangan sistem agar sesuai dengan kebutuhan pengguna
+3.1.3.2 Observasi
+     Pada tahap observasi, peneliti melakukan pengamatan langsung terhadap proses pra-konseling yang berlangsung di Unit Layanan Bimbingan Konseling (ULBK) UPN �Veteran� Jakarta. Observasi ini dilakukan untuk memahami alur interaksi antara mahasiswa, konselor, admin ULBK dan sistem yang digunakan, serta untuk mengidentifikasi kendala atau kebutuhan yang mungkin tidak terungkap melalui wawancara. Hasil observasi diharapkan dapat memberikan informasi tambahan yang mendukung pengembangan sistem yang lebih sesuai dengan kebutuhan pengguna.
+3.1.3.3 Studi Literatur
+     Studi literatur bertujuan untuk menganalisis penelitian-penelitian terdahulu yang relevan untuk mengidentifikasi permasalahan yang terdapat di dalam penelitian ini. Melalui studi literatur, peneliti dapat melihat akar topik yang diteliti serta mengetahui apakah topik dan permasalahan yang diangkat pada penelitian ini sudah dibahas pada penelitian sebelumnya. Untuk bahan pustaka yang digunakan dalam penelitian ini mencakup berbagai karya literatur ilmiah seperti jurnal ilmiah, buku, dan website yang topik permasalahannya berkaitan dengan chatbot, konseling, dan klasifikasi emosi. Seluruh karya literatur tersebut sudah dibahas dan dirangkum pada bagian 2.2 Penelitian Terdahulu
+3.1.4 Perancangan Sistem
+     Dalam tahap perancangan sistem, proses pengembangannya akan dibagi menjadi lima tahap, yaitu Desain Entity Relationship Diagram (ERD), Desain Use Case Diagram, Desain Activity Diagram, dan Desain UI/UX. Lima tahap ini dirancang dengan tujuan supaya ada  dokumentasi pengembangan aplikasi chatbot ini dan pengembangan aplikasi chatbot ini sesuai dengan perancangan sistem ini. Selain itu, perancangan sistem ini dirancang supaya sesuai dengan kebutuhan pengguna, baik dari mahasiswa UPNVJ dan Konselor. Desain ERD memodelkan struktur basis data dan relasi antar entitas agar pengelolaan data terstruktur. Desain Use Case Diagram menggambarkan interaksi pengguna dengan sistem untuk memperjelas fungsi utama aplikasi, sedangkan Desain Activity Diagram memvisualisasikan alur proses agar alur kerja lebih sistematis. Desain Class Diagram merancang struktur dan relasi antar kelas untuk mendukung pengembangan perangkat lunak yang modular. Desain UI/UX difokuskan pada antarmuka serta pengalaman pengguna agar aplikasi intuitif dan sesuai kebutuhan mahasiswa dan konselor. Lima tahap ini memastikan dokumentasi pengembangan lengkap dan aplikasi dikembangkan sesuai perancangan sistem serta kebutuhan pengguna.
+3.1.4.1 Desain Entity Relationship Diagram (ERD)
+      Entity Relationship Diagram Adalah diagram grafis yang digunakan untuk mendeskripsikan struktur data pada sistem. Diagram ERD terdiri dari entitas sebagai objek data yang penting, atribut sebagai karakteristik yang menjelaskan setiap entitas, dan relasi sebagai penghubung antara entitas dalam sistem. Berdasarkan hasil analisis kebutuhan, terdapat beberapa entitas utama beserta relasinya yang telah dirancang, yaitu:
+1. Mahasiswa: Entitas Mahasiswa merepresentasikan pengguna utama sistem. Entitas ini memiliki atribut user_id sebagai primary key yang digunakan sebagai identitas unik mahasiswa, serta atribut lain berupa nama, email, password_hash, angkatan, dan status. Setiap mahasiswa dapat melakukan lebih dari satu sesi interaksi dengan chatbot.
+2. ChatSession: Entitas ChatSession merepresentasikan satu sesi percakapan antara mahasiswa dan chatbot. Entitas ini memiliki atribut session_id sebagai primary key, serta atribut tanggal_mulai, tanggal_selesai, dan status_sesi. Entitas ChatSession juga memiliki atribut user_id sebagai foreign key yang menghubungkan sesi percakapan dengan entitas Mahasiswa.
+3. Message: Entitas Message menyimpan seluruh pesan yang dikirim selama sesi percakapan berlangsung. Entitas ini memiliki atribut message_id sebagai primary key, serta atribut isi_pesan, pengirim, dan waktu_kirim. Entitas Message memiliki atribut session_id sebagai foreign key yang menunjukkan bahwa setiap pesan terkait dengan satu sesi percakapan tertentu.
+4. EmotionResult: Entitas EmotionResult merepresentasikan hasil analisis emosi yang dihasilkan sistem pada setiap sesi percakapan. Entitas ini memiliki atribut emotion_id sebagai primary key, serta atribut label_emosi dan tingkat_kepercayaan. Entitas EmotionResult terhubung dengan entitas ChatSession melalui atribut session_id sebagai foreign key, di mana setiap sesi menghasilkan satu hasil analisis emosi.
+5. Recomendation: Entitas Recommendation menyimpan rekomendasi yang diberikan sistem berdasarkan hasil analisis emosi pada sesi percakapan. Entitas ini memiliki atribut recommendation_id sebagai primary key, serta atribut waktu_rekomendasi dan teks_rekomendasi. Entitas Recommendation juga terhubung dengan entitas ChatSession melalui atribut session_id sebagai foreign key.
+
+
+Gambar 3.2 Rancangan ERD aplikasi chatbot pra-konseling
+(penjelasan: 1. User
+
+user_id (PK)
+
+nama
+
+email
+
+password_hash
+
+role → {mahasiswa, psikolog, admin}
+
+angkatan → nullable (khusus mahasiswa)
+
+status
+
+2. ChatSession
+
+session_id (PK)
+
+tanggal_mulai
+
+tanggal_selesai
+
+status_sesi
+
+user_id (FK) → refer ke User.user_id
+
+3. Message
+
+message_id (PK)
+
+isi_pesan
+
+pengirim (User/chatbot)
+
+waktu_kirim
+
+session_id (FK)
+
+4. EmotionResult
+
+emotion_id (PK)
+
+label_emosi -> {senang, sedih, marah, cemas}
+
+tingkat_kepercayaan → float / persentase
+
+session_id (FK)
+
+5. Recommendation
+
+recommendation_id (PK)
+
+waktu_rekomendasi
+
+teks_rekomendasi
+
+session_id (FK)
+
+✅ RELASI (KETUPAT)
+Relasi	Dari	Ke	Kardinalitas
+Memiliki	user	ChatSession	1 : N
+Berisi	ChatSession	Message	1 : N
+Menghasilkan	ChatSession	EmotionResult	1 : 1
+Memberikan	ChatSession	Recommendation	1 : 1)
+3.1.4.2 Desain Use Case Diagram
+Use Case Diagram pada Gambar 4.x digunakan untuk menggambarkan interaksi antara aktor dengan sistem aplikasi Chatbot Pra-Konseling Mahasiswa berbasis Natural Language Processing (NLP). Diagram ini menunjukkan batasan sistem, fungsionalitas yang tersedia, serta hubungan antara aktor dengan masing-masing use case sesuai peran dan hak aksesnya. Perancangan use case diagram disusun berdasarkan hasil analisis kebutuhan sistem dan dirancang selaras dengan Entity Relationship Diagram (ERD) yang telah ditetapkan.
+Pada aplikasi chatbot pra-konseling ini terdapat tiga aktor utama, yaitu Mahasiswa, Psikolog, dan Admin Unit Layanan Bimbingan Konseling (ULBK).
+1.	Mahasiswa.
+Mahasiswa berperan sebagai pengguna utama sistem. Mahasiswa dapat melakukan registrasi dan login untuk mengakses aplikasi, mengelola profil pengguna, serta memulai sesi chatbot pra-konseling.
+Melalui sesi chatbot, mahasiswa menyampaikan keluhan atau kondisi emosional yang dialami. Input tersebut diproses oleh sistem menggunakan pipeline Natural Language Processing (NLP) untuk menghasilkan asesmen awal kondisi emosional.
+Mahasiswa dapat melihat hasil asesmen yang dihasilkan sistem. Berdasarkan hasil tersebut, mahasiswa dapat menerima notifikasi tindak lanjut pada kondisi tertentu. Selain itu, mahasiswa dapat mengajukan permohonan konseling lanjutan serta memantau status tindak lanjut atau jadwal konseling yang telah ditentukan.
+Fitur ini dirancang untuk mendukung proses pra-konseling dan tidak menggantikan layanan konseling profesional secara langsung.
+2.	Psikolog.
+Psikolog berperan sebagai tenaga profesional yang melakukan peninjauan terhadap hasil asesmen pra-konseling mahasiswa. Psikolog dapat melakukan login, mengelola profil pengguna, serta melakukan review hasil asesmen emosi mahasiswa yang dihasilkan oleh sistem chatbot.
+Berdasarkan hasil peninjauan tersebut, psikolog dapat menentukan tindak lanjut konseling serta menetapkan jadwal konseling apabila diperlukan. Dalam proses penanganan tersebut, psikolog juga memberikan catatan konseling sebagai bagian dari dokumentasi hasil tindak lanjut.
+Proses Memberikan Catatan Konseling memiliki relasi <<include>> terhadap proses Menentukan Tindak Lanjut Konseling, karena pencatatan merupakan bagian yang tidak terpisahkan dari proses tindak lanjut oleh psikolog.
+3.	Admin ULBK.
+Admin ULBK berperan dalam pengelolaan dan pemantauan sistem secara administratif. Admin memiliki hak akses untuk melakukan login, mengelola profil pengguna, mengelola data pengguna, serta mengelola jadwal konseling secara administratif.
+Selain itu, admin bertugas memantau aktivitas sistem dan mengelola arsip serta laporan sistem sebagai bahan evaluasi dan dokumentasi layanan pra-konseling. Peran admin bersifat administratif dan tidak mencakup pengambilan keputusan klinis.
+4.Relasi Include dan Extend
+Pada use case diagram terdapat relasi <<extend>> antara use case Menerima Notifikasi Tindak Lanjut dengan Melihat Hasil Asesmen. Relasi ini menunjukkan bahwa notifikasi tindak lanjut bersifat opsional dan hanya muncul pada kondisi tertentu berdasarkan hasil asesmen emosi mahasiswa.
+Selain itu, terdapat relasi <<include>> antara use case Menentukan Tindak Lanjut Konseling dengan Memberikan Catatan Konseling. Relasi ini menunjukkan bahwa pemberian catatan konseling selalu menjadi bagian dari proses tindak lanjut yang dilakukan oleh psikolog.
+Berikut adalah daftar use case utama yang diimplementasikan pada aplikasi, dilengkapi dengan deskripsi singkatnya:
+1.	Registrasi & Login 
+Use case ini memungkinkan Mahasiswa, Psikolog, dan Admin ULBK untuk melakukan pendaftaran akun serta autentikasi ke dalam sistem. Proses ini memastikan bahwa hanya pengguna terdaftar yang dapat mengakses fitur sistem sesuai dengan peran dan hak aksesnya.
+2.	Mengelola Profil Pengguna
+Use case ini memungkinkan seluruh aktor untuk memperbarui dan mengelola informasi profil masing-masing guna menjaga keakuratan dan keamanan data.
+3.	Memulai Sesi Chatbot Pra-Konseling:
+Use case ini memungkinkan Mahasiswa untuk memulai interaksi dengan chatbot. Percakapan yang dilakukan akan diproses menggunakan pipeline NLP untuk menghasilkan asesmen awal kondisi emosional mahasiswa.
+4.	Melihat Hasil Asesmen
+Use case ini memungkinkan Mahasiswa dan Psikolog untuk melihat hasil asesmen emosi yang dihasilkan sistem sebagai dasar penentuan tindak lanjut.
+5.	Menerima Notifikasi Tindak Lanjut
+Use case ini memungkinkan Mahasiswa menerima notifikasi berdasarkan kondisi hasil asesmen tertentu. Use case ini memiliki relasi <<extend>> terhadap Melihat Hasil Asesmen.
+6.	Mengajukan Permohonan Konseling
+Use case ini memungkinkan Mahasiswa mengajukan permohonan konseling lanjutan berdasarkan hasil pra-konseling yang diperoleh.
+7.	Melihat Status Tindak Lanjut
+Use case ini memungkinkan Mahasiswa untuk memantau status permohonan serta jadwal konseling yang telah ditentukan.
+8.	Review Hasil Asesmen:
+Use case ini memungkinkan Psikolog melakukan peninjauan terhadap hasil asesmen sebagai dasar pengambilan keputusan tindak lanjut.
+9.	Menindaklanjuti Tindak Lanjut Konseling
+Use case ini menggambarkan proses penentuan tindak lanjut oleh Psikolog berdasarkan hasil asesmen mahasiswa.
+10.	 Menentukan Jadwal Konseling 
+Use case ini memungkinkan Psikolog menetapkan jadwal sesi konseling sebagai bagian dari proses tindak lanjut.
+11.	Memberikan Catatan Konseling
+Use case ini memungkinkan Psikolog memberikan catatan hasil tindak lanjut. Use case ini memiliki relasi <<include>> terhadap Menentukan Tindak Lanjut Konseling.
+12.	Mengelola Data Pengguna
+Use case ini memungkinkan Admin ULBK untuk mengelola data mahasiswa dan psikolog dalam sistem.
+13.	Mengelola jadwal Konseling (Administratif) 
+Use case ini memungkinkan Admin melakukan pengelolaan jadwal secara administratif tanpa mengambil keputusan klinis.
+14.	Memantau Aktivitas Sistem
+Use case ini memungkinkan Admin memantau penggunaan sistem guna memastikan sistem berjalan dengan baik.
+15.	Mengelola Arsip dan Laporan Sistem
+Use case ini memungkinkan Admin menyimpan arsip dan menghasilkan laporan aktivitas sistem sebagai bahan evaluasi layanan pra-konseling.
+
+Gambar 3.3 Use Case Aplikasi Chatbot Pra-Konseling
+(penjelasan use case aplikasi chatbot pra konseling
+✅ 1. Aktor
+
+✔ Mahasiswa
+✔ Psikolog
+✔ Admin ULBK
+
+✅ 2. Association Aktor ↔ Use Case
+🟢 Mahasiswa
+
+Registrasi & Login
+
+Mengelola Profil Pengguna
+
+Memulai Sesi Chatbot
+
+Melihat Hasil Asesmen
+
+Menerima Notifikasi Tindak Lanjut
+
+Mengajukan Permohonan Konseling
+
+Melihat Status & Jadwal Konseling
+
+🟡 Psikolog
+
+Registrasi & Login
+
+Mengelola Profil Pengguna
+
+Review Hasil Asesmen
+
+Menentukan Tindak Lanjut Konseling
+
+Menentukan Jadwal Konseling
+
+Memberikan Catatan Konseling
+
+🟣 Admin ULBK
+
+Registrasi & Login
+
+Mengelola Profil Pengguna
+
+Mengelola Data Pengguna
+
+Mengelola Permohonan Konseling
+
+Mengelola Jadwal Konseling (Administratif)
+
+Memantau Aktivitas Sistem
+
+Mengelola Arsip dan Laporan Sistem
+
+✅ 3. Relasi <<include>>
+
+Gunakan include untuk proses yang selalu terjadi sebagai bagian dari proses utama.
+
+✔ Menentukan Tindak Lanjut Konseling
+  <<include>>
+✔ Memberikan Catatan Konseling
+
+Artinya:
+Saat psikolog melakukan tindak lanjut, maka pencatatan konseling menjadi bagian dari proses tersebut.
+
+✅ 4. Relasi <<extend>>
+
+Gunakan extend untuk proses yang opsional / kondisi tertentu.
+
+✔ Menerima Notifikasi Tindak Lanjut
+  <<extend>>
+✔ Melihat Hasil Asesmen
+
+Artinya:
+Notifikasi hanya muncul jika hasil asesmen memenuhi kondisi tertentu (misalnya emosi kritis).)
+3.1.4.3 Desain Activity Diagram
+     Activity diagram merupakan diagram yang digunakan untuk menjelaskan aktivitas atau alur untuk masing-masing aktivitas bisnis pada suatu aplikasi. Dalam pengembangan aplikasi chatbot pra-konseling, terdapat beberapa activity diagram yang dibuat berdasarkan use case diagram yang telah disusun serta kebutuhan pengguna dari hasil wawancara:
+1. Autentikasi (login dan registrasi): Activity Diagram autentikasi (login dan registrasi) ini menggambarkan alur proses user dalam melakukan autentikasi sebelum dapat mengakses fitur aplikasi. Proses dimulai ketika user (mahasiswa, Psikolog, Admin ULBK) membuka aplikasi, kemudian sistem menampilkan form login dan registrasi. Selanjutnya, User menentukan pilihan untuk melakukan login apabila telah memiliki akun atau melakukan registrasi apabila belum memiliki akun.
+Pada alur login, User mengisi username dan kata sandi, kemudian sistem melakukan validasi kredensial. Apabila data yang dimasukkan tidak valid, sistem menampilkan pesan kesalahan dan User diminta untuk mengulangi proses login. Sebaliknya, jika data valid, sistem memberikan autentikasi sesi pengguna dan mengarahkan user ke halaman dashboard.
+Pada alur registrasi, user mengisi data pendaftaran dan mengirimkan data tersebut ke sistem. Sistem selanjutnya melakukan validasi data registrasi. Apabila data tidak valid, sistem menampilkan pesan kesalahan dan user diminta untuk mengisi ulang data registrasi. Jika data valid, sistem menyimpan data pengguna ke dalam basis data dan mengarahkan pengguna ke halaman dashboard.
+
+
+
+Gambar 3.4 Activity Diagram Autentikasi
+(penjelasan: activity diagram autentikasi
+ALUR AKTIVITAS (FINAL & RAPI) 1️⃣ Status Awal 📍 Swimlane: User Proses dimulai dari status awal (initial state). 2️⃣ Membuka Aplikasi 📍 Swimlane: user user melakukan aktivitas “Membuka Aplikasi”. ➡️ Alur berpindah ke swimlane Sistem. 3️⃣ Menampilkan Form Autentikasi 
+📍 Swimlane: Sistem Sistem menjalankan aktivitas “Menampilkan Form Login dan Registrasi”. ➡️ Alur kembali ke swimlane user . 4️⃣ Decision: Sudah Memiliki Akun? 📍 Swimlane: User Decision node dengan dua cabang: [Ya] → Login [Tidak] → Registrasi A. ALUR LOGIN 5️⃣ Mengisi Kredensial Login 
+📍 Swimlane: UserAktivitas: “Mengisi Username dan Kata Sandi” 6️⃣ Mengirim Data Login 📍 Swimlane: user Aktivitas: “Menekan Tombol Login” ➡️ Alur berpindah ke Sistem. 7️⃣ Validasi Kredensial 📍 Swimlane: Sistem Aktivitas: “Validasi Kredensial Login” 8️⃣ Decision: Kredensial Valid? 
+📍 Swimlane: Sistem ❌ Tidak Valid Aktivitas: “Menampilkan Pesan Kesalahan Login” Alur kembali ke: 📍 user→ Mengisi Email dan Kata Sandi ✅ Valid Aktivitas: “Memberikan Autentikasi Sesi Pengguna” Alur menuju merge node B. ALUR REGISTRASI 5️⃣ Menampilkan Form Registrasi 📍 Swimlane: Sistem Aktivitas: “Menampilkan Form Registrasi” 
+➡️ Alur berpindah keuser. 6️⃣ Mengisi Data Registrasi 📍 Swimlane: user Aktivitas: “Mengisi Data Registrasi” 7️⃣ Mengirim Data Registrasi 📍 Swimlane: user Aktivitas: “Menekan Tombol Register” ➡️ Alur berpindah ke Sistem. 8️⃣ Validasi Data Registrasi 📍 Swimlane: Sistem Aktivitas: “Validasi Data Registrasi” 9️⃣ Decision: Data Registrasi Valid? 
+📍 Swimlane: Sistem ❌ Tidak Valid Aktivitas: “Menampilkan Pesan Kesalahan Registrasi” Alur kembali ke: 📍 user → Mengisi Data Registrasi ✅ Valid Aktivitas: “Menyimpan Data Pengguna ke Basis Data” Alur menuju merge node 5️⃣ MERGE NODE (PENGGABUNGAN ALUR) 📍 Swimlane: Sistem Alur dari: Login berhasil Registrasi berhasil digabungkan pada merge node, menandakan bahwa kedua proses memiliki tujuan akhir yang sama. 
+6️⃣ Menampilkan Dashboard 📍 Swimlane: Sistem Aktivitas: “Menampilkan Dashboard“Sistem menampilkan dashboard sesuai dengan peran pengguna (Mahasiswa, Admin ULBK, atau Psikolog).” ” 7️⃣ Status Akhir 📍 Swimlane: user Proses berakhir pada status akhir (final state). )
+
+2. Chatbot Session: Activity diagram chatbot session menggambarkan alur interaksi Mahasiswa dengan sistem chatbot pra-konseling berbasis Natural Language Processing (NLP). Proses dimulai ketika Mahasiswa memulai sesi chatbot dan mengirimkan pertanyaan atau keluhan kepada sistem.
+Sistem menerima input teks, kemudian memprosesnya menggunakan NLP untuk melakukan analisis konteks dan deteksi emosi. Berdasarkan hasil pemrosesan tersebut, sistem menghasilkan respons chatbot, menyimpan log percakapan, dan mengirimkan respons kepada Mahasiswa secara real-time.
+Mahasiswa dapat melanjutkan atau mengakhiri percakapan. Jika percakapan dilanjutkan, proses interaksi akan berulang. Apabila sesi diakhiri, sistem melakukan evaluasi terhadap hasil deteksi emosi. Jika terdeteksi emosi kritis, sistem mengirimkan notifikasi kepada Admin ULBK dan Psikolog sebagai tindak lanjut konseling, serta memberikan notifikasi kepada Mahasiswa. Jika tidak terdeteksi emosi kritis, sesi chatbot diakhiri tanpa tindak lanjut lanjutan.
+
+Gambar 3.5 Activity Diagram Chatbot Session
+(penjelasan: Alur Activity Diagram Chatbot Session 
+ ➡️ 🟢 SWIMLANE: MAHASISWA
+Status Awal
+Aktivitas: Memulai Sesi Chatbot ->
+Aktivitas: Mengirim Pertanyaan - > ke Sistem
+🔵 SWIMLANE: SISTEM
+Aktivitas: Menerima Input Teks ->
+Aktivitas: Memproses NLP ->
+Analisis konteks ->
+Deteksi emosi ->
+Aktivitas: Menghasilkan Respons Chatbot ->
+Aktivitas: Menyimpan Log Sesi Chatbot ->
+Aktivitas: Mengirim Respons ke Mahasiswa (real-time / websocket) ->
+ ➡️ Alur ke Mahasiswa
+🟢 SWIMLANE: MAHASISWA
+Aktivitas: Membaca Respons Chatbot ->
+Decision: Ingin Melanjutkan Percakapan? ->
+🔁 Ya
+Kembali ke aktivitas Mengirim Pertanyaan (loop) ->
+❌ Tidak
+Alur berpindah ke Sistem ->
+🔵 SWIMLANE: SISTEM
+Decision: Emosi Kritis Terdeteksi? ->
+❌ Tidak
+Aktivitas: Mengakhiri Sesi Chatbot  ->
+Status Akhir (di  swimlane mahasiswa) ->
+✅ Ya
+Aktivitas: Mengirim Notifikasi Kondisi Kritis ->
+ ➡️ ke Admin & Psikolog
+🟣 SWIMLANE: ADMIN ULBK
+Aktivitas: Menerima Notifikasi Kondisi Kritis ->
+Aktivitas: Mencatat dan Memantau Kasus ->
+🟡 SWIMLANE: PSIKOLOG
+Aktivitas: Menerima Notifikasi Rekomendasi Konseling ->
+Aktivitas: Mempersiapkan Tindak Lanjut Konseling ->
+🔵 SWIMLANE: SISTEM
+Aktivitas: Mengirim Notifikasi Tindak Lanjut ke Mahasiswa ->
+🟢 SWIMLANE: MAHASISWA
+Aktivitas: Menerima Notifikasi Tindak Lanjut ->
+Status Akhir
+)
+3. Hasil asesmen: Activity diagram hasil asesmen menggambarkan alur Mahasiswa dalam melihat awal pra-konseling, serta menentukan tindak lanjut konseling. Proses dimulai ketika Mahasiswa membuka menu hasil asesmen, kemudian sistem mengambil dan menampilkan data asesmen beserta skor emosi.
+Selanjutnya, Mahasiswa menentukan apakah diperlukan tindak lanjut konseling. Jika tidak diperlukan, proses berakhir. Namun, jika Mahasiswa memilih tindak lanjut, sistem menampilkan jadwal konseling yang tersedia dan mengirimkan permintaan konseling kepada Psikolog. Psikolog menyiapkan jadwal sesi konseling, yang kemudian dikirimkan kembali kepada Mahasiswa oleh sistem.
+Mahasiswa dapat menyetujui atau menolak jadwal konseling yang diberikan. Apabila jadwal disetujui, proses penjadwalan dikonfirmasi dan activity diagram berakhir.
+
+
+Gambar 3.6 Activity Diagram Hasil Assesmen
+Swimlane: Mahasiswa, Sistem, Psikolog
+
+Gambar 3.6 Activity Diagram Hasil Asesmen
+
+Swimlane: Mahasiswa, Sistem, Psikolog
+
+🟢 SWIMLANE: MAHASISWA
+
+Status Awal
+Aktivitas: Membuka Menu Hasil Asesmen → ke Sistem
+
+🔵 SWIMLANE: SISTEM
+
+Aktivitas: Mengambil Data Hasil Asesmen
+Aktivitas: Menampilkan Hasil Asesmen → ke Mahasiswa
+
+🟢 SWIMLANE: MAHASISWA
+
+Aktivitas: Melihat Hasil Asesmen
+
+Decision: Perlu Tindak Lanjut Konseling?
+
+❌ Tidak
+Aktivitas: Menutup Tampilan Hasil Asesmen
+➡️ Status Akhir
+
+✅ Ya
+Aktivitas: Membuka Menu Jadwal Konseling → ke Sistem
+
+🔵 SWIMLANE: SISTEM
+
+Aktivitas: Menampilkan Daftar Jadwal Konseling Tersedia → ke Mahasiswa
+
+🟢 SWIMLANE: MAHASISWA
+
+Aktivitas: Memilih Jadwal Konseling
+Aktivitas: Mengajukan Permohonan Konseling → ke Sistem
+
+🔵 SWIMLANE: SISTEM
+
+Aktivitas: Mengirim Permohonan Konseling ke Psikolog
+
+🟡 SWIMLANE: PSIKOLOG
+
+Aktivitas: Menerima Permohonan Konseling
+Aktivitas: Review Hasil Asesmen Mahasiswa
+
+Decision: Permohonan Disetujui?
+
+❌ Tidak
+➡️ ke Sistem
+
+🔵 SWIMLANE: SISTEM
+
+Aktivitas: Mengirim Status Penolakan → ke Mahasiswa
+
+🟢 SWIMLANE: MAHASISWA
+
+Aktivitas: Melihat Status Penolakan
+➡️ Kembali ke proses memilih jadwal
+
+🟡 SWIMLANE: PSIKOLOG
+
+✅ Jika disetujui
+
+Aktivitas: Menentukan / Mengonfirmasi Jadwal Konseling
+Aktivitas: Memberikan Catatan Konseling
+
+➡️ ke Sistem
+
+🔵 SWIMLANE: SISTEM
+
+Aktivitas: Mengirim Jadwal Konseling ke Mahasiswa
+
+🟢 SWIMLANE: MAHASISWA
+
+Decision: Menyetujui Jadwal Konseling?
+
+❌ Tidak
+➡️ kembali ke daftar jadwal
+
+✅ Ya
+Aktivitas: Konfirmasi Jadwal Konseling
+➡️ Status Akhir
+
+3.1.4.4 Desain UI/UX
+     Desain UI/UX pada pengembangan aplikasi chatbot pra konseling difokuskan untuk perancangan antarmuka dan pengalaman pengguna supaya menvisualisasikan aplikasi yang akan dirancang. Rancangan desain UI/UX ini diharapkan sesuai dengan kebutuhan pengguna baik untuk mahasiswa  UPN Veteran Jakarta maupun untuk konselor dari bimbingan konseling UPN Veteran Jakarta. Wireframe digunakan sebagai kerangka atau coretan kasar yang digunakan untuk penataan item pada halaman website sebelum proses design sesungguhnya dimulai. Contoh item yang dapat ditata diantaranya konten, header, banner, footer, link, form input, dan lain sebagainya. Sedangkan Prototype digunakan unutk merancang model sederhana dari sebuah halaman website sebelum dilanjutkan secara detail. Didalam tahap ini, penulis akan merancang UI/UX aplikasi menggunakan figma.
+     
+Gambar 3.7 UI Chatbot
+3.1.5 Pelaksanaan
+      Pada tahap pelaksanaan, penulis akan mengimplementasikan desain sistem aplikasi, desain database, dan desain antarmuka yang akan diimplementasikan ke dalam aplikasi chatbot ini. Tahap proses implementasi ini merancang model chatbot yang dilatih menggunakan NLP, merancang frontend dan backend website. Untuk frameworknya akan menggunakan React.js sebagai frontend, Python sebagai Backendnya, dan MongoDB sebagai databasenya. Penggunaan kombinasi teknologi ini bertujuan untuk memastikan aplikasi yang dibangun memiliki performa yang baik, mudah untuk di-maintain, serta mampu menangani skala data yang besar dengan efisien.
+3.1.6 Testing (Pengujian)
+     Tahap pengujian dilakukan untuk memastikan sistem berfungsi sesuai standar kualitas yang ditetapkan. Pengujian ini menggunakan black box testing dan User Acceptance Testing (UAT) dengan skala Likert untuk mengevaluasi kriteria yang diinginkan. Selain itu, model chatbotnya akan di evaluasi menggunakan Confusion matrix dengan Accuracy, Precision, Recall, f1-score,Micro Averaged, Macro Averaged dan Weighted Averaged.
+     
+3.1.6.1 Black Box Testing
+     Black box testing mengevaluasi fungsionalitas sistem berdasarkan input dan output tanpa memerhatikan struktur internal, algoritma, atau kode program yang dirancang. Didalam tahap ini, sistem diperlakukan sebagai sebuah �kotak hitam� dan diuji sesuai dengan spesifikasi kebutuhan yang telah dirancang sebelumnya. Pengujian dilakukan dengan menyusun berbagai skenario uji yang mewakili kondisi penggunaan nyata, termasuk interaksi mahasiswa dengan chatbot, percakapan yang memicu deteksi emosi, dan potensi kesalahan input yang mungkin terjadi. Tujuan utama pengujian ini adalah memastikan seluruh fungsi aplikasi berjalan sesuai kebutuhan, antarmuka pengguna (UI/UX) dapat digunakan dengan mudah, serta hasil deteksi emosi ditampilkan dengan akurat. Pengujian dilakukan secara menyeluruh melalui functional testing untuk memverifikasi kesesuaian fitur, non-functional testing untuk menilai kinerja seperti waktu respons dan kompatibilitas, serta regression testing setelah dilakukan pembaruan sistem untuk memastikan tidak ada fitur yang terganggu. Hasil pengujian kemudian dicatat dan dianalisis untuk menemukan bug atau kesalahan, yang selanjutnya digunakan sebagai dasar perbaikan sebelum aplikasi diuji lebih lanjut melalui User Acceptance Testing (UAT).
+3.1.6.2 User Acceptance Testing
+     Pada penelitian ini, User Acceptance Testing (UAT) dilakukan dengan melibatkan mahasiswa UPN Veteran Jakarta sebagai pengguna dan konselor bimbingan sebagai pihak pendukung. Pengujian UAT ini bertujuan untuk menilai aplikasi melalui evaluasi yang dinilah oleh mahasiswa UPN Veteran Jakarta, Admin ULBK dan pihak konselor dari lembaga konseling UPN Veteran Jakarta. 
+     Evaluasi UAT dilakukan menggunakan skala Likert. Skala Likert mencakup nilai 1-5 dimana 1 menunjukkan �Sangat tidak setuju� dan 5 menujukkan �Sangat setuju�. Aspek yang dinilai mencakup kemudahan penggunaan, kepuasan pengguna, keakuratan deteksi emosi, kegunaan chatbot dalam mendukung proses pra-konseling, serta responsivitas sistem.
+3.1.6.3 Confusion Matrix
+     Dalam penelitian ini, confusion matrix digunakan untuk memvisualisasikan kinerja chatbot dalam mendeteksi emosi mahasiswa. Confusion matrix merupakan tabel yang menunjukkan jumlah prediksi chatbot dibandingkan dengan label asli emosi yang diberikan oleh mahasiswa atau konselor. Setiap baris pada tabel mewakili kelas aktual (label asli), sedangkan setiap kolom mewakili kelas prediksi oleh chatbot.
+     Sebelum evaluasi, peneliti menentukan empat kategori emosi yang menjadi variabel target: Senang, Sedih, Marah, dan Cemas. Data percakapan mahasiswa kemudian dilabeli sesuai kategori emosi ini, sehingga terbentuk ground truth untuk evaluasi. Berikut contoh dataset uji sederhana yang digunakan:
+Tabel 3.1 Contoh dataset untuk UAT
+ID
+Teks Mahasiswa
+Label Emosi
+1
+Saya merasa senang hari ini
+Senang
+2
+Saya sangat cemas menghadapi ujian
+Cemas
+3
+Rasanya sedih ketika mendapat nilai rendah
+Sedih
+4
+Saya marah karena teman tidak jujur
+Marah
+5
+Senang karena proyek berhasil
+Senang
+6
+Sedih karena kehilangan kesempatan
+Sedih
+7
+Cemas menghadapi wawancara
+Cemas
+8
+Marah karena perdebatan dengan teman
+Marah
+
+Hasil prediksi chatbot dibandingkan dengan label asli untuk membentuk confusion matrix. Contoh sederhana confusion matrix dari dataset di atas adalah:
+Tabel 3.2 Label deteksi emosi pada Confusion Matrix
+
+Prediksi Senang
+Prediksi Sedih
+Prediksi Marah
+Prediksi Cemas
+Aktual Senang
+2
+0
+0
+0
+Aktual Sedih
+0
+2
+0
+0
+Aktual Marah
+0
+0
+2
+0
+Aktual Cemas
+0
+0
+0
+2
+
+Angka pada diagonal utama menunjukkan prediksi yang benar (True Positive) dan angka di luar diagonal menunjukkan kesalahan prediksi (False Positive atau False Negative). Analisis confusion matrix membantu peneliti mengidentifikasi kategori emosi yang masih sulit dikenali oleh chatbot dan menjadi dasar perbaikan sistem.
+Setelah membentuk confusion matrix, kinerja chatbot dievaluasi menggunakan metrik evaluasi:
+1. Akurasi (Accuracy) � persentase prediksi yang benar dari seluruh data uji.
+2. Presisi (Precision) � sejauh mana prediksi chatbot untuk suatu kelas emosi tepat.
+3. Recall (Sensitivity) � kemampuan chatbot mendeteksi semua data aktual dalam suatu kelas.
+4. F1-Score � harmonisasi antara presisi dan recall untuk menilai kinerja keseluruhan.
+Metrik-metrik ini dihitung berdasarkan nilai True Positive (TP), False Positive (FP), True Negative (TN), dan False Negative (FN) yang diperoleh dari confusion matrix. Selain itu, digunakan pula pendekatan Micro Averaged, Macro Averaged, dan Weighted Averaged untuk memberikan gambaran kinerja model secara keseluruhan pada data multikelas. Hasil evaluasi memberikan gambaran kuantitatif tentang kemampuan chatbot dalam mengenali emosi mahasiswa, sekaligus menjadi dasar untuk penyempurnaan sistem sebelum implementasi aplikasi dalam mendukung layanan pra-konseling di UPN Veteran Jakarta.
+3.1.7 Perbaikan
+     Tahapan ini dilakukan jika hasil pengujian di tahapan sebelumnya tidak memuaskan sehingga dilakukan perbaikan pada sistem yang dibangun serta memperbaiki kekurangan yang diperlukan sistem berdasarkan hasil pengujian sebelumnya
+3.1.8 Dokumentasi Laporan
+     Setelah aplikasi selesai dikembangkan dan lolos tahap pengujian, penulis merumuskan kesimpulan dari seluruh proses pengembangan. Kesimpulan ini mencakup pencapaian tujuan proyek, evaluasi terhadap efektivitas aplikasi dalam memenuhi kebutuhn pengguna, serta identifikasi apakah aplikasi masih membutuhkan perbaikan atau peningkatan. Penulis juga memberikan saran terkait pengembangan lebih lanjut yang dapat mencakup perbaikin fungsionalitas, peningkatan performa, maupun penambahan fitur untuk meningkatkan pengalaman pengguna.
+     Selain itu, penulis menyusun dokumentasi yang komprehensif mengenai proses pengembangan aplikasi. Dokumentasi ini mencakup latar belakang, deskripsi metodologi yang digunakan, serta langkah-langkah yang diambil selama setiap fase proyek. Hasil akhir pengembangan dan pengujian aplikasi juga disertakan. Bagian teknis dari dokumentasi ini meliputi diagram desain sistem, spesifikasi fitur, serta panduan pengunaan aplikasi. Dokumentasi tersebut disusun dengan tujuan menjadi referensi penting bagi pengelolaan, pemeliharaan, atau pengembangan di masa mendatang.
+3.2    Arsitektur Sistem
+     Arsitektur sistem pada penelitian ini dirancang untuk mendukung pengembangan aplikasi chatbot pra-konseling berbasis Natural Language Processing (NLP). Sistem terdiri atas tiga komponen utama, yaitu Frontend (React.js), Backend (Python- FastAPI), dan Database (MongoDB). Seluruh proses pemrosesan machine learning. termasuk embedding MiniLM dan klasifikasi emosi�intent, dijalankan sepenuhnya di dalam backend sebagai bagian dari NLP Pipeline yang terintegrasi.
+     Untuk alur sistemnya dimulai ketika mahasiswa menginput teks melalui antarmuka chatbot pada frontend. Kemudian teks tersebut dikirim ke backend melalui koneksi WebSocket yang telah dilengkapi mekanisme autentikasi menggunakan JSON Web Token (JWT) pada saat proses handshake. Setelah melewati proses ini, backend menjalankan pipeline NLP yang meliputi preprocessing teks, ekstraksi fitur menggunakan MiniLM, klasifikasi emosi dan intent, serta pemilihan respons melalui modul response generation berbasis rule-based.
+     Hasil pemrosesan NLP berupa label emosi, label intent, probabilitas prediksi, serta respons chatbot dikirimkan kembali secara real-time ke frontend melalui WebSocket untuk ditampilkan kepada mahasiswa. Selain itu, backend juga menyimpan ringkasan percakapan dan hasil analisis ke MongoDB sebagai riwayat interaksi. Data ini dapat diakses oleh admin ULBK dan psikolog melalui layanan REST API yang disediakan backend untuk kebutuhan monitoring, evaluasi, dan pengembangan layanan pra-konseling. Data percakapan dan hasil analisis yang tersimpan di database dimanfaatkan sebagai bahan monitoring dan evaluasi sistem oleh Admin ULBK dan Psikolog. Pemanfaatan data tersebut dibatasi dalam konteks simulasi layanan pra-konseling dan tidak digunakan sebagai bagian dari sistem operasional konseling kampus.
+     
+     
+Gambar 3.8 Software Architecture perancangan chatbot pra konseling
+(1. Gambaran Umum Sistem
+
+Gambar ini menunjukkan arsitektur sistem chatbot konseling berbasis NLP (Natural Language Processing) yang melibatkan beberapa aktor:
+
+Mahasiswa → pengguna utama chatbot
+
+Admin ULBK → pengelola sistem dan data
+
+Psikolog → pihak profesional yang memantau dan menganalisis percakapan
+
+Frontend → antarmuka pengguna (React.js)
+
+Backend → pusat logika aplikasi (FastAPI)
+
+NLP Pipeline → modul kecerdasan buatan untuk memahami teks
+
+Database (MongoDB) → penyimpanan data percakapan dan hasil analisis
+
+Sistem ini dirancang untuk komunikasi real-time, analisis emosi, pengenalan intent, serta pencatatan riwayat konseling.
+
+2. Komponen Sistem dan Fungsinya
+A. Mahasiswa
+
+Menginput teks atau pesan chat ke dalam sistem.
+
+Menerima output chatbot berupa respons teks yang telah diproses.
+
+Interaksi bersifat dua arah melalui UI chatbot.
+
+B. Frontend (React.js)
+
+Fungsi utama:
+
+Menyediakan UI chatbot untuk mahasiswa.
+
+Mengirim pesan pengguna ke backend.
+
+Menampilkan respons chatbot secara real-time.
+
+Teknologi komunikasi:
+
+HTTP/REST → untuk pesan real-time (chat langsung).
+
+JSON Response → untuk respons data terstruktur dari backend.
+
+C. Backend (FastAPI)
+
+Backend adalah pusat kendali sistem, berfungsi untuk:
+
+Menerima pesan dari frontend.
+
+Menghubungkan frontend dengan NLP Pipeline.
+
+Menyimpan dan mengambil data dari database.
+
+Menyediakan REST API untuk admin dan psikolog.
+
+Backend berkomunikasi dengan:
+
+Frontend (HTTP & JSON)
+
+NLP Pipeline (pemrosesan teks)
+
+MongoDB (penyimpanan data)
+
+Admin dan Psikolog (REST API)
+
+D. NLP Pipeline
+
+Bagian ini adalah inti kecerdasan sistem, bertugas memahami pesan mahasiswa.
+
+Komponennya terdiri dari:
+
+Text Input
+
+Teks yang dikirim dari frontend melalui backend.
+
+Dataset
+
+Data latih yang digunakan untuk klasifikasi, emosi, dan intent.
+
+Preprocessing
+
+Membersihkan teks:
+
+lowercase
+
+tokenisasi
+
+stopword removal
+
+stemming / lemmatization
+
+Feature Extraction
+
+Mengubah teks menjadi representasi numerik
+
+Contoh: TF-IDF, embedding, atau vektor kata.
+
+Text Classification & Emotion Detection
+
+Mengklasifikasikan jenis pesan.
+
+Mendeteksi kondisi emosi (misal: sedih, cemas, netral).
+
+Intent Recognition & Response Generation
+
+Menentukan maksud pengguna.
+
+Menyusun jawaban chatbot yang sesuai.
+
+Output Layer
+
+Menghasilkan:
+
+hasil emosi
+
+respon chatbot
+
+Output ini kemudian dikirim kembali ke backend.
+
+E. Database (MongoDB)
+
+Digunakan untuk menyimpan:
+
+Riwayat pesan chat
+
+Hasil NLP (emosi, intent)
+
+Metadata percakapan (waktu, pengguna, sesi)
+
+Juga menyediakan data untuk:
+
+Admin ULBK
+
+Psikolog
+
+F. Admin ULBK dan Psikolog
+
+Mengakses sistem melalui REST API.
+
+Dapat:
+
+Melihat riwayat percakapan.
+
+Menganalisis hasil NLP.
+
+Mengambil data untuk evaluasi atau tindak lanjut konseling.
+
+3. Alur Kerja Sistem (Flow)
+Langkah 1: Input Pengguna
+
+Mahasiswa mengetik pesan di UI chatbot (Frontend).
+
+Langkah 2: Pengiriman ke Backend
+
+Pesan dikirim dari frontend ke backend menggunakan HTTP.
+
+Data dikirim dalam format JSON.
+
+Langkah 3: Pemrosesan NLP
+
+Backend meneruskan teks ke NLP Pipeline.
+
+Teks melalui tahapan preprocessing hingga response generation.
+
+Sistem menghasilkan:
+
+respons chatbot
+
+deteksi emosi
+
+intent pengguna
+
+Langkah 4: Penyimpanan Data
+
+Backend:
+
+Menyimpan pesan, hasil NLP, dan metadata ke MongoDB.
+
+Langkah 5: Pengiriman Respons
+
+Backend mengirimkan output NLP ke frontend.
+
+Frontend menampilkan respons chatbot ke mahasiswa secara real-time.
+
+Langkah 6: Akses Admin & Psikolog
+
+Admin dan psikolog mengirim REST API request ke backend.
+
+Backend mengambil data dari MongoDB.
+
+Backend mengembalikan REST API response berisi data yang dibutuhkan.)
+3.2.1 Frontend (Website)
+     Frontend merupakan antarmuka pengguna dari sistem yang berinteraksi langsung dengan mahasiswa melalui website. Antarmuka ini dibangun menggunakan React.js dan JavaScript, sehingga mampu menghasilkan tampilan yang interaktif, responsif, dan mudah digunakan. Frontend berperan untuk menampilkan seluruh elemen sistem yang dibutuhkan pengguna, termasuk area chat untuk berinteraksi dengan chatbot, tampilan dokumentasi penggunaan website, serta tombol navigasi untuk menjalankan berbagai fungsi.
+     Pada bagian chat, frontend menyediakan area percakapan seperti aplikasi pesan instan, di mana mahasiswa dapat memasukkan pertanyaan atau pernyataan.  lalu pesan tersebut dikirimkan ke backend melalui WebSocket. Respon chatbot, hasil deteksi emosi, serta label intent ditampilkan secara real-time di antarmuka frontend. Selain itu, frontend menyediakan halaman dokumentasi yang menjelaskan cara penggunaan aplikasi chatbotnya.
+3.2.2 Backend (Server & NLP Model)
+     Backend berfungsi sebagai langkah proses antara frontend  dengan model NLP dan database. Backend dibangun menggunakan Python � FastAPI, yang menyediakan dua jenis layanan komunikasi seperti REST API untuk autentikasi, manajemen data, dan kebutuhan admin dan WebSocket untuk komunikasi real-time antara chatbot dan pengguna. Backend menerima teks dari frontend dan menjalankan seluruh proses NLP, termasuk preprocessing teks, embedding menggunakan MiniLM, klasifikasi emosi, rule-based intent recognition, dan pemilihan respons melalui modul response generation. Setelah model menentukan intent dan emosi, backend mengemas hasilnya dalam format JSON dan mengirimkannya kembali ke frontend melalui WebSocket. Selain itu, Riwayat percakapan dicatat ke MongoDB sebagai bagian dari evaluasi sistem dan laporan bagi admin ULBK maupun psikolog.
+3.2.3 Database (MongoDB)
+    MongoDB digunakan sebagai database utama untuk menyimpan seluruh data sistem, termasuk data pengguna, riwayat percakapan, dan metadata yang berkaitan dengan interaksi chatbot. MongoDB dipilih karena fleksibilitasnya dalam menyimpan data semi-struktur dalam bentuk dokumen JSON sehingga memudahkan integrasi dengan FastAPI. Selain itu, database ini akan menyimpan  informasi akun mahasiswa, hasil deteksi emosi dan intent, riwayat interaksi dengan chatbot, dan data wawancara (evaluation dataset). Data yang tersimpan pada MongoDB digunakan sebagai bahan monitoring dan evaluasi sistem oleh Admin ULBK dan Psikolog. Penggunaan data tersebut dibatasi pada konteks simulasi layanan pra-konseling dan tidak dimaksudkan sebagai pengganti sistem konseling resmi di lingkungan kampus.
+3.3    Arsitektur Natural Language Processing (NLP)
+    Arsitektur Natural Language Processing (NLP) pada penelitian ini dirancang untuk memproses teks masukan mahasiswa secara real-time melalui frontend chatbot dan menghasilkan tiga komponen utama, yaitu deteksi emosi, pengenalan intent, dan respons chatbot. Seluruh proses dijalankan pada backend menggunakan model MiniLM sebagai model utama, serta beberapa model baseline untuk keperluan pembanding.
+    Alur pemrosesan dimulai dari text input yang dikirimkan mahasiswa melalui frontend. Pesan ini diteruskan ke backend melalui WebSocket dan kemudian diproses oleh NLP Pipeline. Pipeline terdiri dari tahapan preprocessing, ekstraksi fitur, klasifikasi emosi, pengenalan intent, hingga pembangkitan respons melalui rule-based response generation. Hasil akhir pipeline dikirimkan kembali ke frontend melalui output layer.
+Tabel 3.3 Proses NLP pada pengembangan aplikasi chatbot pra-konseling
+No.
+Tahap
+Deskripsi
+Library/Tools
+Output
+1.
+Dataset
+Dataset terdiri dari: (1) dataset emosi publik dari GitHub Ricco48 (tweet berlabel emosi), (2) dataset intent, dan (3) data wawancara mahasiswa sebagai evaluation set. Dataset dibagi menjadi train/validation/test untuk pelatihan dan evaluasi model.
+Pandas, sklearn.model_selection
+Dataset terstruktur siap diproses (CSV / DataFrame)
+2.
+Text Input
+Input teks dikirimkan mahasiswa melalui web chatbot dan diteruskan ke backend melalui WebSocket.
+ReactJS (frontend), FastAPI (backend)
+Pesan teks diterima oleh server
+3.
+Preprocessing
+- Untuk MiniLM (model utama): noise removal, case folding, normalisasi dasar.
+- Untuk baseline (TF-IDF & Word2Vec): noise removal, tokenizing, stopword removal, stemming menggunakan Sastrawi.
+Regex, nltk, Sastrawi (untuk stemming Bahasa Indonesia), HuggingFace tokenizers
+Teks bersih (MiniLM) dan token terolah (baseline)
+4.
+Feature Extraction
+MiniLM menghasilkan embedding kontekstual 384-dimensi. TF-IDF dan Word2Vec digunakan sebagai baseline.
+Sentence-transformer (MiniLM), sklearn TF-IDF, gensim Word2Vec
+Vektor representasi teks (dense atau sparse)
+5.
+Text Classification & Emotion Detection
+Embedding MiniLM diproses oleh FFNN untuk memprediksi emosi. Baseline menggunakan Logistic Regression atau SVM.
+
+PyTorch/TensorFlow, sklearn
+Label emosi (senang, sedih, cemas, marah, dsb.) beserta probabilitas
+6.
+Intent Recognition
+Identifikasi intent maksud pesan menggunakan rule-based matching berdasarkan kata kunci dan pola kalimat. (misalnya: curhat, minta saran, konsultasi).
+Rule-based 
+Label intent (misalnya: curhat, konsultasi, tanya)
+7.
+Response Generation
+Pemilihan atau pembuatan respons sesuai emosi dan intent pengguna dan menggunakan template rule-based
+Rule-based 
+Teks respons yang siap dikirim
+8.
+Output Layer
+Mengemas intent, emosi, confidence, dan respons ke format JSON untuk di tampilkan ke frontend chatbot.
+FastAPI JSON Response ? UI Chatbot
+Pesan balasan tampil di UI, berisi label emosi dan respons sistem
+
+3.3.1 Dataset
+     Dataset yang akan digunakan didalam penelitian ini terdiri dari tiga komponen utama, yaitu dataset emosi teks, dataset intent, dan dataset wawancara mahasiswa sebagai evaluation set. dataset pelatihan ini dibagi menjadi 70% data latih, 15% validasi, dan 15% data uji, sedangkan data wawancara digunakan secara terpisah sebagai real-world evaluation set untuk menguji kemampuan sistem dalam mengenali emosi dan memberikan respons pada skenario pra-konseling mahasiswa. Untuk penjelasannya adalah sebagai berikut:
+Tabel 3.4 Jenis dataset pada penelitian ini
+No.
+Jenis-jenis dataset
+Penjelasan
+1.
+Dataset Emosi Teks
+Dataset ini adalah dataset single-label multiclass, dataset ini diambil dari repository GitHub Emotion Dataset from Indonesian Public Opinion yang dikembangkan oleh Ricco48. Dataset ini berisi kumpulan teks berbahasa Indonesia (tweet publik) yang telah diberi label emosi Senang (Joy), Sedih (Sad), Marah (Anger), Takut (Fear), Cinta (Love), dan Netral (Neutral). Dataset ini digunakan untuk melatih model klasifikasi emosi agar sistem mampu mengenali berbagai ekspresi emosional mahasiswa dalam percakapan pra-konseling. Untuk menyesuaikan dengan isi batasan masalah dimana kategori emosinya ada empat, yaitu senang, sedih, marah, dan cemas. Label takut digabungkan ke dalam kategori cemas, sedangkan label cinta dan netral tidak digunakan karena tidak sesuai dengan penelitian skripsi ini. Proses penggabungan dan penyaringan label ini dilakukan pada tahap preprocessing dataset sebelum proses pelatihan model.
+Pemilihan dataset ini didasarkan pada kesesuaiannya dengan konteks penelitian, karena label yang digunakan merepresentasikan emosi nyata, bukan sekadar sentimen positif atau negatif, sehingga lebih relevan untuk mendeteksi kondisi psikologis pengguna. 
+Sumber: https://github.com/Ricco48/Emotion-Dataset-from-Indonesian-Public-Opinion
+2.
+Dataset Intent
+Dataset yang berisi label intent dasar seperti curhat, meminta saran, dan mencari informasi. Dataset ini digunakan untuk pengenalan intent berbasis rule-based.
+3.
+Data Wawancara Mahasiswa
+Data teks hasil wawancara dengan mahasiswa UPN �Veteran� Jakarta yang berisi ekspresi emosi dan pernyataan pribadi terkait stres akademik dan sosial. Data ini digunakan sebagai evaluation set untuk menilai kinerja model pada konteks nyata pra-konseling.
+
+3.3.2 Text Input
+     Teks masukan (text input) pada penelitian ini berupa kalimat atau paragraf singkat yang dikirimkan pengguna melalui antarmuka chatbot. Masukan ini dapat berupa:
+Tabel 3.5 Masukan Text Input dari Mahasiswa/User
+No.
+Jenis ungkapan
+Contoh
+1.
+Ungkapan Emosi
+�Tes mata kuliah ini susah banget dah!�
+2.
+Pertanyaan atau curhat
+�Cara menghadapi ulangan gimana ya�
+3.
+Kalimat netral
+�Selamat pagi�
+3.3.3 Preprocessing Text
+     Tahap preprocessing merupakan bagian penting dari pipeline NLP yang digunakan pada penelitian ini, karena kualitas data yang masuk akan memengaruhi kinerja model deteksi emosi dan pengenalan intent. Proses ini dilakukan secara otomatis di sisi backend setiap kali pengguna mengirimkan teks melalui antarmuka chatbot. Implementasi preprocessing menggunakan kombinasi Regex, NLTK, dan Sastrawi (untuk stemming Bahasa Indonesia) serta HuggingFace Tokenizers agar hasilnya konsisten dengan model embedding MiniLM. Tahapan preprocessing yang diterapkan adalah sebagai berikut:
+Input kalimat: "Link ujian: https://bit.ly/123 !!! Saya merasa sangat Cemas menjelang Ujian besok banget."
+Hasil setelah preprocessing MiniLM: "link ujian saya merasa sangat cemas menjelang ujian besok banget"
+Hasil setelah Preproceessing baseline: "cemas","uji","besok","banget"
+Tabel 3.6 Tahapan Preprocessing Text pada sistem aplikasi chatbot pra-konseling
+No.
+Proses Preprocessing
+Penjelasan
+Contoh
+1.
+Noise Removal
+Menghapus karakter tidak relevan seperti tanda baca berlebihan, URL, angka yang tidak bermakna, dan simbol yang tidak diperlukan. Noise Removal dilakukan menggunakan Regex untuk memastikan teks sudah tepat sebelum dianalisis.
+Input: �Link ujian: https://bit.ly/123 !!!� ? Output: �Link ujian�
+2.
+Case Folding
+Case folding merupakan salah satu tahapan dalam pra-pemrosesan teks yang bertujuan untuk menyeragamkan bentuk huruf dengan mengonversi seluruh huruf menjadi huruf kecil. Pada tahap ini, karakter non-alfabet seperti angka dan simbol khusus (misalnya tanda seru (!), koma (,), garis miring (/), tanda lebih dari (>), dan tanda kurang dari (<)) umumnya dihapus karena tidak memberikan kontribusi signifikan terhadap proses klasifikasi teks. 
+Input: �Cemas Sekali!� ? Output: �cemas sekali�
+3.
+Tokenizing
+Tokenizing merupakan salah satu tahap pra-pemrosesan teks yang berfungsi untuk memecah teks menjadi unit-unit terkecil yang dapat diproses oleh sistem. Pada penelitian ini, tokenizing diterapkan dengan dua pendekatan, yaitu Tokenizing untuk MiniLM yang menggunakan tokenizer bawaan dari HuggingFace yang mengubah kalimat menjadi input_ids dan attention_mask. dan baseline yang menggunakan TF-IDF dan Word2Vec dimana Teks dipecah menjadi token kata berdasarkan spasi sehingga menghasilkan daftar kata yang siap diproses menjadi representasi numerik.
+
+Input MiniLM : �Saya merasa cemas�
+Output:
+input_ids = [101, 1345, 8921, 4532, 102]
+attention_mask = [1, 1, 1, 1, 1]
+Input baseline: �Saya merasa cemas� ? Output: [�saya�, �merasa�, �cemas�]
+
+4.
+Stopword Removal
+Menghapus kata umum yang tidak memiliki kontribusi semantik besar menggunakan daftar stopword NLTK.
+Input: [�saya�, �merasa�, �cemas�] ? Output: [�cemas�]
+5.
+Stemming atau Lemmatization
+Stemming atau lemmatization merupakan proses normalisasi kata dengan menghilangkan afiks (seperti awalan in- atau akhiran -nya) guna memperoleh bentuk dasar kata. Proses ini menggunakan Sastrawi agar konsisten untuk Bahasa Indonesia
+Input: �menggunakan� ? Output: �guna�
+6.
+Output
+MiniLM menghasilkan kalimat yang siap ditokenisasi menggunakan WordPiece, sementara baseline menghasilkan daftar token.
+MiniLM: �saya merasa cemas��
+Baseline: [�cemas�, �uji�, �besok�, �banget�]
+
+3.3.4 Feature Extraction
+     Tahap feature extraction merupakan proses mengubah teks yang sudah melalui preprocessing menjadi representasi vektor numerik (embedding) yang dapat diproses oleh model klasifikasi. Representasi ini penting karena model deteksi emosi dan pengenalan intent hanya dapat memahami data dalam bentuk numerik, bukan teks mentah.
+     Dalam penelitian ini, digunakan MiniLM (Microsoft/Multilingual-MiniLM-L12-H384) sebagai model utama dan TF-IDF serta Word2Vec sebagai baseline pembanding. MiniLM (Microsoft/Multilingual-MiniLM-L12-H384) digunakan karena mampu menghasilkan embedding kontekstual berdimensi 384 secara efisien dan cepat, sehingga cocok untuk aplikasi chatbot real-time. MiniLM tidak menerima daftar token kata, tetapi memproses kalimat utuh menggunakan subword tokenizer dari HuggingFace sebelum menghasilkan embedding. 
+Contoh Input-Output:
+Input kalimat: �saya merasa cemas menjelang ujian besok�
+Output kalimat setelah embedding: [0.312, -0.114, 0.431, ..., 0.176] (384 dimensi)
+
+
+
+Tabel 3.7 Proses Feature Extraction menggunakan MiniLM
+No.
+Proses Feature Extraction
+Penjelasan
+Contoh
+1.
+Input Teks
+Kalimat hasil preprocessing MiniLM (tanpa stemming dan stopword removal).
+�saya merasa cemas menjelang ujian besok�
+2.
+Token Encoding
+Teks diubah menjadi input_ids dan attention_mask menggunakan HuggingFace MiniLM Tokenizer. MiniLM menggunakan tokenisasi subword berbasis WordPiece.
+Output: input_ids=[101, 8743, 2198, 4563, 7892, 102], attention_mask=[1,1,1,1,1,1]
+3.
+Model Forward Pass
+Input numerik dimasukkan ke MiniLM untuk menghasilkan embedding kontekstual berdimensi 384.
+Tensor shape: (1, 384)
+4. 
+Pooling / Mean Embedding
+Untuk menghasilkan representasi kalimat tunggal, embedding tiap token dirata-rata (mean pooling) sehingga didapatkan vektor tunggal per kalimat.
+Contoh vektor (disingkat): [0.123, -0.045, 0.287, ..., 0.098]
+5.
+Normalisasi
+Embedding dinormalisasi agar setiap vektor memiliki panjang yang seragam, sehingga memudahkan classifier membedakan jarak antar representasi.
+Hasil akhir: normalized_vector = [0.312, -0.114, 0.431, ..., 0.176]
+
+3.3.5 Text Classification & Emotion Detection
+     Tahap Text Classification & Emotion Detection merupakan komponen utama dari pipeline NLP yang bertujuan untuk mendeteksi emosi dari teks yang dikirimkan oleh pengguna melalui proses machine learning. Pemrosesan deteksi emosi dilakukan setelah teks melalui tahap preprocessing dan feature extraction. Representasi vektor (embedding) yang dihasilkan kemudian digunakan sebagai input bagi model klasifikasi emosi berbasis MiniLM dan Feed-Forward Neural Network (FFNN).
+     Untuk memastikan pemilihan model yang paling optimal, penelitian ini membandingkan tiga pendekatan NLP yang mewakili tiga generasi model yang berbeda, yaitu metode klasik berbasis vektorisasi sparse, metode deep learning berbasis RNN, dan pendekatan modern berbasis transformer.. Untuk penjelasan modelnya adalah sebagai berikut:
+     
+     
+Tabel 3.8 Perbandingan Model NLP
+Model
+Deskripsi
+Representasi/Arsitektur
+Kelebihan
+Model 1 � Logistic Regression dengan TF-IDF
+Digunakan sebagai baseline klasik NLP
+TF-IDF menghasilkan representasi vektor sparse dan Logistic Regression sebagai classifier.
+Sederhana, cepat dilatih, umum digunakan untuk baseline text classification
+Model 2 � BilSTM dengan Word2Vec
+Mewakili pendekatan deep learning sequence model.
+Word2Vec menghasilkan embedding kata dan diproses BiLSTM untuk memahami urutan dan konteks kalimat.
+Lebih baik dalam menangkap konteks emosional dan hubungan antar kata dalam teks berurutan.
+Model 3 � MiniLM dan Feed-Forward Neural Network
+Mewakili pendekatan model transformer 
+MiniLM menghasilkan embedding kontekstual berdimensi 384 dan diproses dengan FFNN (dense layer dengan ReLU, dan Softmax)
+Ringan, efisien, akurat, dan cocok untuk aplikasi real-time seperti chatbot.
+
+Tabel 3.9 Evaluasi Model
+Dataset
+Dibagi menjadi 70% training, 15% validation, 15% testing.
+Metrik Evaluasi
+Akurasi, precision, recall, F1-score, serta confusion matrix untuk setiap label
+Kriteria Pemilihan
+Model dengan F1-score macro tertinggi dipilih sebagai model akhir yang diintegrasikan ke chatbot pra-konseling.
+
+Tabel 3.10 Kategori Intent
+Curhat
+Pengguna menyampaikan keluhan, perasaan, atau pengalaman pribadi.
+Meminta Saran
+Pengguna secara eksplisit meminta solusi atau rekomendasi.
+Mencari Informasi
+Mahasiswa menanyakan sesuatu yang bersifat faktual, misal jadwal, prosedur, atau informasi umum.
+
+Tabel 3.11 Contoh Input, Embedding, dan Output Hasil Klasifikasi
+No.
+Input Pengguna
+Setelah Preprocessing & Feature Extraction:
+Output yang dikirimkan ke frontend
+Penjelasan
+1.
+"Link ujian: https://bit.ly/123 !!! Saya merasa sangat Cemas menjelang Ujian besok banget."
+["cemas", "uji", "besok", "banget"] ? embedding vektor (384 dimensi)
+"intent": "curhat",
+"intent_confidence": 0.82,
+"emotion": "cemas",
+"emotion_confidence": 0.91
+Label intent pada tabel ini diperoleh melalui mekanisme rule-based 
+intent recognition, sedangkan label emosi dihasilkan oleh model 
+klasifikasi berbasis MiniLM dan FFNN.
+
+Tabel 3. 12 Hasil Prediksi Intent dan Emosi
+No.
+Komponen
+Prediksi
+Probabilitas
+1.
+Intent
+Curhat
+0.82
+2.
+Emosi
+Cemas
+0.91
+
+Tabel 3.13 Arsitektur Feed-Forward Neural Network (FFNN)
+No.
+Lapisan
+Deskripsi
+1.
+Input Layer
+Menerima embedding dari MiniLM (dimensi 384).
+2.
+Hidden Layer
+Satu atau dua dense layer dengan aktivasi ReLU untuk mempelajari representasi non-linear.
+3.
+Output Layer
+Softmax digunakan untuk memetakan hasil model ke dalam bentuk probabilitas kelas emosi. Pada penelitian ini, FFNN digunakan khusus untuk Emotion Detection, sedangkan pengenalan intent dilakukan menggunakan pendekatan rule-based.
+
+Tabel 3.14 Implementasi Model Klasifikasi Emosi
+No.
+Komponen
+Implementasi
+1.
+Framework
+Model dijalankan menggunakan PyTorch atau TensorFlow pada sisi backend (FastAPI).
+2.
+Dataset
+Model dilatih menggunakan dataset gabungan (Dataset Ricco48 Emotion Dataset from Indonesian Public Opnion).
+3.
+Pipeline
+1.Input Teks ? Preprocessing ? embedding MiniLM
+2. Embedding ? classifier ? prediksi probabilitas emosi
+3. Sistem memilih label dengan probabilitas tertinggi dan mengirimkan hasil ke antarmuka chatbot
+3.3.6 Intent Recognition & Response Generation
+  Tahap Intent Recognition & Response Generation merupakan proses lanjutan setelah sistem berhasil mendeteksi intent dan emosi dari teks pengguna. Pada tahap ini, sistem menggunakan hasil intent dan emosi yang telah diperoleh pada tahap sebelumnya untuk menentukan respons sesuai dengan kombinasi intent-emosi. 
+  Pada penelitian ini digunakan pendekatan rule-based mapping, yaitu pemetaan kombinasi intent dan emosi ke kategori respons tertentu, seperti kategori empati, informatif, motivasi, atau saran. Pendekatan ini dipilih karena bersifat deterministik, mudah dijelaskan, dan lebih aman digunakan dalam konteks pra-konseling mahasiswa dibandingkan sistem generatif bebas. Dalam beberapa kasus, sistem juga memanfaatkan dynamic template filling, yaitu mengisi bagian-bagian tertentu dari template respons berdasarkan kata kunci dalam input pengguna (misalnya kata �ujian�, �tugas�, atau �presentasi�).
+Proses pada tahap ini terdiri dari empat langkah utama sebagai berikut:
+
+Tabel 3.15 Langkah Intent Recognition (rule-based) & Response Generation
+No.
+Tahap
+Deskripsi
+1.
+Pengambilan Hasil Klasifikasi
+Sistem menerima output dari classifier berupa intent, emosi, dan confidence score.
+2.
+Pencocokan Intent�Emosi
+Sistem mencocokkan kombinasi intent�emosi dengan aturan pada rule-based mapping. Misalnya curhat + cemas ? kategori respon empati.
+3.
+Pemilihan Template Respon
+Sistem memilih template respons sesuai kategori. Template dapat bersifat statis atau mengandung placeholder yang diisi secara dinamis (misalnya konteks: �ujian besok�).
+4.
+Pengiriman ke Frontend
+Respon akhir dikemas dalam format JSON dan dikirim ke antarmuka chatbot.
+
+Tabel 3.16 Komponen Intent Recognition (rule-based) & Response Generation
+No.
+Komponen
+Deskripsi
+1.
+Input
+Hasil klasifikasi dari tahap sebelumnya: intent = curhat (0.82), emosi = cemas (0.91).
+2.
+Mapping
+Sistem mencocokkan kombinasi intent�emosi ke kategori respon seperti empati, informasi, atau motivasi.
+3.
+Template Selection
+Sistem memilih template respon berbasis aturan. Contoh template: "Saya mengerti kamu merasa cemas, apakah kamu ingin tips belajar untuk ujian?"
+4.
+Dynamic Template Filling
+Sistem mengisi placeholder berdasarkan kata atau frasa relevan dalam teks pengguna.Contoh: �ujian besok� digunakan dalam respons.
+5.
+Output ke Frontend
+Mengirimkan respon yang telah dipilih atau dihasilkan dalam format JSON agar dapat ditampilkan pada UI chatbot.
+
+Tabel 3.17  Contoh Input-Output Response Generation
+No.
+Tahap
+Contoh
+1.
+Input Pengguna
+"Link ujian: https://bit.ly/123 !!! Saya merasa sangat Cemas menjelang Ujian besok banget."
+2.
+Setelah Klasifikasi
+Intent: curhat (0.82)
+Emosi: cemas (0.91)
+3.
+Mapping Intent-Emosi
+Sistem memetakan ? kategori respon = empati + saran
+4.
+Hasil Respon
+"Saya paham kamu merasa cemas menjelang ujian besok. Bagaimana kalau saya berikan tips belajar?"
+5.
+Output ke Frontend (JSON)
+{
+"response": "Saya paham kamu merasa cemas     menjelang ujian besok. Bagaimana kalau saya berikan tips belajar?",
+"response_type": "empathetic"
+}
+
+3.3.7 Output Layer
+     Tahap Output Layer merupakan bagian akhir dari pipeline NLP yang menghubungkan proses analisis pada backend dengan antarmuka pengguna. Setelah sistem menentukan intent dan emosi, serta menghasilkan respons melalui modul Intent Recognition & Response Generation, seluruh hasil pemrosesan dikemas dalam format terstruktur dan dikirimkan kembali ke frontend.
+     Pada aplikasi ini, pengiriman hasil dilakukan melalui WebSocket agar respons dapat diterima secara real-time oleh mahasiswa ketika berinteraksi dengan chatbot. Selain itu, backend juga menyediakan endpoint REST API terpisah untuk admin dan psikolog, sehingga riwayat percakapan dan hasil analisis dapat diakses melalui dashboard monitoring.
+     Data yang dikirim melalui Output Layer umumnya berbentuk JSON dan mencakup beberapa komponen penting, yaitu label intent, label emosi, probabilitas prediksi, serta respons chatbot.. Untuk Komponen dan Output JSON-nya adalah sebagai berikut:
+Tabel 3.18 Komponen Output Layer
+No.
+Komponen
+Deskripsi
+1.
+Response Text
+Teks respons yang dihasilkan oleh modul rule-based berdasarkan kombinasi intent�emosi.
+2.
+Confidence Scores
+Probabilitas intent dan emosi yang diprediksi, dikirim agar dapat digunakan untuk debugging atau confidence-based UI (misalnya menampilkan label �prediksi rendah�).
+3.
+Format
+Seluruh data dikemas dalam format JSON dan dikirimkan ke frontend melalui WebSocket.
+
+Contoh Gambaran Output JSON:
+{
+  "intent": "curhat",
+  "intent_confidence": 0.82,
+  "emotion": "cemas",
+  "emotion_confidence": 0.91,
+  "response": "Saya paham kamu merasa cemas menjelang ujian besok. Bagaimana kalau saya berikan tips belajar?",
+  "response_type": "empathetic",
+}
+3.4 Perangkat Penelitian
+     Perangkat keras dan perangkat lunak yang akan digunakan dalam penelitian ini adalah sebagai berikut:
+3.4.1 Perangkat Keras (Hardware)
+Model      : Nitro AN515-44
+Processor : AMD Ryzen 5 4600H with Rado Graphics, 3000 Mhz, 6 Core(s)
+Memory   : RAM 8 GB
+Storage     : 500 GB
+GPU         : NVIDIA GeForce GTX 1650 Ti
+3.4.2 Perangkat Lunak (Software)
+i. Visual Studio Code
+ii. JavaScript(ReactJS)
+iii. Python(FastApi)
+v. MongoDB
+vi. Draw.io
+3.5 Jadwal Penelitian                                                                                                                               
+
+
+Kegiatan Penelitian
+Jadwal Penelitian
+
+Bulan 1
+Bulan 2
+Bulan 3
+Bulan 4
+Bulan 5
+Bulan 6
+
+1
+2
+3
+4
+1
+2
+3
+4
+1
+2
+3
+4
+1
+2
+3
+4
+1
+2
+3
+4
+1
+2
+3
+4
+Identifikasi Kebutuhan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Studi Literatur
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pengumpulan Data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Perancangan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Prototype
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pengujian
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pengembangan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Uji Coba & Evaluasi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Deployment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dokumentasi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sudah Dilaksanakan
+
+Belum dilaksanakan
+Keterangan :
+
+
+
+
+
+
+
+
+
+
+
+
+
+BAB IV
+HASIL DAN PEMBAHASAN
+4.1 Profil Perusahaan
+     Universitas Pembangunan Nasional �Veteran� Jakarta (UPNVJ) merupakan perguruan tinggi negeri yang menyelenggarakan pendidikan tinggi dengan berlandaskan nilai-nilai bela negara. UPNVJ resmi berstatus sebagai Perguruan Tinggi Negeri sejak tahun 2014 dan terus berkembang sebagai institusi pendidikan yang berfokus pada penguatan kompetensi akademik, profesionalisme, serta karakter mahasiswa. Saat ini, UPN �Veteran� Jakarta memiliki beberapa fakultas yang menaungi berbagai program studi pada jenjang diploma dan sarjana, dengan jumlah mahasiswa yang berasal dari latar belakang disiplin ilmu yang beragam.
+     Sebagai institusi pendidikan tinggi, UPNVJ tidak hanya berperan dalam penyelenggaraan kegiatan akademik, tetapi juga bertanggung jawab dalam menyediakan layanan pendukung bagi mahasiswa, termasuk layanan di bidang kesejahteraan dan kesehatan mental. Tingginya tuntutan akademik, tekanan sosial, serta fase transisi kehidupan mahasiswa menjadikan kebutuhan akan layanan psikologis sebagai aspek yang penting untuk diperhatikan oleh institusi. Oleh karena itu, UPN �Veteran� Jakarta membentuk Unit Layanan Bimbingan Konseling (ULBK) sebagai unit resmi yang menangani layanan konseling dan pendampingan psikologis bagi mahasiswa.
+     Unit Layanan Bimbingan Konseling (ULBK) UPN �Veteran� Jakarta berfungsi sebagai fasilitator layanan konseling bagi mahasiswa yang mengalami permasalahan akademik, pribadi, sosial, maupun emosional. Layanan yang disediakan ULBK meliputi konseling individu, pendampingan psikologis, serta asesmen awal sebelum mahasiswa menjalani sesi konseling lanjutan dengan psikolog. Dalam pelaksanaannya, ULBK bekerja sama dengan psikolog profesional untuk memastikan bahwa layanan yang diberikan tetap berada dalam koridor etika dan standar psikologi yang berlaku.
+     Berdasarkan hasil observasi dan wawancara dengan pihak ULBK, proses pendaftaran dan pra-konseling yang berjalan masih dilakukan secara manual, seperti melalui pesan singkat atau komunikasi langsung, sehingga memerlukan waktu yang relatif lama dalam tahap awal asesmen. Selain itu, keterbatasan waktu, kekhawatiran terhadap stigma sosial, serta keengganan mahasiswa untuk langsung bertatap muka menjadi kendala dalam pemanfaatan layanan konseling secara optimal. Kondisi ini menunjukkan adanya kebutuhan akan media pendukung yang mampu membantu proses pra-konseling secara cepat, mudah diakses, dan tetap menjaga kerahasiaan data mahasiswa.
+     
+     Dalam konteks tersebut, pengembangan aplikasi chatbot pra-konseling berbasis Natural Language Processing (NLP) diarahkan untuk mendukung layanan ULBK di lingkungan UPN �Veteran� Jakarta secara menyeluruh. Sistem chatbot ini dirancang sebagai sarana pra-konseling non-klinis yang dapat digunakan oleh seluruh mahasiswa UPNVJ, tanpa dibatasi oleh fakultas tertentu, sebagai langkah awal sebelum mahasiswa melanjutkan ke sesi konseling formal yang disediakan oleh ULBK.
+4.2 Analisis Sistem Berjalan
+     Penelitian ini mengambil objek pada layanan pra-konseling mahasiswa Universitas Pembangunan Nasional �Veteran� Jakarta yang berada di bawah pengelolaan Unit Layanan Bimbingan Konseling (ULBK). Layanan pra-konseling merupakan tahap awal dalam proses konseling yang bertujuan untuk memperoleh gambaran umum mengenai kondisi emosional mahasiswa sebelum dilanjutkan ke sesi konseling bersama konselor atau psikolog kampus. Tahap ini memiliki peran penting dalam membantu konselor memahami permasalahan awal yang dialami mahasiswa.
+     Berdasarkan hasil observasi dan wawancara dengan pihak ULBK, sistem pra-konseling yang berjalan saat ini masih dilakukan secara manual. Mahasiswa yang ingin mengikuti layanan konseling harus terlebih dahulu melakukan pendaftaran melalui media komunikasi sederhana, seperti pesan singkat atau aplikasi percakapan. Setelah pendaftaran dilakukan, mahasiswa diminta untuk menyampaikan keluhan atau permasalahan yang dialami secara langsung kepada admin atau konselor. Proses ini belum memiliki format asesmen awal yang terstruktur dan terdokumentasi secara sistematis.
+     Kondisi tersebut menyebabkan proses identifikasi awal kondisi emosional mahasiswa memerlukan waktu yang relatif lama. Konselor harus membaca dan memahami setiap keluhan secara manual, sehingga sulit memperoleh gambaran kondisi emosional mahasiswa secara cepat, terutama ketika jumlah pendaftar meningkat. Selain itu, keterbatasan waktu, kekhawatiran terhadap stigma sosial, serta rasa tidak nyaman mahasiswa untuk langsung berinteraksi dengan konselor menjadi kendala dalam pemanfaatan layanan pra-konseling secara optimal.
+     
+     Berdasarkan analisis sistem berjalan tersebut, diperlukan suatu media pendukung yang mampu membantu proses pra-konseling secara lebih efisien, mudah diakses, dan tetap menjaga kerahasiaan data mahasiswa. Oleh karena itu, penelitian ini mengusulkan pengembangan aplikasi chatbot pra-konseling berbasis Natural Language Processing (NLP) sebagai sarana skrining awal non-klinis yang dapat digunakan mahasiswa UPN �Veteran� Jakarta sebelum melanjutkan ke sesi konseling formal melalui ULBK.
+4.3 Rancangan Sistem Usulan
+     Bagian ini membahas analisis implementasi sistem chatbot deteksi emosi berbasis Natural Language Processing (NLP) yang dikembangkan untuk mendukung layanan pra-konseling mahasiswa UPN Veteran Jakarta. Analisis difokuskan pada alur kerja sistem, proses pengolahan teks, mekanisme klasifikasi emosi dan intent, pembentukan respons chatbot, serta penyimpanan data percakapan. Seluruh pembahasan pada bab ini mengacu pada implementasi backend yang telah direalisasikan sesuai dengan perancangan sistem pada bab sebelumnya.
+4.3.1 Gambaran Umum
+
+4.3.2 Inisialisasi Aplikasi Backend Chatbot
+
+Gambar 4.1 Kode Program Inisialisasi Aplikasi Backend Chatbot Pra-Konseling
+     Gambar 4.1 memperlihatkan kode program pada file backend/app/main.py yang berperan sebagai titik awal eksekusi aplikasi chatbot pra-konseling. Pada file ini, sistem diinisialisasi menggunakan framework FastAPI yang dipilih karena kemampuannya dalam menangani aplikasi berbasis API secara ringan dan efisien. Aplikasi diberi nama �Chatbot Pra-Konseling NLP� sebagai identitas layanan yang disediakan untuk mahasiswa UPN Veteran Jakarta. Proses inisialisasi mencakup pengaturan middleware Cross-Origin Resource Sharing (CORS) yang memungkinkan aplikasi frontend berkomunikasi dengan backend meskipun berada pada domain yang berbeda. Pengaturan ini diperlukan karena sistem dikembangkan dengan arsitektur terpisah antara frontend dan backend, sehingga komunikasi data harus diizinkan secara eksplisit oleh server. Selain itu, pada file ini juga dilakukan pendaftaran berbagai router yang merepresentasikan fungsi utama sistem, seperti router autentikasi pengguna, chatbot pra-konseling, klasifikasi teks, komunikasi WebSocket, modul admin dan psikolog, serta modul inference NLP.
+     
+     
+4.3.3 Implementasi Endpoint Chatbot Pra-Konseling
+
+
+Gambar 4.2 Kode Program Endpoint Chatbot Pra-Konseling
+     Gambar 4.2 menampilkan implementasi endpoint utama chatbot pra-konseling yang terdapat pada file routes_chatbot.py. Endpoint ini berfungsi sebagai jalur komunikasi utama antara pengguna dan sistem chatbot melalui permintaan HTTP berbasis REST API. Data yang diterima oleh endpoint berupa teks percakapan pengguna serta informasi identitas sesi dalam format JSON. Setelah data diterima, sistem memproses teks masukan melalui beberapa tahapan yang telah dirancang sebelumnya. Tahap awal yang dilakukan adalah preprocessing teks menggunakan pipeline NLP untuk membersihkan dan menormalkan teks dari karakter yang tidak relevan. Proses ini bertujuan agar teks berada dalam format yang sesuai untuk diproses oleh model NLP. Tahap berikutnya adalah klasifikasi emosi pengguna menggunakan model ensemble yang telah dilatih. Selain deteksi emosi, sistem juga melakukan identifikasi intent pengguna untuk mengetahui maksud dari pesan yang disampaikan, seperti mengungkapkan perasaan, meminta saran, atau sekadar melakukan interaksi umum. Hasil dari proses ini kemudian digunakan sebagai dasar dalam pembentukan respons chatbot serta disimpan ke dalam basis data sebagai bagian dari riwayat sesi pra-konseling.
+4.3.4 Implementasi Komunikasi Real-Time Menggunakan WebSocket
+
+Gambar 4.3 Kode Program Endpoint WebSocket Chatbot
+Gambar 4.3 menunjukkan kode program pada file routes_ws.py yang mengimplementasikan komunikasi real-time menggunakan WebSocket. WebSocket digunakan untuk mendukung interaksi dua arah secara langsung antara pengguna dan sistem chatbot tanpa harus melakukan permintaan HTTP secara berulang.
+Pada mekanisme ini, pengguna dapat mengirimkan pesan secara kontinu dalam satu sesi koneksi yang sama. Setiap pesan yang diterima oleh server akan langsung diproses menggunakan pipeline NLP yang sama dengan endpoint HTTP. Sistem melakukan preprocessing teks, klasifikasi emosi, serta identifikasi intent secara langsung sebelum mengirimkan respons kembali ke pengguna.
+4.3.5 Pipeline Natural Language Processing
+
+Gambar 4.4 Kode Program Pipeline Natural Language Processing
+     Gambar 4.4 memperlihatkan kode program pada file nlp_pipeline.py yang berfungsi sebagai penghubung utama antara teks masukan pengguna dan seluruh modul NLP di dalam sistem. Pipeline ini dirancang untuk memastikan bahwa setiap teks yang masuk diproses melalui tahapan yang sama sebelum digunakan oleh model klasifikasi.
+4.3.6 Preprocessing Teks Percakapan Pengguna
+
+Gambar 4.5 Kode Program Preprocessing Teks Dasar
+     Gambar 4.5 menampilkan kode program pada file base_cleaner.py yang bertanggung jawab dalam melakukan preprocessing teks percakapan pengguna. Tahapan preprocessing dimulai dengan normalisasi huruf menjadi huruf kecil untuk menjaga konsistensi teks. Selanjutnya, sistem menghapus URL, karakter khusus, serta simbol yang tidak memiliki kontribusi terhadap analisis teks. Selain itu, dilakukan normalisasi kata slang dan pengurangan karakter berulang yang sering muncul pada teks percakapan informal. Sistem juga mengonversi emoji menjadi representasi teks emosi untuk mempertahankan informasi emosional yang terkandung dalam pesan pengguna.
+4.3.7 Preprocessing Teks untuk Model MiniLM
+
+Gambar 4. 6 Kode Program Preprocessing Teks untuk Model MiniLM
+Gambar 4.6 menunjukkan kode program pada file preprocess_minilm.py yang digunakan untuk menyesuaikan teks masukan dengan kebutuhan model MiniLM. Preprocessing dilakukan secara ringan untuk menjaga struktur kalimat dan makna semantik teks.Tahapan ini mencakup pembersihan dasar dan penyesuaian format teks agar sesuai dengan input model Sentence-BERT berbasis MiniLM. Hasil preprocessing kemudian digunakan sebagai masukan pada proses embedding teks.
+4.3.8 Klasifikasi Emosi Menggunakan MiniLM 
+
+Gambar 4.7 Kode Program Pelatihan Model Emosi MiniLM
+Gambar 4.7 menampilkan kode program train_emotion_minilm_final.py atau pelatihan model klasifikasi emosi berbasis MiniLM. Pada tahap ini, teks dari dataset emosi diubah menjadi embedding vektor menggunakan model MiniLM, kemudian diproses menggunakan algoritma Logistic Regression. Model dilatih untuk mengenali beberapa kategori emosi utama, seperti marah, cemas, senang, dan sedih. Setelah proses pelatihan selesai, model dan label encoder disimpan dalam bentuk file untuk digunakan kembali pada tahap inferensi di sistem chatbot.
+4.3.9 Identifikasi Intent 
+
+Gambar 4.8 Kode Program Identifikasi Intent Pengguna
+     Gambar 4.8 menunjukkan implementasi proses identifikasi intent pengguna yang terdapat pada file intent_recognizer.py. Pada tahap ini, sistem bertujuan untuk mengenali maksud utama dari pesan yang disampaikan oleh pengguna dalam konteks percakapan pra-konseling. Intent yang dikenali dalam sistem ini meliputi intent curhat, meminta saran, dan mencari informasi, sesuai dengan batasan permasalahan penelitian. Proses identifikasi intent diawali dengan melakukan embedding teks percakapan pengguna menggunakan model Sentence-BERT melalui fungsi embed_text(). Hasil embedding berupa vektor numerik kemudian digunakan sebagai masukan bagi model klasifikasi intent yang telah dilatih sebelumnya. Model ini memprediksi label intent yang paling sesuai berdasarkan pola percakapan yang dipelajari dari data latih. Selain menghasilkan label intent, sistem juga menghitung nilai confidence apabila model klasifikasi mendukung perhitungan probabilitas. Nilai ini digunakan untuk memberikan gambaran tingkat keyakinan sistem terhadap hasil prediksi intent yang dihasilkan. Output dari proses ini berupa satu jenis intent utama yang merepresentasikan tujuan pesan pengguna pada saat interaksi berlangsung.
+
+4.3.10 Respons Chatbot Pra-Konseling
+
+Gambar 4.9 Kode Program Pembentukan Respons Chatbot Pra-Konseling
+     Gambar 4.9 menampilkan kode program pada file response_generator.py yang berfungsi dalam pembentukan respons chatbot. Sistem memetakan hasil deteksi emosi dan intent ke dalam tipe respons tertentu, seperti empati, validasi, atau saran. Template respons yang digunakan kemudian disesuaikan dengan konteks pesan pengguna dan dikirimkan sebagai balasan dalam percakapan pra-konseling.
+4.3.11 Penyimpanan Data Percakapan dan Sesi Konseling
+
+Gambar 4. 10 Kode Program Penyimpanan Data Percakapan dan Sesi Konseling
+Gambar 4.10 menunjukkan kode program db.py yang digunakan untuk mengelola koneksi basis data dan penyimpanan data sesi pra-konseling. Sistem menggunakan MongoDB untuk menyimpan data sesi, riwayat percakapan, serta hasil analisis emosi pengguna.
+Data yang tersimpan digunakan sebagai arsip sesi pra-konseling dan referensi bagi admin ULBK serta psikolog dalam memantau aktivitas layanan konseling.
+4.4 Hasil dan Rekomendasi
+     Hasil implementasi sistem chatbot pra-konseling ini diperoleh melalui serangkaian tahapan pengembangan yang terstruktur, mulai dari analisis kebutuhan layanan pra-konseling mahasiswa, perancangan arsitektur sistem, hingga implementasi aplikasi chatbot berbasis web yang memanfaatkan pendekatan Natural Language Processing (NLP). Sistem ini dikembangkan untuk mendukung proses pra-konseling non-klinis dengan menyediakan mekanisme interaksi berbasis teks yang memungkinkan mahasiswa menyampaikan permasalahan awal serta memperoleh respons awal dari sistem.
+     Pembahasan pada subbab ini difokuskan pada hasil implementasi sistem chatbot pra-konseling yang telah dibangun, meliputi alur kerja sistem dalam menerima dan memproses input percakapan pengguna, tahapan pengolahan teks menggunakan pipeline NLP, proses klasifikasi emosi dan identifikasi intent, serta mekanisme pengelolaan dan penyimpanan data percakapan yang dihasilkan sesuai dengan perancangan sistem pada bab sebelumnya.
+
+4.4.1 Hasil Identifikasi Masalah
+     Berdasarkan hasil observasi dan wawancara yang dilakukan di lingkungan Universitas Pembangunan Nasional �Veteran� Jakarta, ditemukan bahwa layanan konseling mahasiswa masih menghadapi beberapa kendala pada tahap awal atau pra-konseling. Mahasiswa sering mengalami hambatan untuk menyampaikan permasalahan psikologis yang dirasakan, seperti keterbatasan waktu, rasa enggan untuk bertemu langsung dengan konselor, serta kekhawatiran terhadap stigma sosial. Selain itu, proses asesmen awal yang dilakukan secara manual membutuhkan waktu relatif lama dan belum didukung oleh mekanisme skrining cepat yang dapat memberikan gambaran awal mengenai kondisi emosional mahasiswa.
+     Permasalahan tersebut menunjukkan perlunya media pendukung pra-konseling yang mudah diakses, bersifat non-klinis, dan mampu membantu mahasiswa mengekspresikan kondisi emosional mereka secara awal. Oleh karena itu, penelitian ini mengidentifikasi kebutuhan akan sebuah sistem chatbot pra-konseling berbasis teks yang dapat mendeteksi emosi dan memahami intent percakapan mahasiswa. Identifikasi masalah ini menjadi dasar dalam pengembangan chatbot pra-konseling berbasis Natural Language Processing (NLP) yang dirancang untuk mendukung layanan konseling dengan memberikan respons awal dan dokumentasi hasil interaksi sebelum mahasiswa melanjutkan ke sesi konseling formal.
+4.4.2 Hasil Analisis Kebutuhan
+4.5.3 Hasil Perancangan Sistem
+4.5.3.1 Hasil Rancangan Entity Relationship Diagram (ERD)
+4.5.3.2 Hasil Rancangan Use Case Diagram
+4.5.4 Hasil Rancangan Natural Language Processing (NLP)
+4.5.5 Hasil Pengujian
+4.5.6 Hasil Dokumentasi dan Penulisan Laporan
+4.5.7 Rekomendasi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BAB V
+PENUTUP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DAFTAR PUSTAKA
+236-Article Text-674-1-10-20211212. (n.d.).
+Aliyah Aliyah, Nahrun Hartono, & Asrul Azhari Muin. (2024). Penggunaan User Acceptance Testing (UAT) Pada Pengujian Sistem Informasi Pengelolaan Keuangan Dan Inventaris Barang. Switch?: Jurnal Sains Dan Teknologi Informasi, 3(1), 84�100. https://doi.org/10.62951/switch.v3i1.330
+Allam, H., Makubvure, L., Gyamfi, B., Graham, K. N., & Akinwolere, K. (2025). Text Classification: How Machine Learning Is Revolutionizing Text Categorization. Information (Switzerland), 16(2). https://doi.org/10.3390/info16020130
+Alviando, L., Bhawiyuga, A., & Kartikasari, D. P. (2023). Penerapan Websocket pada Sistem Live Chat berbasis Web (Studi Kasus Website Kwikku.com) (Vol. 7, Issue 2). http://j-ptiik.ub.ac.id
+Angelina M. T. I. Sambi Ua, Diandra Lestriani H, Elizabeth Sonia Kristanty Marpaung, Jesslyn Ong, Michelle Savinka, Putri Nurhaliza, & Rahmi Yulia Ningsih. (2023). Penggunaan Bahasa Pemrograman Python Dalam Analisis Faktor Penyebab Kanker Paru-Paru. Jurnal Publikasi Teknik Informatika, 2(2), 88�99. https://doi.org/10.55606/jupti.v2i2.1742
+Artificial Intelligence-A Modern Approach (3rd Edition) ( PDFDrive ). (n.d.).
+A�yuni, S. G., & Chusumastuti, D. (2021). Pengaruh User Interface Aplikasi Shopee terhadap Minat Beli Masyarakat. Jurnal Ilmiah Manajemen Informasi Dan Komunikasi, 5(1), 49�58. https://doi.org/10.56873/jimik.v5i1.154
+Chicco, D., T�tsch, N., & Jurman, G. (2021). The matthews correlation coefficient (Mcc) is more reliable than balanced accuracy, bookmaker informedness, and markedness in two-class confusion matrix evaluation. BioData Mining, 14, 1�22. https://doi.org/10.1186/s13040-021-00244-z
+Hafiz Aldwinarta �, F., Nurdiana, R., & Oktavia Sulistina, dan. (2024). Media Pembelajaran Berbasis AI Chatbot pada Materi Termokimia di SMA Apakah Dibutuhkan? In Universitas Negeri Malang Jl. Cakrawala (Vol. 18, Issue 1). http://journal.unnes.ac.id/nju/index.php/JIPK
+Hamidli, N. (2023). Introduction to UI/UX Design: Key Concepts and Principles.
+Huberta, B., & Wijaya, A. B. (2023). PERANCANGAN CHATBOT WEBSITE PROGRAM STUDI INFORMATIKA MENGGUNAKAN FRAMEWORK CODEIGNITER. Jurnal Informatika Dan Teknik Elektro Terapan, 11(3). https://doi.org/10.23960/jitet.v11i3.3225
+Informasi, S., Jasa, P., Berbasis, P., Pada, W., Karya, P., & Jaya, S. (2024). Penerapan Metode RAD Dalam Pengembangan. Remik: Riset Dan E-Jurnal Manajemen Informatika Komputer, 8(3). https://doi.org/10.33395/remik.v8i3.13944
+Keputusan Dirjen Penguatan Riset dan Pengembangan Ristek Dikti, S., Deteksi Dini Keamanan Perumahan Andi Setiawan, M., & Irma Purnamasari, A. (2017). Terakreditasi SINTA Peringkat 2. Masa Berlaku Mulai, 1(3), 451�457.
+Lafia, S., Fan, Lizhou, & Hemphill, L. (n.d.). A Natural Language Processing Pipeline for Detecting Informal Data References in Academic Literature.
+Mahardika, F., Khoiri, M., & �Amin, M. Al. (2023). Implementasi Extreme Programing pada Sistem Informasi Penggajian untuk Peningkatan Pelayanan kepada Karyawan. Hello World Jurnal Ilmu Komputer, 2(2), 74�84. https://doi.org/10.56211/helloworld.v2i2.274
+Merdiansah, R., & Ali Ridha, A. (2024). Analisis Sentimen Pengguna X Indonesia Terkait Kendaraan Listrik Menggunakan IndoBERT. Jurnal Ilmu Komputer Dan Sistem Informasi (JIKOMSI, 7(1), 221�228.
+Mulyatun, S., Utama, H., & Mustopa, A. (2021). PENDEKATAN NATURAL LANGUAGE PROCESSING PADA APLIKASI CHATBOT SEBAGAI ALAT BANTU CUSTOMER SERVICE (Vol. 2, Issue 2).
+Muslim, M. P., Hadi, N. T., & Adrezo, M. (2025). Graph Regularized Probabilistic Latent Semantic Analysis for Topic Analysis Using Social Media Data. Sinkron, 9(1), 329�337. https://doi.org/10.33395/sinkron.v9i1.14348
+Noran, O. (n.d.). AN ONTOLOGY-BASED COMPARATIVE STUDY OF UML AND IDEF IN VIEW OF BUSINESS MODELLING. http://www.puml.org
+Nugroho, Budi. D. A. (2020). PERBANDINGAN_KINERJA_METODE_PRA-PEMROSESAN_DALAM_P (3). Jurnal Ilmiah Ilmu Komputer Dan Matematika.
+Nurhaliza, R., Pratidina, N. A., Hafizhah, H., Azzahra, P. N., Widyatmoko, S., Aslamiah, A., & Pratiwi, D. A. (2024). Analisis Penerapan Kurikulum 2013 dan Kurikulum Merdeka di SDN-SN Pengambangan 5. MARAS: Jurnal Penelitian Multidisiplin, 2(2), 1092�1104. https://doi.org/10.60126/maras.v2i2.334
+Painem, P., & Soetanto, H. (2020). Sistem Presensi Pegawai Berbasis Web Service Menggunakan Metode Restfull Dengan Keamanan JWT Dan Algoritma Haversine. Fountain of Informatics Journal, 5(3), 6. https://doi.org/10.21111/fij.v5i3.4906
+Pulungan, S. M., Febrianti, R., Lestari, T., Gurning, N., & Fitriana, N. (n.d.). Analisis Teknik Entity-Relationship Diagram Dalam Perancangan Database. 01(2), 143�147. https://doi.org/10.47233/jemb.v2i1.533
+Rifka Dwi Amalia, Nurul Afifah Arifuddin, & Radinal Setyadinsa. (2025). Pelatihan Google Workspace sebagai Sistem Manajemen Pengetahuan di TK Islam At-Tin. NUSANTARA Jurnal Pengabdian Kepada Masyarakat, 5(3), 475�487. https://doi.org/10.55606/nusantara.v5i3.6451
+Rumbaugh, James., Jacobson, Ivar., & Booch, Grady. (2000). The unified modeling language reference manual. Addison-Wesley Longman.
+Setyanto, A. T. (2023). Deteksi Dini Prevalensi Gangguan Kesehatan Mental Mahasiswa di Perguruan Tinggi. Wacana, 15(1), 66. https://doi.org/10.20961/wacana.v15i1.69548
+Silalahi, N., & Guidio Leonarde Ginting. (2023). Rekomendasi Berita Berkaitan dengan Menerapkan Algoritma Text Mining dan TF-IDF. Bulletin of Computer Science Research, 3(4), 276�282. https://doi.org/10.47065/bulletincsr.v3i4.266
+Sumirat, L. P., Cahyono, D., Kristyawan, Y., & Kacung, S. (n.d.). DASAR-DASAR Rekayasa Perangkat Lunak. www.madzamedia.co.id
+Surbakti, N. M., Angelyca Angelyca, Anita Talia, Cecilia Br Perangin-Angin, Dina Olivia Nainggolan, Nia Devi Friskauly, & Sikap Ruth Br Tumorang. (2024). Penggunaan Bahasa Pemrograman Python dalam Pembelajaran Kalkulus Fungsi Dua Variabel. Algoritma?: Jurnal Matematika, Ilmu Pengetahuan Alam, Kebumian Dan Angkasa, 2(3), 98�107. https://doi.org/10.62383/algoritma.v2i3.67
+Suriya Sundaramoorthy. (n.d.). UML Diagramming: A Case Study Approach.
+Wang, W., Wei, F., Dong, L., Bao, H., Yang, N., & Zhou, M. (n.d.). MINILM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers. https://aka.ms/minilm.
+Wardhani, I. P., Hendajani, F., & Pramaishella, D. P. (2025). BAHAYA TOXIC PARENT BERBASIS WEB Magister Teknologi Informasi, Sekolah Tinggi Manajemen Infortmatika dan Komputer Jakarta STI&K 2 Sistem Komputer, Sekolah Tinggi Manajemen Infortmatika dan Komputer Jakarta STI&K 3 Sistem Informasi, Sekolah Tinggi Manajemen Infortmatika dan Komputer Jakarta STI&K. Journal Computer and Technology, 3(1). https://doi.org/10.69916/comtechno.v3i1.338
+�
+
+
+ 
+
+
+
+
+
+
+
+LAMPIRAN
+Lampiran 1. Surat Riset
+
+
+
+Lampiran 2. Wawancara dengan Admin ULBK konseling UPNVJ
+Tanggal	: 27 Agustus 2025
+Narasumber	: Djakiyah Kalsum Azmi, S.Psi
+Tujuan wawancara ini dilakukan untuk memperoleh informasi mengenai sistem layanan konseling yang berjalan di Unit Layanan Bimbingan dan Konseling (ULBK) UPN Veteran Jakarta, khususnya terkait alur pelayanan, peran admin dalam mendukung proses konseling, serta kendala yang dihadapi dalam pengelolaan data dan pelayanan konseling mahasiswa.
+No.
+Pertanyaan Dan Jawaban
+1.
+Sejak kapan layanan bimbingan konseling mahasiswa tersedia di UPNVJ, dan bagaimana perkembangan layanannya hingga saat ini?
+
+Saya mulai menjadi admin sejak tahun 2023, perkembangan layanan cukup baik
+2.
+Layanan konseling mencakup aspek akademik, keluarga, pribadi, dan hubungan sosial. Jenis masalah apa yang paling sering dialami mahasiswa belakangan ini?��
+
+Masalah yang paling sering dikeluhkan oleh mahasiswa adalah aspek akademik dan pribadi
+3.
+Bagaimana alur pendaftaran dan proses konseling saat ini, mulai dari mahasiswa mendaftar hingga sesi tatap muka atau sesi daring?
+
+pendaftaran dimulai dari mahasiswa mengisi form di web konseling namun, saat ini form di web sedang ada trouble dimana admin tidak dapat melihat form yang sudah masuk jadi untuk pendaftaran manual via chat whatsapp konseling, kemudian h-1 atau hari h pagi akan dikonfirmasi kehadirannya kembali dan kemudian sesi assessment jika pertama kali konseling, setelah assessment baru bisa sesi tatap muka/daring dengan psikolog
+4.
+Apakah ada proses identifikasi awal kondisi emosional mahasiswa sebelum sesi konseling dimulai?� �
+
+Proses identifikasi kondisi mental dan emosional biasa hanya melalui assessment pertemuan pertama, pada pertemuan selanjutnya langsung sesi tatap muka/daring tanpa identifikasi lagi
+5.
+Apakah Anda melihat kebutuhan untuk mempercepat proses identifikasi kondisi emosional mahasiswa sebelum sesi dimulai?
+
+Saya melihat ada kebutuhan untuk mempercepat proses tersebut terutama jika masalahnya yang dihadapi mahasiswa urgent dan ada kemungkinan mengancam jiwa mahasiswa tersebut
+6.
+Bagaimana pendapat Anda jika ada chatbot yang dapat membantu mendeteksi emosi mahasiswa sebelum sesi konseling, yang sifatnya opsional?
+
+Menurut saya chatbot dapat menjadi sebuah hal yang membantu, terlebih jika chatbot tersebut dapat mendeteksi secara cepat, karena biasanya assessment membutuhkan waktu 1 jam pengerjaan
+8.
+Menurut Anda, informasi awal apa saja yang akan paling bermanfaat bagi konselor bila diberikan chatbot sebelum sesi?� �
+
+Informasi tentang keadaan mental dan emosional dari mahasiswa/klien, gejala-gejala apa yang dirasakan dan dirasa sudah mengganggu kegiatan sehari-hari, list terkait hal apa saja yang membuat mahasiswa/klien merasa terganggu secara mental dan emosional
+9.
+Apakah Anda memiliki kekhawatiran terkait privasi atau kerahasiaan data mahasiswa jika chatbot digunakan?
+
+Tentu ada kekhawatiran, biasanya juga ada keraguan pada mahasiswa/klien ketika ingin mendaftar ke konseling karena pada salah satu isian form konseling ada form dosen PA
+10.
+Bagaimana sebaiknya chatbot diintegrasikan dengan prosedur konseling yang sudah ada agar tidak mengganggu alur layanan?
+
+Chatbot saya rasa bisa diintegrasikan untuk assessment pada pertemuan pertama agar di hari yang sama setelah aplikasi chatbot selesai mendeteksi mahasiswa dapat langsung melakukan sesi tatap muka dengan psikolog
+
+
+
+Lampiran 3. Wawancara Dengan Psikolog UPNVJ
+Tanggal	: 25 Agustus 2025
+Narasumber	: Dra Rosnalisa Z, M. Psi
+     Tujuan wawancara ini adalah untuk menggali informasi mendalam mengenai praktik layanan konseling psikologis di UPN Veteran Jakarta, termasuk metode asesmen yang digunakan, strategi intervensi psikolog dalam menangani mahasiswa, serta tantangan yang dihadapi dalam proses konseling. Selain itu, wawancara ini juga bertujuan untuk mendapatkan masukan terkait kebutuhan pengembangan sistem pendukung layanan konseling berbasis teknologi yang dapat meningkatkan efektivitas dan efisiensi pelayanan.
+No.
+Pertanyaan Dan Jawaban
+1.
+Sejak kapan layanan bimbingan konseling mahasiswa tersedia di UPNVJ, dan bagaimana perkembangan layanannya hingga saat ini?
+
+2022
+2.
+Layanan konseling mencakup aspek akademik, keluarga, pribadi, dan hubungan sosial. Jenis masalah apa yang paling sering dialami mahasiswa belakangan ini?��
+
+1. Keluarga, 2. pribadi 3. hubungan sosial 4. Akademik (berurutan)
+3.
+Bagaimana alur pendaftaran dan proses konseling saat ini, mulai dari mahasiswa mendaftar hingga sesi tatap muka atau sesi daring?
+
+Mahasiswa mendaftar, mengisi form, ditanggapi admin, membuat jadual, layanan sesuai kebutuhan /situasi online atau offline
+4.
+Apakah ada proses identifikasi awal kondisi emosional mahasiswa sebelum sesi konseling dimulai?� �
+
+Ya, bentuk assesment
+5.
+Apakah Anda melihat kebutuhan untuk mempercepat proses identifikasi kondisi emosional mahasiswa sebelum sesi dimulai?
+
+Ya
+6.
+Bagaimana pendapat Anda jika ada chatbot yang dapat membantu mendeteksi emosi mahasiswa sebelum sesi konseling, yang sifatnya opsional?
+
+Chatbot belum pernah
+8.
+Menurut Anda, informasi awal apa saja yang akan paling bermanfaat bagi konselor bila diberikan chatbot sebelum sesi?� �
+
+konseling awal yang bersifat mendesak
+9.
+Apakah Anda memiliki kekhawatiran terkait privasi atau kerahasiaan data mahasiswa jika chatbot digunakan?
+
+Ya
+10.
+Bagaimana sebaiknya chatbot diintegrasikan dengan prosedur konseling yang sudah ada agar tidak mengganggu alur layanan?
+
+Bisa dicoba
+
+
+Lampiran 4. Wawancara dengan Mahasiswa FIK Angkatan 2022
+Nama: Adrian Fakhriza hakim
+NIM: 2210511050
+Tanggal: 15 Agustus 2025
+No.
+Pertanyaan dan Jawaban
+1.
+Apakah anda mengetahui bahwa kampus UPN Veteran Jakarta menyediakan layanan bimbingan konseling untuk mahasiswa?
+
+Ya
+2.
+Apakah Anda pernah menggunakan layanan bimbingan konseling kampus?
+Tidak
+3.
+Menurut Anda, apa kendala atau hambatan terbesar yang membuat mahasiswa enggan datang langsung ke layanan bimbingan konseling?�
+
+Ongkos dan waktu perjalanan
+4.
+Menurut Anda, jenis masalah apa yang paling sering dialami mahasiswa di kampus?�
+
+Masalah UKT dan KRS
+5.
+Tipe emosi apa saja yang menurut Anda penting untuk dikenali oleh chatbot agar dapat membantu pra-konseling secara efektif?��
+
+ceria dan pengertian
+6.
+Seberapa penting bagi Anda agar chatbot dapat mendeteksi emosi dengan akurat sebelum sesi tatap muka dengan konselor?��
+
+Penting agar konselor mengetahui lebih dahulu emosi mahasiswa yang akan konseling
+7.
+Dalam situasi apa anda paling mungkin ingin menggunakan chatbot ini?
+
+Malas bertanya ke kampus
+8.
+Apakah Anda lebih nyaman jika chatbot hanya memberikan respons umum atau juga menyarankan Anda untuk melanjutkan ke layanan bimbingan konseling kampus?��
+
+Menyarankan
+9.
+Seberapa nyaman dan percaya diri Anda membicarakan masalah pribadi melalui chatbot dibandingkan tatap muka dengan konselor?��
+
+Sangat nyaman karena biasanya responnya positive vibe karena sudah diprogram
+10.
+Menurut Anda, seberapa penting keamanan dan kerahasiaan data saat menggunakan chatbot ini?
+
+Sangat Penting!
+11.
+Apakah Anda setuju jika hasil deteksi emosi dari chatbot disimpan untuk membantu konselor memahami kondisi Anda sebelum sesi tatap muka?�
+
+Setuju
+12.
+Apakah Anda lebih memilih chatbot berkomunikasi menggunakan bahasa formal atau informal/santai?��
+
+Formal
+13.
+Bagaimana Anda ingin mengakses chatbot ini? (Website, aplikasi mobile, dll)
+
+Website
+
+
+
+
+
+
+
+
+
+Lampiran 5 Wawancara dengan Mahasiswa FIK Angkatan 2022
+Nama: Rendy Sahrasad
+NIM: 2210511132
+Tanggal: 15 Agustus 2025
+No.
+Pertanyaan dan Jawaban
+1.
+Apakah anda mengetahui bahwa kampus UPN Veteran Jakarta menyediakan layanan bimbingan konseling untuk mahasiswa?
+
+Tidak
+2.
+Apakah Anda pernah menggunakan layanan bimbingan konseling kampus?
+Tidak
+3.
+Menurut Anda, apa kendala atau hambatan terbesar yang membuat mahasiswa enggan datang langsung ke layanan bimbingan konseling?�
+
+Kurangnya himbauan terkait apakah ada layanan bimbingan di kampus
+4.
+Menurut Anda, jenis masalah apa yang paling sering dialami mahasiswa di kampus?�
+
+Masalah personal, hubungan, atau karir
+5.
+Tipe emosi apa saja yang menurut Anda penting untuk dikenali oleh chatbot agar dapat membantu pra-konseling secara efektif?��
+
+Cemas
+6.
+Seberapa penting bagi Anda agar chatbot dapat mendeteksi emosi dengan akurat sebelum sesi tatap muka dengan konselor?��
+
+Penting karena memberikan konselor beberapa bayangan terkait
+7.
+Dalam situasi apa anda paling mungkin ingin menggunakan chatbot ini?
+
+Saat ada masalah karir
+8.
+Apakah Anda lebih nyaman jika chatbot hanya memberikan respons umum atau juga menyarankan Anda untuk melanjutkan ke layanan bimbingan konseling kampus?��
+
+Melanjutkan ke layanan bimbingan konseling
+9.
+Seberapa nyaman dan percaya diri Anda membicarakan masalah pribadi melalui chatbot dibandingkan tatap muka dengan konselor?��
+
+Kurang nyaman, karena namanya konsultasi seharusnya face to face
+10.
+Menurut Anda, seberapa penting keamanan dan kerahasiaan data saat menggunakan chatbot ini?
+
+Penting
+11.
+Apakah Anda setuju jika hasil deteksi emosi dari chatbot disimpan untuk membantu konselor memahami kondisi Anda sebelum sesi tatap muka?�
+
+Setuju
+12.
+Apakah Anda lebih memilih chatbot berkomunikasi menggunakan bahasa formal atau informal/santai?��
+
+Informal
+13.
+Bagaimana Anda ingin mengakses chatbot ini? (Website, aplikasi mobile, dll)
+
+Website
+
+
+
+Lampiran 6 Wawancara dengan Mahasiswa FIK Angkatan 2022
+Nama: Nabilah Dwi Gunasti
+NIM: 2210511096
+Tanggal Wawancara: 15 Agustus 2025
+
+No.
+Pertanyaan dan Jawaban
+1.
+Apakah anda mengetahui bahwa kampus UPN Veteran Jakarta menyediakan layanan bimbingan konseling untuk mahasiswa?
+
+Tidak, saya hanya mengetahui bahwa siswa dapat melakukan konsultasi dengan pembimbing akademik.
+2.
+Apakah Anda pernah menggunakan layanan bimbingan konseling kampus?
+
+Tidak
+3.
+Menurut Anda, apa kendala atau hambatan terbesar yang membuat mahasiswa enggan datang langsung ke layanan bimbingan konseling?�
+
+Mungkin karena mahasiswa sendiri tidak begitu familiar dengan layanan tersebut.
+4.
+Menurut Anda, jenis masalah apa yang paling sering dialami mahasiswa di kampus?�
+
+Permasalahan akademik, seperti perubahan kurikulum secara mendadak yang merugikan mahasiswa.
+5.
+Tipe emosi apa saja yang menurut Anda penting untuk dikenali oleh chatbot agar dapat membantu pra-konseling secara efektif?��
+
+Mungkin chatbot harus bisa mengidentifikasi saat mahasiswa merasa kesal, atau sedih, atau saat mahasiswa merasa sangat butuh bantuan sehingga konseling dapat berjalan sesuai dengan kebutuhan mahasiswa.
+6.
+Seberapa penting bagi Anda agar chatbot dapat mendeteksi emosi dengan akurat sebelum sesi tatap muka dengan konselor?��
+
+Mungkin cukup penting bila emosi yang dirasakan mahasiswa sudah mengarah ke hal-hal yang tidak seharusnya dilakukan, seperti tindak anarkis atau tindakan menyakiti diri sendiri.
+7.
+Dalam situasi apa anda paling mungkin ingin menggunakan chatbot ini?
+
+Saat ingin menggunakan layanan konseling.
+8.
+Apakah Anda lebih nyaman jika chatbot hanya memberikan respons umum atau juga menyarankan Anda untuk melanjutkan ke layanan bimbingan konseling kampus?��
+
+Saya akan lebih nyaman bila chatbot bisa mengidentifikasi apakah saya harus membawa permasalahan saya ke layanan bimbingan konseling atau tidak.
+9.
+Seberapa nyaman dan percaya diri Anda membicarakan masalah pribadi melalui chatbot dibandingkan tatap muka dengan konselor?��
+
+Saya cukup nyaman untuk membagikan informasi selama informasi yang dibagikan itu tidak terlalu privasi dan bersifat anonim.
+10.
+Menurut Anda, seberapa penting keamanan dan kerahasiaan data saat menggunakan chatbot ini?
+
+Sangat penting karena menyangkut data pribadi seseorang.
+11.
+Apakah Anda setuju jika hasil deteksi emosi dari chatbot disimpan untuk membantu konselor memahami kondisi Anda sebelum sesi tatap muka?�
+
+Setuju, tetapi aksesnya hanya diberikan untuk konselor saja.
+12.
+Apakah Anda lebih memilih chatbot berkomunikasi menggunakan bahasa formal atau informal/santai?��
+
+Informal
+13.
+Bagaimana Anda ingin mengakses chatbot ini? (Website, aplikasi mobile, dll)
+
+Saya lebih nyaman untuk mengaksesnya melalui website.
+
+
+
+Lampiran 7 Wawancara dengan Mahasiswa Fakultas Hukum Angkatan 2022
+Nama: Anissa Nabilla
+NIM: 2210611171
+Tanggal Wawancara: 15 Agustus 2025
+No.
+Pertanyaan dan Jawaban
+1.
+Apakah anda mengetahui bahwa kampus UPN Veteran Jakarta menyediakan layanan bimbingan konseling untuk mahasiswa?
+
+Tidak
+2.
+Apakah Anda pernah menggunakan layanan bimbingan konseling kampus?
+
+Tidak
+3.
+Menurut Anda, apa kendala atau hambatan terbesar yang membuat mahasiswa enggan datang langsung ke layanan bimbingan konseling?�
+
+Takut informasi pribadi tersebar
+4.
+Menurut Anda, jenis masalah apa yang paling sering dialami mahasiswa di kampus?�
+
+Stress perkuliahan
+5.
+Tipe emosi apa saja yang menurut Anda penting untuk dikenali oleh chatbot agar dapat membantu pra-konseling secara efektif?��
+
+Kesedihan, kecemasan, kemarahan, rasa bersalah/malu, kesepian, kebingungan, dan emosi positif seperti rasa syukur. Mengenali emosi-emosi ini membantu chatbot memberi respon yang tepat, empati, dan mengarahkan pengguna ke bantuan yang sesuai di tahap pra-konseling.
+6.
+Seberapa penting bagi Anda agar chatbot dapat mendeteksi emosi dengan akurat sebelum sesi tatap muka dengan konselor?��
+
+Sangat penting
+7.
+Dalam situasi apa anda paling mungkin ingin menggunakan chatbot ini?
+
+Stress Perkuliahan
+8.
+Apakah Anda lebih nyaman jika chatbot hanya memberikan respons umum atau juga menyarankan Anda untuk melanjutkan ke layanan bimbingan konseling kampus?��
+
+Ya
+9.
+Seberapa nyaman dan percaya diri Anda membicarakan masalah pribadi melalui chatbot dibandingkan tatap muka dengan konselor?��
+
+kurang nyaman dan percaya
+10.
+Menurut Anda, seberapa penting keamanan dan kerahasiaan data saat menggunakan chatbot ini?
+
+Sangat penting 
+11.
+Apakah Anda setuju jika hasil deteksi emosi dari chatbot disimpan untuk membantu konselor memahami kondisi Anda sebelum sesi tatap muka?�
+
+Ya namun ada jaminan keamanan privasi
+12.
+Apakah Anda lebih memilih chatbot berkomunikasi menggunakan bahasa formal atau informal/santai?��
+
+Tergantung situasi
+13.
+Bagaimana Anda ingin mengakses chatbot ini? (Website, aplikasi mobile, dll)
+
+Website.
+
+
+Lampiran 8. Wawancara dengan Mahasiswa Fakultas Teknik Angkatan 2022
+Nama: Raidha Karimah
+NIM: 2210312074
+Tanggal Wawancara: 18 Agustus 2025
+No.
+Pertanyaan dan Jawaban
+1.
+Apakah anda mengetahui bahwa kampus UPN Veteran Jakarta menyediakan layanan bimbingan konseling untuk mahasiswa?
+
+Belum pernah
+2.
+Apakah Anda pernah menggunakan layanan bimbingan konseling kampus?
+
+Tidak 
+3.
+Menurut Anda, apa kendala atau hambatan terbesar yang membuat mahasiswa enggan datang langsung ke layanan bimbingan konseling?�
+
+Biasanya karena rasa malu, takut dinilai orang lain, atau merasa masalahnya belum cukup �berat� untuk dibawa ke konselor.
+4.
+Menurut Anda, jenis masalah apa yang paling sering dialami mahasiswa di kampus?�
+
+Stres akademik, manajemen waktu, tekanan tugas/skripsi, masalah relasi (teman/pacar), dan juga kecemasan soal masa depan/karier.
+5.
+Tipe emosi apa saja yang menurut Anda penting untuk dikenali oleh chatbot agar dapat membantu pra-konseling secara efektif?��
+
+Sedih, cemas, marah, stres, bingung, dan senang (biar tahu kondisi positif juga).
+6.
+Seberapa penting bagi Anda agar chatbot dapat mendeteksi emosi dengan akurat sebelum sesi tatap muka dengan konselor?��
+
+Cukup penting, supaya konselor dapat gambaran awal sebelum sesi tatap muka, jadi pembicaraan bisa lebih fokus.
+7.
+Dalam situasi apa anda paling mungkin ingin menggunakan chatbot ini?
+
+Kalau lagi butuh teman cerita cepat, sedang bingung tapi belum siap ketemu konselor langsung, atau saat malam hari.
+8.
+Apakah Anda lebih nyaman jika chatbot hanya memberikan respons umum atau juga menyarankan Anda untuk melanjutkan ke layanan bimbingan konseling kampus?��
+
+Lebih baik keduanya, yaitu dengan kasih respons umum tapi juga ada opsi diarahkan ke layanan konseling kalau memang perlu.
+9.
+Seberapa nyaman dan percaya diri Anda membicarakan masalah pribadi melalui chatbot dibandingkan tatap muka dengan konselor?��
+
+Lebih nyaman awalnya lewat chatbot, karena terasa lebih anonim dan nggak takut di judge. Tapi untuk solusi mendalam, tetap perlu tatap muka.
+10.
+Menurut Anda, seberapa penting keamanan dan kerahasiaan data saat menggunakan chatbot ini?
+
+ Sangat penting, biar pengguna merasa aman dan percaya pakai chatbot tanpa khawatir datanya bocor.
+11.
+Apakah Anda setuju jika hasil deteksi emosi dari chatbot disimpan untuk membantu konselor memahami kondisi Anda sebelum sesi tatap muka?�
+
+Setuju, asalkan jelas bahwa datanya aman dan tidak disalahgunakan.
+12.
+Apakah Anda lebih memilih chatbot berkomunikasi menggunakan bahasa formal atau informal/santai?��
+
+Informal/santai, biar terasa lebih natural dan gampang nyambung.
+13.
+Bagaimana Anda ingin mengakses chatbot ini? (Website, aplikasi mobile, dll)
+
+Paling enak lewat aplikasi mobile, tapi website juga oke sebagai alternatif.
+
+
+
+
+
+2
+
+
+
+2
+
+
+
+
+
+
+2
+
+
+
+
