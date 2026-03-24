@@ -1,6 +1,6 @@
 //frontend/chatbot/src/api.js
 const BACKEND_PORT = 8001;
-const BASE_URL = import.meta.env.VITE_API_URL || `${location.protocol}//${location.hostname}:${BACKEND_PORT}`;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || `${location.protocol}//${location.hostname}:${BACKEND_PORT}`;
 const getToken = () => sessionStorage.getItem("token");
 
 export async function loginUser(username, password) {
