@@ -21,7 +21,7 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 import ProfilPsikolog from "./pages/ProfilPsikolog.jsx";
 import ProfilAdmin from "./pages/ProfilAdmin.jsx";
 import AdminUserManagement from "./pages/AdminUserManagement.jsx";
-import MahasiswaLayout from "./layouts/Mahasiswalayout.jsx";
+import MahasiswaLayout from "./layouts/MahasiswaLayout.jsx";
 import AdminCounselingRequests from "./pages/AdminCounselingRequests.jsx";
 import AdminSessionDetail from "./pages/AdminSessionDetails.jsx";
 import PsikologSchedule from "./pages/PsikologSchedule.jsx";
