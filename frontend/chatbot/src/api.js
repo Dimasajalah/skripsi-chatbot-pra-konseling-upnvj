@@ -10,9 +10,34 @@ export async function loginUser(username, password) {
     body: JSON.stringify({ username, password }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Login gagal");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -29,9 +54,34 @@ export async function registerUser(username, fullName, password) {
     }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Registrasi gagal");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -49,9 +99,34 @@ export async function registerPsikolog(username, fullName, password, secretKey) 
     }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Registrasi psikolog gagal");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -64,9 +139,34 @@ export async function loginAdmin(username, password) {
     body: new URLSearchParams({ username, password }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Login gagal");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -79,9 +179,34 @@ export async function loginPsikolog(username, password) {
     body: JSON.stringify({ username, password }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Login gagal");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -94,9 +219,34 @@ export async function listSessions(token) {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil daftar sesi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -109,9 +259,34 @@ export async function getSessionByUserId(userId, token) {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil history chat");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -124,9 +299,34 @@ export async function getEmotionStats(userId, token) {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil statistik emosi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -141,9 +341,34 @@ export async function getProfile() {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil profil");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -158,9 +383,34 @@ export async function getSchedules() {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil jadwal konseling");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -171,10 +421,36 @@ export async function Schedules() {
   const res = await fetch(`${BASE_URL}/mahasiswa/counseling/available`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil jadwal tersedia");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -186,9 +462,34 @@ export async function bookSchedule(scheduleId) {
     body: JSON.stringify({ schedule_id: scheduleId }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal booking jadwal");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -200,9 +501,34 @@ export async function getMySessions() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil sesi konseling saya");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -216,9 +542,34 @@ export async function respondSession(sessionId, action) {
     body: JSON.stringify({ action }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal merespons jadwal konseling");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -250,9 +601,34 @@ export async function updateProfile({ full_name, email, angkatan, password }) {
     body: JSON.stringify(payload),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengupdate profil");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -270,8 +646,35 @@ export const createSchedule = async (data) => {
     body: JSON.stringify(data),
   });
 
-  if (!res.ok) throw new Error("Gagal menambah jadwal");
-  return res.json();
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
 };
 
 export const updateScheduleStatus = async (id, status) => {
@@ -286,8 +689,35 @@ export const updateScheduleStatus = async (id, status) => {
     body: JSON.stringify({ status }),
   });
 
-  if (!res.ok) throw new Error("Gagal update status jadwal");
-  return res.json();
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
 };
 
 export async function getAllSchedulesAdmin() {
@@ -299,8 +729,35 @@ export async function getAllSchedulesAdmin() {
     },
   });
 
-  if (!res.ok) throw new Error("Gagal mengambil semua jadwal");
-  return res.json();
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
 }
 
 const WS_BASE_URL = BASE_URL.startsWith("https")
@@ -312,22 +769,108 @@ export const WS_URL = `${WS_BASE_URL}/ws/chatbot/`;
 export async function getAdminNotifications() {
   const token = sessionStorage.getItem("token");
   const res = await fetch(`${BASE_URL}/admin/notifications`, { headers: { Authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error("Gagal mengambil notifikasi admin");
-  return res.json();
+
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 }
 
 export async function getPsikologNotifications() {
   const token = sessionStorage.getItem("token");
   const res = await fetch(`${BASE_URL}/psikolog/notifications`, { headers: { Authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error("Gagal mengambil notifikasi psikolog");
-  return res.json();
+
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 }
 
 export async function markNotificationRead(notifId) {
   const token = sessionStorage.getItem("token");
   const res = await fetch(`${BASE_URL}/admin/notifications/${notifId}/mark-read`, { method: "POST", headers: { Authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error("Gagal menandai notifikasi");
-  return res.json();
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 }
 
 export async function getPsikologRecommendationBySession(sessionId) {
@@ -342,10 +885,36 @@ export async function getPsikologRecommendationBySession(sessionId) {
     }
   );
 
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil rekomendasi konseling");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 
   return res.json();
 }
@@ -359,10 +928,36 @@ export async function fetchAllRecommendations() {
     },
   });
 
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil daftar rekomendasi");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 
   return res.json(); // akan sesuai struktur backend { recommendations: [...] }
 }
@@ -378,10 +973,36 @@ export async function getMyAssessmentHistory() {
     },
   });
 
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal ambil riwayat asesmen");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 
   return res.json(); // return { history: [...] }
 }
@@ -401,14 +1022,38 @@ export async function preparePsikologSchedule(sessionId, scheduleData) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menyiapkan jadwal konseling");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
 }
-
 
 // Ambil semua user (sesuai backend /admin/users)
 export async function getAllUsers() {
@@ -417,9 +1062,34 @@ export async function getAllUsers() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil data pengguna");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -441,9 +1111,34 @@ export async function sendChatMessage(sessionId, text) {
     }),
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const raw = await res.text();
-    throw new Error(raw || "Gagal mengirim pesan ke chatbot");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -459,9 +1154,34 @@ export async function endChatSession(sessionId) {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const raw = await res.text();
-    throw new Error(raw || "Gagal mengakhiri sesi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -478,9 +1198,34 @@ export async function startChatSession() {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const raw = await res.text();
-    throw new Error(raw || "Gagal memulai sesi chatbot");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -496,9 +1241,34 @@ export async function getMyEmotionResults() {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil hasil asesmen emosi");
+    let message = "Gagal mengambil hasil asesmen emosi";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -516,10 +1286,36 @@ export async function getPsikologSessions() {
     },
   });
 
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil sesi psikolog");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 
   return res.json();
 }
@@ -537,9 +1333,34 @@ export async function getSessionMessages(sessionId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil chat sesi");
+    let message = "Gagal mengambil hasil asesmen emosi";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -551,10 +1372,36 @@ export async function getCounselingRequests() {
   const res = await fetch(`${BASE_URL}/admin/counseling/requests`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil permohonan konseling");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -565,10 +1412,36 @@ export async function scheduleCounseling(sessionId, { date, time }) {
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     body: JSON.stringify({ date, time }),
   });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menjadwalkan konseling");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -578,10 +1451,36 @@ export async function rejectCounseling(sessionId) {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menolak permohonan konseling");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -596,9 +1495,34 @@ export const getAdminReportSummary = async () => {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil summary laporan");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -612,9 +1536,34 @@ export async function getAllChatSessionsAdmin() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil seluruh chat session");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -628,10 +1577,36 @@ export async function getAllSessionsWithEmotionsAdmin() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil sesi chat dan emosi");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 
   return res.json();
 }
@@ -643,10 +1618,36 @@ export async function getAllArchivedEmotionsPsikolog() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil sesi chat dan emosi psikolog");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
 
   return res.json();
 }
@@ -658,9 +1659,34 @@ export async function getAllArchivedEmotionsAdmin() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil hasil emosi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -673,9 +1699,34 @@ export async function getArchivedEmotions() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil hasil emosi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -689,9 +1740,34 @@ export async function getCriticalCases() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil kasus kritis");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -704,9 +1780,34 @@ export async function getArchivedChatSessionsAdmin() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil arsip chat session");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -719,9 +1820,34 @@ export async function getArchivedEmotionsAdmin() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil arsip emosi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -734,9 +1860,34 @@ export async function getEmotionSummaryAdmin() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil ringkasan emosi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -749,7 +1900,35 @@ export async function getMyChatSessions() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!res.ok) throw new Error("Gagal mengambil chat session");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
 
   return res.json();
 }
@@ -761,7 +1940,35 @@ export async function getChatSessionDetail(sessionId) {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!res.ok) throw new Error("Gagal mengambil detail session");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
 
   return res.json();
 }
@@ -771,9 +1978,34 @@ export async function getSessionBySessionId(sessionId, token) {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil history chat");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -784,9 +2016,34 @@ export async function getEmotionStatsBySessionId(sessionId, token) {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil statistik emosi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -806,8 +2063,34 @@ export async function getPsikologSessionNotes(sessionId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    throw new Error("Gagal mengambil catatan psikolog");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -833,13 +2116,34 @@ export async function getPsikologEmotionResult(sessionId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    let errMessage = "Gagal mengambil hasil asesmen";
+    let message = "Gagal mengambil";
+
     try {
       const err = await res.json();
-      errMessage = err.detail || errMessage;
-    } catch (_) {}
-    throw new Error(errMessage);
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -857,13 +2161,34 @@ export async function getCompletedSessions() {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    let errorMessage = "Gagal mengambil daftar sesi selesai";
+    let message = "Gagal mengambil";
+
     try {
       const err = await res.json();
-      errorMessage = err.detail || errorMessage;
-    } catch (_) {}
-    throw new Error(errorMessage);
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return await res.json();
@@ -882,9 +2207,34 @@ export async function completeSession(sessionId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menyelesaikan session");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -893,11 +2243,12 @@ export async function completeSession(sessionId) {
 // frontend/src/api/index.js
 export const addPsikologSessionNote = async (session_id, notes, status) => {
   const token = sessionStorage.getItem("token");
-  const response = await fetch(`${BASE_URL}/psikolog/sessions/${session_id}/notes`, {
+
+  const res = await fetch(`${BASE_URL}/psikolog/sessions/${session_id}/notes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       notes: notes,
@@ -905,20 +2256,45 @@ export const addPsikologSessionNote = async (session_id, notes, status) => {
     }),
   });
 
+  // 🔐 HANDLE 401
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role");
+    sessionStorage.clear();
+
+    if (role === "psikolog") window.location.href = "/login/psikolog";
+    else if (role === "admin") window.location.href = "/login/admin";
+    else window.location.href = "/login";
+
+    return;
+  }
+
   let data;
   try {
-    data = await response.json(); // coba parse JSON
-  } catch (err) {
-    data = null; // jika gagal parse
+    data = await res.json();
+  } catch {
+    data = null;
   }
 
-  if (!response.ok) {
-    // Ambil message dari JSON jika ada, kalau tidak fallback
-    const msg = data?.detail?.[0]?.msg || data?.message || data?.detail || "Gagal menambahkan catatan";
-    throw new Error(msg);
+  // ❌ HANDLE ERROR
+  if (!res.ok) {
+    let message = "Gagal menambahkan catatan sesi";
+
+    // prioritas ambil dari backend
+    if (data) {
+      message =
+        data.detail?.[0]?.msg ||
+        data.detail ||
+        data.message ||
+        message;
+    } else {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
-  return data; // ini JSON valid kalau response.ok
+  return data;
 };
 
 export async function acceptCounselingSession(sessionId) {
@@ -927,9 +2303,34 @@ export async function acceptCounselingSession(sessionId) {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
   });
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menerima permintaan konseling");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
   return res.json();
 }
@@ -938,16 +2339,42 @@ export async function rejectCounselingSession(sessionId, reason = "") {
   const token = sessionStorage.getItem("token");
   const res = await fetch(`${BASE_URL}/psikolog/sessions/${sessionId}/reject`, {
     method: "POST",
-    headers: { 
+    headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}` 
+      Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({ reason }),
   });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menolak permintaan konseling");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -957,10 +2384,36 @@ export async function getConfirmedSessionsAll() {
   const res = await fetch(`${BASE_URL}/psikolog/sessions/confirmed/all`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil sesi yang sudah dikonfirmasi");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -971,12 +2424,34 @@ export async function getEmotionResultBySession(sessionId) {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (res.status === 404) {
-    return { session_id: sessionId, total_data: 0, emotion_distribution: {} };
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
   }
 
   if (!res.ok) {
-    throw new Error("Gagal mengambil hasil emosi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -988,9 +2463,34 @@ export async function getLatestAssessment() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil hasil asesmen");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   const data = await res.json();
@@ -1002,7 +2502,36 @@ export async function getChatSessions() {
   const res = await fetch(`${BASE_URL}/chat-sessions/chat-sessions/`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) throw new Error("Gagal mengambil chat sessions");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -1012,7 +2541,36 @@ export async function getMessagesBySession(sessionId) {
     `${BASE_URL}/messages/messages/session/${sessionId}`,
     { headers: { Authorization: `Bearer ${token}` } }
   );
-  if (!res.ok) throw new Error("Gagal mengambil pesan");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -1025,7 +2583,36 @@ export async function closeChatSession(sessionId) {
       headers: { Authorization: `Bearer ${token}` },
     }
   );
-  if (!res.ok) throw new Error("Gagal menutup sesi");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -1034,7 +2621,36 @@ export async function getMahasiswaNotifications() {
   const res = await fetch(`${BASE_URL}/mahasiswa/notifications`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) throw new Error("Gagal mengambil notifikasi");
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
+  if (!res.ok) {
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
+  }
+
   return res.json();
 }
 
@@ -1051,9 +2667,34 @@ export async function markMahasiswaNotificationRead(notifId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menandai notifikasi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1067,9 +2708,34 @@ export async function getAdminSessionNotes(sessionId) {
     { headers: { Authorization: `Bearer ${token}` } }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil catatan admin");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1089,9 +2755,34 @@ export async function addAdminSessionNote(sessionId, content) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menambah catatan admin");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1109,9 +2800,34 @@ export async function getAllRecommendations() {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil daftar rekomendasi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1130,9 +2846,34 @@ export async function deleteRecommendation(recommendationId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menghapus rekomendasi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1151,9 +2892,34 @@ export async function markPsikologNotificationRead(notifId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menandai notifikasi psikolog");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1172,9 +2938,34 @@ export async function sendFollowUpNotification(payload) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengirim notifikasi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1189,8 +2980,34 @@ export async function getCriticalMahasiswa() {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    throw new Error("Gagal mengambil mahasiswa critical");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1211,8 +3028,34 @@ export async function sendFollowUpFromChatbotSession(sessionId, message) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    throw new Error("Gagal mengirim notifikasi ke mahasiswa");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1228,9 +3071,34 @@ export async function getPsikologAvailableTimes() {
     },
   });
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil jadwal tersedia");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1249,9 +3117,34 @@ export async function getMahasiswaSessionNotes(sessionId) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal mengambil catatan sesi");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1272,9 +3165,34 @@ export async function schedulePsikologSession(sessionId, payload) {
     }
   );
 
+  if (res.status === 401) {
+    const role = sessionStorage.getItem("role"); // optional
+
+    sessionStorage.clear();
+
+    if (role === "psikolog") {
+      window.location.href = "/login/psikolog";
+    } else if (role === "admin") {
+      window.location.href = "/login/admin";
+    } else {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Gagal menjadwalkan session");
+    let message = "Gagal mengambil";
+
+    try {
+      const err = await res.json();
+      message = err.detail || err.message || message;
+    } catch {
+      const text = await res.text();
+      if (text) message = text;
+    }
+
+    throw new Error(message);
   }
 
   return res.json();
@@ -1283,7 +3201,6 @@ export async function schedulePsikologSession(sessionId, payload) {
 export async function getCurrentUser() {
   return getProfile();
 }
-
 
 
 
