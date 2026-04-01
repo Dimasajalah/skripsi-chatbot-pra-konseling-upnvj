@@ -110,10 +110,6 @@ export default function RegisterPageMahasiswa() {
               <Link className="text-blue-600 hover:underline" to="/psikolog/register">
                 Psikolog
               </Link>{" "}
-              atau{" "}
-              <Link className="text-blue-600 hover:underline" to="/admin/register">
-                Admin
-              </Link>
             </p>
           </div>
         </div>
