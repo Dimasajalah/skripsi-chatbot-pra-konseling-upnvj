@@ -105,7 +105,6 @@ export default function RegisterPsikolog() {
             <hr className="my-4 border-gray-300" />
             <p>
               Daftar sebagai <Link className="text-blue-600 hover:underline" to="/register">Mahasiswa</Link> atau{" "}
-              <Link className="text-blue-600 hover:underline" to="/admin/register">Admin</Link>
             </p>
           </div>
         </div>
